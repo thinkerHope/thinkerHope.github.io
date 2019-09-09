@@ -92,7 +92,7 @@
 <meta property="og:description" content="写这篇博客是为了记录一下学习react过程中引发的对于数据管理的思考。想成为一个合格的React开发者，理解它的数据管理是深入学习它的设计理念的重要一步，对于我来说还有很长的路要走。  显然没有人会直接在react中操作DOM。  （1）基于state（状态）和props（属性）的数据管理**  这是原生React中数据管理的两个关键词。     先说一下我对state和props的理解：   R">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/thinkerHope/thinkerHope.github.io/master/2019/09/07/react%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/reudx.png">
-<meta property="og:updated_time" content="2019-09-09T00:45:12.189Z">
+<meta property="og:updated_time" content="2019-09-09T10:49:48.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react中的数据管理">
 <meta name="twitter:description" content="写这篇博客是为了记录一下学习react过程中引发的对于数据管理的思考。想成为一个合格的React开发者，理解它的数据管理是深入学习它的设计理念的重要一步，对于我来说还有很长的路要走。  显然没有人会直接在react中操作DOM。  （1）基于state（状态）和props（属性）的数据管理**  这是原生React中数据管理的两个关键词。     先说一下我对state和props的理解：   R">
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  989
+                  1.1k
                 </span>
               
 
@@ -430,6 +430,11 @@
 
 <p>child组件的值改变后存储在父组件的state中，然后通过props传递给childBrother。</p>
 <h2 id="（2）基于redux的数据管理"><a href="#（2）基于redux的数据管理" class="headerlink" title="（2）基于redux的数据管理"></a>（2）基于redux的数据管理</h2><p><img src="https://raw.githubusercontent.com/thinkerHope/thinkerHope.github.io/master/2019/09/07/react%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/reudx.png" alt="redux"></p>
+<p>Reducer的作用：</p>
+<p>当state没有的时候，返回initalState,有的时候根据action来状态变化,这里注意它是一个纯函数，也就是它不改变传入的state。</p>
+<p>Store中的基本配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware, compose &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> composeEnhancers = <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -569,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -692,7 +697,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.2k字</span>
+  <span class="post-count">博客全站共6.9k字</span>
 </div>
 
         

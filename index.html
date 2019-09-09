@@ -269,6 +269,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/combineReducers源码学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boygreen_Yu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录我的点滴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/09/combineReducers源码学习/" itemprop="url">combineReducers源码学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T18:50:50+08:00">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  589
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>combineReducers的基本使用，上一组乱七八糟的图：</p>
+<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png" alt></p>
+<p>​                                                          <u>根目录下store里的reducer</u></p>
+<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducers03.png" alt></p>
+<p>​                                                                  <u>AvatarReducer</u></p>
+<p>一般不会直接在根目录的reducer里导入AvatarReducer，而是在Avatar对应的store里新建一个index.js作为导出文件。规范代码。</p>
+<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducer04.png" alt></p>
+<p>​                                                   <u>AvatarReducer对应的store目录的导出文件</u></p>
+<p>combineReducers里面的每一个值都是导出的函数，比较好奇是怎么合并。</p>
+<p>天哪，我发现我入了个错坑，之前是完全误解了combineReducers，导致我的项目里没有有点逻辑，它的价值在于分离相应的逻辑。果然对于开发者来说，设计理念才是最重要的，否则即使知道源码，也会越走越错。</p>
+<p>重新认识一下combineReducers：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; VisibilityFilters, ADD_TODO, TOGGLE_TODO &#125; <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">todoApp</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> SET_VISIBILITY_FILTER:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">        visibilityFilter: action.filter</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="keyword">case</span> ADD_TODO:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">        todos: [</span><br><span class="line">          ...state.todos,</span><br><span class="line">          &#123;</span><br><span class="line">            text: action.text,</span><br><span class="line">            completed: <span class="literal">false</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="keyword">case</span> TOGGLE_TODO:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123;</span><br><span class="line">        todos: state.todos.map(<span class="function">(<span class="params">todo, index</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (index === action.index) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, todo, &#123;</span><br><span class="line">              completed: !todo.completed</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> todo</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为todos跟visibilityFilter是分开更新的，所以其实我们可以把它们分开来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">todos</span>(<span class="params">state = [], action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> ADD_TODO:</span><br><span class="line">      <span class="keyword">return</span> [</span><br><span class="line">        ...state,</span><br><span class="line">        &#123;</span><br><span class="line">          text: action.text,</span><br><span class="line">          completed: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    <span class="keyword">case</span> TOGGLE_TODO:</span><br><span class="line">      <span class="keyword">return</span> state.map(<span class="function">(<span class="params">todo, index</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index === action.index) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, todo, &#123;</span><br><span class="line">            completed: !todo.completed</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> todo</span><br><span class="line">      &#125;)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">visibilityFilter</span>(<span class="params">state = SHOW_ALL, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> SET_VISIBILITY_FILTER:</span><br><span class="line">      <span class="keyword">return</span> action.filter</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">todoApp</span>(<span class="params">state = &#123;&#125;, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    visibilityFilter: visibilityFilter(state.visibilityFilter, action),</span><br><span class="line">    todos: todos(state.todos, action)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样每个reducer只负责自己那一块的状态更新，combindReducers做了上面todoApp做的事情。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todoApp = combineReducers(&#123;</span><br><span class="line">  visibilityFilter,</span><br><span class="line">  todos</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> todoApp</span><br></pre></td></tr></table></figure>
+
+<p>如下为一个简单的实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combindReducer</span>(<span class="params">reducers</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 第一个只是先过滤一遍 把非function的reducer过滤掉</span></span><br><span class="line">  <span class="keyword">const</span> reducerKeys = <span class="built_in">Object</span>.keys(reducers)</span><br><span class="line">  <span class="keyword">const</span> finalReducers = &#123;&#125;</span><br><span class="line">  reducerKeys.forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> reducers[key] === <span class="string">'function'</span>) &#123;</span><br><span class="line">      finalReducers[key] = reducers[key]</span><br><span class="line">      &#125; </span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> finalReducersKeys = <span class="built_in">Object</span>.keys(finalReducers)</span><br><span class="line">    <span class="comment">// 第二步比较重要 就是将所有reducer合在一起</span></span><br><span class="line">    <span class="comment">// 根据key调用每个reducer，将他们的值合并在一起</span></span><br><span class="line">    <span class="keyword">let</span> hasChange = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> nextState = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">combind</span>(<span class="params">state=&#123;&#125;, action</span>) </span>&#123;</span><br><span class="line">        finalReducersKeys.forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> previousValue = state[key];</span><br><span class="line">            <span class="keyword">const</span> nextValue = reducers[key](previousValue, action);</span><br><span class="line">            nextState[key] = nextValue;</span><br><span class="line">            hasChange = hasChange || previousValue !== nextValue</span><br><span class="line">            <span class="comment">//只要有一个reducer的值改变，hasChange就为true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> hasChange ? nextState : state;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+</div>
+    
+
+	<div>
+  
+</div>
+    
+
+    
+     
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/总结一下遇到的react-router-dom应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1294,7 +1492,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  989
+                  1.1k
                 </span>
               
 
@@ -1371,6 +1569,11 @@
 
 <p>child组件的值改变后存储在父组件的state中，然后通过props传递给childBrother。</p>
 <h2 id="（2）基于redux的数据管理"><a href="#（2）基于redux的数据管理" class="headerlink" title="（2）基于redux的数据管理"></a>（2）基于redux的数据管理</h2><p><img src="https://raw.githubusercontent.com/thinkerHope/thinkerHope.github.io/master/2019/09/07/react%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/reudx.png" alt="redux"></p>
+<p>Reducer的作用：</p>
+<p>当state没有的时候，返回initalState,有的时候根据action来状态变化,这里注意它是一个纯函数，也就是它不改变传入的state。</p>
+<p>Store中的基本配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware, compose &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> composeEnhancers = <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
 
           
         
@@ -1806,7 +2009,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1828,7 +2031,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1913,7 +2116,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.2k字</span>
+  <span class="post-count">博客全站共6.9k字</span>
 </div>
 
         

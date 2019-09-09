@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="FE 模块化,">
 
 
 
@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="生活带给我的每一次体验">
+<meta name="description" content="参考链接 RequireJS 中文网Javascript模块化编程（三）：require.js的用法——阮一峰  前言 本菜鸟对于前端模块化的概念一直是比较模糊。只是学习ES6的模块化系统import/export了解过。文章的目的是为了记录总结RequireJs的用法。  RequireJS一、目的先明确AMD和RequireJS的关系： AMD-异步模块定义 AMD是RequireJS在推">
+<meta name="keywords" content="FE 模块化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端模块化 --AMD&#x2F;RequireJs初识">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/前端模块化-AMD-RequireJs初识/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="生活带给我的每一次体验">
+<meta property="og:description" content="参考链接 RequireJS 中文网Javascript模块化编程（三）：require.js的用法——阮一峰  前言 本菜鸟对于前端模块化的概念一直是比较模糊。只是学习ES6的模块化系统import/export了解过。文章的目的是为了记录总结RequireJs的用法。  RequireJS一、目的先明确AMD和RequireJS的关系： AMD-异步模块定义 AMD是RequireJS在推">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T11:30:01.827Z">
+<meta property="og:updated_time" content="2019-09-08T13:10:30.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模块化 --AMD&#x2F;RequireJs初识">
-<meta name="twitter:description" content="生活带给我的每一次体验">
+<meta name="twitter:description" content="参考链接 RequireJS 中文网Javascript模块化编程（三）：require.js的用法——阮一峰  前言 本菜鸟对于前端模块化的概念一直是比较模糊。只是学习ES6的模块化系统import/export了解过。文章的目的是为了记录总结RequireJs的用法。  RequireJS一、目的先明确AMD和RequireJS的关系： AMD-异步模块定义 AMD是RequireJS在推">
 
 
 
@@ -330,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  665
                 </span>
               
 
@@ -346,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -367,7 +368,38 @@
       
 
       
-        
+        <hr>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<p><a href="https://link.jianshu.com/?t=http://www.requirejs.cn/docs/api.html" target="_blank" rel="noopener">RequireJS 中文网</a><br><a href="https://link.jianshu.com/?t=http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">Javascript模块化编程（三）：require.js的用法——阮一峰</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本菜鸟对于前端模块化的概念一直是比较模糊。只是学习ES6的模块化系统import/export了解过。文章的目的是为了记录总结RequireJs的用法。</p>
+</blockquote>
+<h2 id="RequireJS"><a href="#RequireJS" class="headerlink" title="RequireJS"></a>RequireJS</h2><h2 id="一、目的"><a href="#一、目的" class="headerlink" title="一、目的"></a>一、目的</h2><p>先明确AMD和RequireJS的关系：</p>
+<p><strong>AMD-异步模块定义</strong></p>
+<p><strong>AMD是RequireJS</strong>在推广过程中<strong>对模块定义的规范化</strong>产出，它是一个概念，RequireJS是对这个概念的实现，就好比JavaScript语言是对ECMAScript规范的实现。AMD是一个组织，RequireJS是在这个组织下自定义的一套脚本语言。</p>
+<p>作为js文件加载器，能运行在所有js环境中（如node）。</p>
+<p>所以，AMD有什么意义？</p>
+<h4 id="（1）实现js文件的异步加载，避免网页失去响应"><a href="#（1）实现js文件的异步加载，避免网页失去响应" class="headerlink" title="（1）实现js文件的异步加载，避免网页失去响应"></a>（1）实现js文件的异步加载，避免网页失去响应</h4><p> 如下代码alert执行的时候，html内容是一片空白的，这就是js阻塞浏览器渲          染导致的结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">index.html:</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"a.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">    &lt;body&gt;</span></span><br><span class="line"><span class="regexp">      &lt;span&gt;body&lt;/</span>span&gt;</span><br><span class="line">    &lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br><span class="line">a.js:</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="string">"it works"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun1();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）"><a href="#（2）" class="headerlink" title="（2）"></a>（2）</h4><p>如下一坨</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"a.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"b.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"c.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"d.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"e.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"f.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"g.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"h.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"i.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果一个文件需要依赖另外一些文件中定义的东西时，这个文件依赖的所有文件都要在它之前导入。过于复杂的系统，依赖关系可能出现相互交叉的情况，依赖关系的管理就更加难了。例如main.js用到了前面a、b、c、d、e、f模块，但并未被其它模块使用，故可以且必须放到末尾导入。要确保模块的依赖在该模块导入之前就要导入，为了解除导入顺序的限制，只能让各模块间解耦。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><p>2.1 下载</p>
+<p>2.1.1 链接下载：</p>
+<p><a href="https://link.jianshu.com/?t=http://requirejs.org/docs/release/2.1.11/minified/require.js" target="_blank" rel="noopener">require.js 2.1.11</a><br><a href="https://link.jianshu.com/?t=http://requirejs.org/docs/release/2.1.11/comments/require.js" target="_blank" rel="noopener">require.js 2.1.11 压缩版</a><br><a href="https://link.jianshu.com/?t=http://requirejs.org/docs/release/2.1.11/r.js" target="_blank" rel="noopener">r.js 2.1.11</a></p>
+<blockquote>
+<p>r.js 可以让你进行优化并能够在 Node, Rhino 或者 xpcshell 中运行。</p>
+</blockquote>
+<p>2.1.2 npm</p>
+<p>根目录下 输入</p>
+<p><code>npm install requirejs --save-dev</code></p>
+<p>如果当前目录没有package.json</p>
+<p><code>npm init</code></p>
+
       
     </div>
     
@@ -398,6 +430,12 @@
      
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/FE-模块化/" rel="tag"><i class="fa fa-tag"></i> FE 模块化</a>
+          
+        </div>
+      
 
       
       
@@ -416,6 +454,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/09/总结一下遇到的react-router-dom应用/" rel="prev" title="总结一下遇到的react-router-dom应用">
+                总结一下遇到的react-router-dom应用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -467,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,7 +558,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -554,6 +605,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequireJS"><span class="nav-number">3.</span> <span class="nav-text">RequireJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、目的"><span class="nav-number">4.</span> <span class="nav-text">一、目的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）实现js文件的异步加载，避免网页失去响应"><span class="nav-number">4.0.1.</span> <span class="nav-text">（1）实现js文件的异步加载，避免网页失去响应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）"><span class="nav-number">4.0.2.</span> <span class="nav-text">（2）</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#二、使用"><span class="nav-number">5.</span> <span class="nav-text">二、使用</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -592,7 +659,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共4.7k字</span>
+  <span class="post-count">博客全站共5.4k字</span>
 </div>
 
         

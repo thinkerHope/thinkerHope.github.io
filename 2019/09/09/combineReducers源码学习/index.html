@@ -91,14 +91,14 @@
 <meta property="og:site_name" content="记录我的点滴">
 <meta property="og:description" content="combineReducers的基本使用，上一组乱七八糟的图：  ​                                                          根目录下store里的reducer  ​                                                                  AvatarReducer 一般不会直接在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducers03.png">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducer04.png">
-<meta property="og:updated_time" content="2019-09-09T13:12:59.334Z">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducers03.png">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducer04.png">
+<meta property="og:updated_time" content="2019-09-09T13:17:46.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="combineReducers源码学习">
 <meta name="twitter:description" content="combineReducers的基本使用，上一组乱七八糟的图：  ​                                                          根目录下store里的reducer  ​                                                                  AvatarReducer 一般不会直接在">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png">
+<meta name="twitter:image" content="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png">
 
 
 
@@ -395,12 +395,12 @@
 
       
         <p>combineReducers的基本使用，上一组乱七八糟的图：</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/Reducers.png" alt></p>
 <p>​                                                          <u>根目录下store里的reducer</u></p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducers03.png" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducers03.png" alt></p>
 <p>​                                                                  <u>AvatarReducer</u></p>
 <p>一般不会直接在根目录的reducer里导入AvatarReducer，而是在Avatar对应的store里新建一个index.js作为导出文件。规范代码。</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducer04.png" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/09/combineReducers%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/reducer04.png" alt></p>
 <p>​                                                   <u>AvatarReducer对应的store目录的导出文件</u></p>
 <p>combineReducers里面的每一个值都是导出的函数，比较好奇是怎么合并。</p>
 <p>天哪，我发现我入了个错坑，之前是完全误解了combineReducers，导致我的项目里没有有点逻辑，它的价值在于分离相应的逻辑。果然对于开发者来说，设计理念才是最重要的，否则即使知道源码，也会越走越错。</p>
@@ -415,6 +415,8 @@
 
 <p>如下为一个简单的实现：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combindReducer</span>(<span class="params">reducers</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 第一个只是先过滤一遍 把非function的reducer过滤掉</span></span><br><span class="line">  <span class="keyword">const</span> reducerKeys = <span class="built_in">Object</span>.keys(reducers)</span><br><span class="line">  <span class="keyword">const</span> finalReducers = &#123;&#125;</span><br><span class="line">  reducerKeys.forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> reducers[key] === <span class="string">'function'</span>) &#123;</span><br><span class="line">      finalReducers[key] = reducers[key]</span><br><span class="line">      &#125; </span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> finalReducersKeys = <span class="built_in">Object</span>.keys(finalReducers)</span><br><span class="line">    <span class="comment">// 第二步比较重要 就是将所有reducer合在一起</span></span><br><span class="line">    <span class="comment">// 根据key调用每个reducer，将他们的值合并在一起</span></span><br><span class="line">    <span class="keyword">let</span> hasChange = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> nextState = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">combind</span>(<span class="params">state=&#123;&#125;, action</span>) </span>&#123;</span><br><span class="line">        finalReducersKeys.forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> previousValue = state[key];</span><br><span class="line">            <span class="keyword">const</span> nextValue = reducers[key](previousValue, action);</span><br><span class="line">            nextState[key] = nextValue;</span><br><span class="line">            hasChange = hasChange || previousValue !== nextValue</span><br><span class="line">            <span class="comment">//只要有一个reducer的值改变，hasChange就为true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> hasChange ? nextState : state;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     

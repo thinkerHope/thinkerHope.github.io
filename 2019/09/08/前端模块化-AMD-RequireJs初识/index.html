@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD17.png">
 <meta property="og:image" content="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD12.png">
 <meta property="og:image" content="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD30.png">
-<meta property="og:updated_time" content="2019-09-09T09:40:03.522Z">
+<meta property="og:updated_time" content="2019-09-10T02:33:16.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模块化 --AMD&#x2F;RequireJs初识">
 <meta name="twitter:description" content="I am a sucker for all beauty  参考链接 菜鸟：https://www.runoob.com/w3cnote/requirejs-tutorial-2.html 某位大佬：http://laichuanfeng.com/work/require-config-global/  前言 本菜鸟对于前端模块化的概念一直是比较模糊。学webpack也是稀里糊涂，自从webp">
@@ -220,7 +220,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            标签
+            友链
           </a>
         </li>
       
@@ -246,7 +246,7 @@
       
         
         <li class="menu-item menu-item-links">
-          <a href="/links" rel="section">
+          <a href="/links/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
             
@@ -348,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  1.4k
                 </span>
               
 
@@ -387,7 +387,7 @@
       
         <hr>
 <blockquote>
-<h3 id="I-am-a-sucker-for-all-beauty"><a href="#I-am-a-sucker-for-all-beauty" class="headerlink" title="I am a sucker for all beauty"></a><strong>I am a sucker for all beauty</strong></h3></blockquote>
+<h2 id="I-am-a-sucker-for-all-beauty"><a href="#I-am-a-sucker-for-all-beauty" class="headerlink" title="I am a sucker for all beauty"></a><strong>I am a sucker for all beauty</strong></h2></blockquote>
 <p><img src="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/640.jpeg" alt></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
 <p>菜鸟：<a href="https://www.runoob.com/w3cnote/requirejs-tutorial-2.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/requirejs-tutorial-2.html</a></p>
@@ -426,7 +426,7 @@
 </blockquote>
 <blockquote>
 <p>注意:</p>
-<p>  第一个参数是个数组，即使只有一个模块，也必须以参数形式作为参数。 </p>
+<p>  第一个参数是个数组，即使只有一个模块，也必须以数组形式作为参数。 </p>
 <p>  require中加载模块不能加.js后缀</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"js/a"</span>],<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"load finished"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -445,27 +445,13 @@
 
 <h3 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h3><p>requirejs提供了一种叫”主数据”(data-main)的功能</p>
 <blockquote>
-<p>首先创建一个main.js：</p>
+<p>按照data-main的方式进行全局配置对于我这种菜鸡感觉真的不友好(wuwuwu，为什么jquery一直加载不了啊)，所以我在网上找了一个适合我的解决方案，目前是可以加载成功的。</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">    paths : &#123;</span><br><span class="line">        <span class="string">"jquery"</span> : [<span class="string">"http://libs.baidu.com/jquery/2.0.3/jquery"</span>, <span class="string">"js/lib/jquery"</span>],</span><br><span class="line">        <span class="string">"a"</span> : <span class="string">"js/script/a"</span>   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>然后再页面中使用下面的方式来使用requirejs：</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script data-main=<span class="string">"js/script/main"</span> src=<span class="string">"js/lib/require.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>解释：加载 requirejs 脚本的 script 标签加入了<code>data-main</code>属性，这个属性指定的 js 将在加载完 require.js 后处理，我们把<code>require.config</code>的配置加入到<code>data-main</code>后，就可以使每一个页面都使用这个配置</p>
-<p>data-main的另外一个功能：</p>
-<p>当script标签指定data-main属性时，require会默认的将data-main指定的js为根路径</p>
-<p>相当于：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">    baseUrl : <span class="string">"js/script"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>按照data-main的方式进行全局配置对于我这种菜鸡感觉真的不友好(wuwu，为什么jquery一致加载不了啊)，所以我在网上找了一个适合我的解决方案，目前是可以加载成功的。</p>
 <h6 id="项目结构如下："><a href="#项目结构如下：" class="headerlink" title="项目结构如下："></a>项目结构如下：</h6><p><img src="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD20.png" alt></p>
 <h6 id="require-config-js为全局配置："><a href="#require-config-js为全局配置：" class="headerlink" title="require.config.js为全局配置："></a>require.config.js为全局配置：</h6><p><img src="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD17.png" alt></p>
 <h6 id="index-html中引入脚本方式："><a href="#index-html中引入脚本方式：" class="headerlink" title="index.html中引入脚本方式："></a>index.html中引入脚本方式：</h6><p><img src="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD12.png" alt></p>
 <blockquote>
-<p>解释：require.config.js中的脚本只是一个配置，而不是加载，所以需要在config.js加载完成（保证全局配置生效）再根据require.config()的配置去加载需要的模块。emmm…虽然方法很笨…但是至少不会出现下面的情况：</p>
+<p>解释（个人理解）：require.config.js中的脚本只是一个配置，而不是加载，所以需要在config.js模块加载完成（保证全局配置生效后）再根据require.config()的配置去加载需要的模块。emmm…虽然方法很笨…但是至少不会出现下面的情况：</p>
 </blockquote>
 <p><img src="https://thinkerhope.github.io/2019/09/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96-AMD-RequireJs%E5%88%9D%E8%AF%86/AMD30.png" alt></p>
 
@@ -595,7 +581,7 @@
               <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="boygreen_Yu">
             
               <p class="site-author-name" itemprop="name">boygreen_Yu</p>
-              <p class="site-description motion-element" itemprop="description">生活带给我的每一次体验</p>
+              <p class="site-description motion-element" itemprop="description">透过指尖目视锦瑟流年 邂逅一场繁华的悸动</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -697,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-am-a-sucker-for-all-beauty"><span class="nav-number">1.</span> <span class="nav-text">I am a sucker for all beauty</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number"></span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number"></span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequireJS"><span class="nav-number"></span> <span class="nav-text">RequireJS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、目的"><span class="nav-number"></span> <span class="nav-text">一、目的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）实现js文件的异步加载，避免网页失去响应"><span class="nav-number"></span> <span class="nav-text">（1）实现js文件的异步加载，避免网页失去响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）管理模块之间的依赖性，便于代码的编写和维护"><span class="nav-number"></span> <span class="nav-text">（2）管理模块之间的依赖性，便于代码的编写和维护</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、使用"><span class="nav-number"></span> <span class="nav-text">二、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-下载"><span class="nav-number"></span> <span class="nav-text">2.1 下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-链接下载"><span class="nav-number">0.1.</span> <span class="nav-text">2.1.1 链接下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-npm"><span class="nav-number">0.2.</span> <span class="nav-text">2.1.2 npm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2使用"><span class="nav-number"></span> <span class="nav-text">2.2使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载文件："><span class="nav-number">1.</span> <span class="nav-text">加载文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局配置"><span class="nav-number">2.</span> <span class="nav-text">全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#项目结构如下："><span class="nav-number">2.0.0.1.</span> <span class="nav-text">项目结构如下：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#require-config-js为全局配置："><span class="nav-number">2.0.0.2.</span> <span class="nav-text">require.config.js为全局配置：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#index-html中引入脚本方式："><span class="nav-number">2.0.0.3.</span> <span class="nav-text">index.html中引入脚本方式：</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-am-a-sucker-for-all-beauty"><span class="nav-number">1.</span> <span class="nav-text">I am a sucker for all beauty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">3.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequireJS"><span class="nav-number">4.</span> <span class="nav-text">RequireJS</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#一、目的"><span class="nav-number"></span> <span class="nav-text">一、目的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）实现js文件的异步加载，避免网页失去响应"><span class="nav-number">1.</span> <span class="nav-text">（1）实现js文件的异步加载，避免网页失去响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）管理模块之间的依赖性，便于代码的编写和维护"><span class="nav-number">2.</span> <span class="nav-text">（2）管理模块之间的依赖性，便于代码的编写和维护</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、使用"><span class="nav-number"></span> <span class="nav-text">二、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-下载"><span class="nav-number">1.</span> <span class="nav-text">2.1 下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-链接下载"><span class="nav-number">1.0.1.</span> <span class="nav-text">2.1.1 链接下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-npm"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.1.2 npm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2使用"><span class="nav-number">2.</span> <span class="nav-text">2.2使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载文件："><span class="nav-number">2.1.</span> <span class="nav-text">加载文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局配置"><span class="nav-number">2.2.</span> <span class="nav-text">全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#项目结构如下："><span class="nav-number">2.2.0.0.1.</span> <span class="nav-text">项目结构如下：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#require-config-js为全局配置："><span class="nav-number">2.2.0.0.2.</span> <span class="nav-text">require.config.js为全局配置：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#index-html中引入脚本方式："><span class="nav-number">2.2.0.0.3.</span> <span class="nav-text">index.html中引入脚本方式：</span></a></li></ol></li></ol></li></div>
             
 
           </div>
@@ -742,7 +728,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.5k字</span>
+  <span class="post-count">博客全站共8.5k字</span>
 </div>
 
         

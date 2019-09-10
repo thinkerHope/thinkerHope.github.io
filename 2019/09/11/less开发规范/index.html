@@ -92,7 +92,7 @@
 <meta property="og:description" content="开发项目工作室这边一般用less，想找个机会总结一下我容易忽略的css规范 统一代码风格 列表型属性值 书写在单行时，, 后必须跟一个空格。  示例： 1font-family: Arial, sans-serif;    对于以逗号分隔的属性值，每个逗号后面都应该插入一个空格。  示例： 1box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/less开发规范/less.jpeg">
-<meta property="og:updated_time" content="2019-09-10T16:55:44.090Z">
+<meta property="og:updated_time" content="2019-09-10T17:36:37.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="less开发规范">
 <meta name="twitter:description" content="开发项目工作室这边一般用less，想找个机会总结一下我容易忽略的css规范 统一代码风格 列表型属性值 书写在单行时，, 后必须跟一个空格。  示例： 1font-family: Arial, sans-serif;    对于以逗号分隔的属性值，每个逗号后面都应该插入一个空格。  示例： 1box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;">
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  853
+                  1.2k
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -478,6 +478,27 @@
 <blockquote>
 <p>如果混入的是本身不输出内容的 mixin，在 mixin 后添加括号（即使不传参数），以区分这是否是一个 className</p>
 </blockquote>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><h3 id="width声明变量"><a href="#width声明变量" class="headerlink" title="@width声明变量"></a>@width声明变量</h3><h3 id="calc-特例"><a href="#calc-特例" class="headerlink" title="calc()特例"></a>calc()特例</h3><blockquote>
+<p>为了与 CSS 保持兼容，<code>calc()</code> 并不对数学表达式进行计算，但是在嵌套函数中会计算变量和数学公式的值。</p>
+</blockquote>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@var:</span> <span class="number">50vh</span>/<span class="number">2</span>;</span><br><span class="line"><span class="attribute">width</span>: calc(<span class="number">50%</span> + (<span class="variable">@var</span> - <span class="number">20px</span>));  <span class="comment">// 结果是 calc(50% + (25vh - 20px))</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><blockquote>
+<p>允许你使用任意字符串作为属性或变量值。任何 <code>~&quot;anything&quot;</code> 或 <code>~&#39;anything&#39;</code> 形式的内容都将按原样输出</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@min768: (min-width: 768px);</span><br><span class="line">.element &#123;</span><br><span class="line">  @media @min768 &#123;</span><br><span class="line">    font-size: 1.2rem;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：这是Less 3.5+ 版本的简写，3.5之前的依然需要 <code>@min768: ~&quot;(min-width: 768px)&quot;;</code></p>
+<h3 id="命名空间和访问符"><a href="#命名空间和访问符" class="headerlink" title="命名空间和访问符"></a>命名空间和访问符</h3><blockquote>
+<p>出于组织结构或仅仅是为了提供一些封装的目的，你希望对混合（mixins）进行分组，less可以更加直观地实现这一点</p>
+</blockquote>
+<p>假设你希望将一些混合（mixins）和变量置于 <code>#bundle</code> 之下，为了以后方便重用或分发：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#bundle</span>() &#123;</span><br><span class="line">  <span class="selector-class">.button</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">background-color</span>: grey;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">      <span class="attribute">background-color</span>: white;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.tab</span> &#123; ... &#125;</span><br><span class="line">  <span class="selector-class">.citation</span> &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，如果我们希望把 <code>.button</code> 类混合到 <code>#header a</code> 中，我们可以这样做：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#header</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: orange;</span><br><span class="line">  <span class="selector-id">#bundle</span><span class="selector-class">.button</span>();  <span class="comment">// 还可以书写为 #bundle &gt; .button 形式</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果不希望它们出现在输出的 CSS 中，例如 <code>#bundle .tab</code>，请将 <code>()</code> 附加到命名空间（例如 <code>#bundle()</code>）后面。</p>
 
       
     </div>
@@ -711,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#统一代码风格"><span class="nav-number">1.</span> <span class="nav-text">统一代码风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性缩写"><span class="nav-number">2.</span> <span class="nav-text">属性缩写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less规范"><span class="nav-number">3.</span> <span class="nav-text">less规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码按如下形式按顺序组织："><span class="nav-number">3.0.1.</span> <span class="nav-text">代码按如下形式按顺序组织：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#统一代码风格"><span class="nav-number">1.</span> <span class="nav-text">统一代码风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性缩写"><span class="nav-number">2.</span> <span class="nav-text">属性缩写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less规范"><span class="nav-number">3.</span> <span class="nav-text">less规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码按如下形式按顺序组织："><span class="nav-number">3.0.1.</span> <span class="nav-text">代码按如下形式按顺序组织：</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#less"><span class="nav-number">4.</span> <span class="nav-text">less</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#width声明变量"><span class="nav-number">4.1.</span> <span class="nav-text">@width声明变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#calc-特例"><span class="nav-number">4.2.</span> <span class="nav-text">calc()特例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转义"><span class="nav-number">4.3.</span> <span class="nav-text">转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间和访问符"><span class="nav-number">4.4.</span> <span class="nav-text">命名空间和访问符</span></a></li></ol></li></div>
             
 
           </div>
@@ -756,7 +777,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.4k字</span>
+  <span class="post-count">博客全站共9.7k字</span>
 </div>
 
         

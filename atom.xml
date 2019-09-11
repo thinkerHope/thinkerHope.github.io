@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-11T03:55:00.038Z</updated>
+  <updated>2019-09-11T07:20:37.456Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dva-定义组件</title>
+    <link href="http://yoursite.com/2019/09/11/dva-%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/"/>
+    <id>http://yoursite.com/2019/09/11/dva-定义组件/</id>
+    <published>2019-09-11T07:12:32.000Z</published>
+    <updated>2019-09-11T07:20:37.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>定义组件有三种方式：</p><p> dva里，UI组件一般是放在component文件中，一般在routes文件的路由组件调用这些组件，通过标签的形式，如下第二中方式里 调用这个组件需要这样传入<code>&lt;ProductList  onDelete={} products={} /&gt;</code>  </p><p>无状态组件</p><p>  它是为了创建纯展示组件，这种组件只负责根据传入的props来展示，不涉及到要state状态的操作</p><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./IndexPage.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">IndexPage</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=&#123;styles.normal&#125;&gt;</span><br><span class="line">      &lt;h1 className=&#123;styles.title&#125;&gt;Yay! Welcome to dva!&lt;/h1&gt;</span><br><span class="line">      &lt;div className=&#123;styles.welcome&#125; /&gt;</span><br><span class="line">      &lt;ul className=&#123;styles.list&#125;&gt;</span><br><span class="line">        &lt;li&gt;To <span class="keyword">get</span> started, edit &lt;code&gt;src/index.js&lt;/code&gt; and save to reload.&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md"&gt;Getting Started&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IndexPage.propTypes = &#123;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect()(IndexPage);</span><br></pre></td></tr></table></figure><ul><li>组件不会被实例化，整体渲染性能得到提升</li><li>不能访问this对象</li><li>组件不能访问生命周期</li><li>组件只能访问输入的props，同样的props会得到同样的渲染结果</li></ul><p>2.使用常量的方式，也推荐这种</p><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">'prop-types'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Table, Popconfirm, Button &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> ProductList = <span class="function">(<span class="params">&#123; onDelete, products &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> columns = [&#123;</span><br><span class="line">    title: <span class="string">'Name'</span>,</span><br><span class="line">    dataIndex: <span class="string">'name'</span>,</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    title: <span class="string">'Actions'</span>,</span><br><span class="line">    render: <span class="function">(<span class="params">text, record</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;Popconfirm title=<span class="string">"Delete?"</span> onConfirm=&#123;() =&gt; onDelete(record.id)&#125;&gt;</span><br><span class="line">          &lt;Button&gt;Delete&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Popconfirm&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;];</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Table</span><br><span class="line">      dataSource=&#123;products&#125;</span><br><span class="line">      columns=&#123;columns&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">ProductList.propTypes = &#123;</span><br><span class="line">  onDelete: PropTypes.func.isRequired,</span><br><span class="line">  products: PropTypes.array.isRequired,</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ProductList;</span><br></pre></td></tr></table></figure><p>原文链接：<a href="https://blog.csdn.net/weixin_40792878/article/details/81606624" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40792878/article/details/81606624</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;定义组件有三种方式：&lt;/p&gt;
+&lt;p&gt; dva里，UI组件一般是放在component文件中，一般在routes文件的路由组件调用这些组件，通过标签的形式，如下第二中方式里 调用这个组件需要这样传入&lt;code&gt;&amp;lt;ProductList  onDelete={} prod
+      
+    
+    </summary>
+    
+    
+    
+      <category term="dva" scheme="http://yoursite.com/tags/dva/"/>
+    
+      <category term="react组件" scheme="http://yoursite.com/tags/react%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webStorm使用git(github)多人协作开发网易云</title>
+    <link href="http://yoursite.com/2019/09/11/webStorm%E4%BD%BF%E7%94%A8git-github-%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E7%BD%91%E6%98%93%E4%BA%91/"/>
+    <id>http://yoursite.com/2019/09/11/webStorm使用git-github-多人协作开发网易云/</id>
+    <published>2019-09-11T05:17:29.000Z</published>
+    <updated>2019-09-11T05:34:00.612Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>WebStorm配置</p></blockquote><p>file –&gt; Settings –&gt; Version Control –&gt;Git</p><p> 一般在本地安装好了以后，webStorm会检测到git的安装地址。然后点击test测试一下，看git是否配置成功。</p><blockquote><p>把github上的项目clone到本地</p></blockquote><p>VCS –&gt; Checkout from Version –&gt; Git</p><p>先输入git仓库的地址、父级目录的路径、当前目录名</p><p><img src="/home/boygreen/MyBlog/source/_posts/webStorm%E4%BD%BF%E7%94%A8git-github-%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E7%BD%91%E6%98%93%E4%BA%91/git.jpg" alt></p><blockquote><p>注意  这里的仓库是你需要拷贝的github仓库，可以通过<code>git remote show origin</code>查看当前仓库地址。</p></blockquote><p><img src="/home/boygreen/MyBlog/source/_posts/webStorm%E4%BD%BF%E7%94%A8git-github-%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E7%BD%91%E6%98%93%E4%BA%91/git02.png" alt></p><blockquote><p>提交你的修改并上传到github仓库</p></blockquote><p><code>commit and push</code></p><blockquote><p>别人做出修改，自己更新</p></blockquote><p><code>git push</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;WebStorm配置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;file –&amp;gt; Settings –&amp;gt; Version Control –&amp;gt;Git&lt;/p&gt;
+&lt;p&gt; 一般在本地安装好了以后，webStorm会检测到git的安装地址。
+      
+    
+    </summary>
+    
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dva开发手册</title>
+    <link href="http://yoursite.com/2019/09/11/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"/>
+    <id>http://yoursite.com/2019/09/11/dva开发手册/</id>
+    <published>2019-09-11T03:57:18.000Z</published>
+    <updated>2019-09-11T06:57:58.078Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/home/boygreen/MyBlog/source/_posts/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png" alt></p><h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><blockquote><p>Model 的状态数据，通常表现为一个 javascript 对象(immutable)</p><p>保证每次都是全新对象，没有引用关系</p></blockquote><h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><blockquote><p>一个普通 javascript 对象</p><p>改变 State 的唯一途径</p><p>需要注意的是 <code>dispatch</code> 是在组件 connect Models以后，通过 props 传入的。</p></blockquote><h3 id="dispatch"><a href="#dispatch" class="headerlink" title="dispatch"></a>dispatch</h3><blockquote><p>connect Model 的组件通过 props 可以访问到 dispatch，可以调用 Model 中的 Reducer 或者 Effects</p></blockquote><p>常见的形式如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dispatch(&#123;</span><br><span class="line">  type: <span class="string">'user/add'</span>, <span class="comment">// 如果在 model 外调用，需要添加 namespace</span></span><br><span class="line">  payload: &#123;&#125;, <span class="comment">// 需要传递的信息</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h3 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h3><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; type Reducer&lt;S, A&gt; = (state: S, action: A) =&gt; S</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>注意  Reducer是纯函数</p></blockquote><h3 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h3><h3 id="Subscription"><a href="#Subscription" class="headerlink" title="Subscription"></a>Subscription</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> key <span class="keyword">from</span> <span class="string">'keymaster'</span>;</span><br><span class="line">...</span><br><span class="line">app.model(&#123;</span><br><span class="line">  namespace: <span class="string">'count'</span>,</span><br><span class="line">  subscriptions: &#123;</span><br><span class="line">    keyEvent(&#123;dispatch&#125;) &#123;</span><br><span class="line">      key(<span class="string">'⌘+up, ctrl+up'</span>, () =&gt; &#123; dispatch(&#123;<span class="attr">type</span>:<span class="string">'add'</span>&#125;) &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><blockquote><p>通常指的是前端路由</p><p>由于我们的应用现在通常是单页应用，所以需要前端代码来控制路由逻辑</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Router, Route &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line">app.router(<span class="function">(<span class="params">&#123;history&#125;</span>) =&gt;</span></span><br><span class="line">  &lt;Router history=&#123;history&#125;&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/"</span> component=&#123;HomePage&#125; /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Router&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure><h3 id="Route-Components"><a href="#Route-Components" class="headerlink" title="Route Components"></a>Route Components</h3><blockquote><p> Container Components，在 dva 中我们通常将其约束为 Route Components</p><p>在 dva 中，通常需要 connect Model的组件都是 Route Components，组织在<code>/routes/</code>目录下，而<code>/components/</code>目录下则是纯组件</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/home/boygreen/MyBlog/source/_posts/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png&quot; alt&gt;&lt;/p&gt;
+&lt;h3 id=&quot;state&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+    
+    
+      <category term="dva" scheme="http://yoursite.com/tags/dva/"/>
+    
+      <category term="react" scheme="http://yoursite.com/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack入坑记 02</title>
@@ -239,9 +323,9 @@
       <category term="react" scheme="http://yoursite.com/categories/react/"/>
     
     
-      <category term="数据管理" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/"/>
-    
       <category term="react" scheme="http://yoursite.com/tags/react/"/>
+    
+      <category term="数据管理" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   

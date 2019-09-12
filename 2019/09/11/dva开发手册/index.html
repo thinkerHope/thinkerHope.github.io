@@ -83,20 +83,20 @@
 
 
 
-<meta name="description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props">
+<meta name="description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props 可">
 <meta name="keywords" content="dva,react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dva开发手册">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/dva开发手册/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props">
+<meta property="og:description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props 可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png">
-<meta property="og:updated_time" content="2019-09-11T07:41:28.908Z">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/11/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png">
+<meta property="og:updated_time" content="2019-09-12T20:52:33.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dva开发手册">
-<meta name="twitter:description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png">
+<meta name="twitter:description" content="state Model 的状态数据，通常表现为一个 javascript 对象(immutable) 保证每次都是全新对象，没有引用关系  Action 一个普通 javascript 对象 改变 State 的唯一途径 需要注意的是 dispatch 是在组件 connect Models以后，通过 props 传入的。  dispatch connect Model 的组件通过 props 可">
+<meta name="twitter:image" content="https://thinkerhope.github.io/2019/09/11/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png">
 
 
 
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  906
+                  908
                 </span>
               
 
@@ -378,10 +378,23 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://thinkerhope.github.io/2019/09/11/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png" rel="gallery_ck0h6p7z1000annvwes64ltnx" itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://thinkerhope.github.io/2019/09/11/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
-        <p><img src="/home/boygreen/MyBlog/source/_posts/dva%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/PPrerEAKbIoDZYr.png" alt></p>
-<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><blockquote>
+        <h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><blockquote>
 <p>Model 的状态数据，通常表现为一个 javascript 对象(immutable)</p>
 <p>保证每次都是全新对象，没有引用关系</p>
 </blockquote>
@@ -414,7 +427,7 @@
 <p> Container Components（容器组件，包裹UI组件，用来处理数据的，而UI组件根据props渲染展示，是个纯组件），在 dva 中我们通常将其约束为 Route Components</p>
 <p>在 dva 中，通常需要 connect Model的组件都是 Route Components，组织在<code>/routes/</code>目录下，而<code>/components/</code>目录下则是纯组件</p>
 </blockquote>
-<blockquote>
+<h3 id="题外"><a href="#题外" class="headerlink" title="题外"></a>题外</h3><blockquote>
 <p>从一个入门例子理解UI组件和容器组件</p>
 </blockquote>
 <p>一个普通组件</p>
@@ -568,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -590,7 +603,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -660,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#state"><span class="nav-number">1.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action"><span class="nav-number">2.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dispatch"><span class="nav-number">3.</span> <span class="nav-text">dispatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reducer"><span class="nav-number">4.</span> <span class="nav-text">Reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Effect"><span class="nav-number">5.</span> <span class="nav-text">Effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscription"><span class="nav-number">6.</span> <span class="nav-text">Subscription</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Router"><span class="nav-number">7.</span> <span class="nav-text">Router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Components"><span class="nav-number">8.</span> <span class="nav-text">Route Components</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#state"><span class="nav-number">1.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action"><span class="nav-number">2.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dispatch"><span class="nav-number">3.</span> <span class="nav-text">dispatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reducer"><span class="nav-number">4.</span> <span class="nav-text">Reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Effect"><span class="nav-number">5.</span> <span class="nav-text">Effect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscription"><span class="nav-number">6.</span> <span class="nav-text">Subscription</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Router"><span class="nav-number">7.</span> <span class="nav-text">Router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route-Components"><span class="nav-number">8.</span> <span class="nav-text">Route Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题外"><span class="nav-number">9.</span> <span class="nav-text">题外</span></a></li></ol></div>
             
 
           </div>
@@ -705,7 +718,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.5k字</span>
+  <span class="post-count">博客全站共13.3k字</span>
 </div>
 
         

@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="记录我的点滴">
 <meta property="og:description" content="(1)推荐榜单列表的鼠标事件 123456789101112131415this.state = &amp;#123;  zHvr: fasle,  &amp;#125;;...map(item, index) =&amp;gt; ...className=&amp;#123;classnames(&amp;#123;recTopList: true, zHvr: showOper&amp;#125;)&amp;#125;onMouseOut=&amp;#12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T01:08:19.780Z">
+<meta property="og:updated_time" content="2019-09-20T09:34:57.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网易云开发日志 day5">
 <meta name="twitter:description" content="(1)推荐榜单列表的鼠标事件 123456789101112131415this.state = &amp;#123;  zHvr: fasle,  &amp;#125;;...map(item, index) =&amp;gt; ...className=&amp;#123;classnames(&amp;#123;recTopList: true, zHvr: showOper&amp;#125;)&amp;#125;onMouseOut=&amp;#12">
@@ -341,7 +341,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  146
+                  495
                 </span>
               
 
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -382,9 +382,34 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">  zHvr: fasle,  </span><br><span class="line">&#125;;</span><br><span class="line">...</span><br><span class="line">map(item, index) =&gt; </span><br><span class="line">...</span><br><span class="line">className=&#123;classnames(&#123;<span class="attr">recTopList</span>: <span class="literal">true</span>, <span class="attr">zHvr</span>: showOper&#125;)&#125;</span><br><span class="line">onMouseOut=&#123;<span class="keyword">this</span>.handleMouseleave&#125;</span><br><span class="line">...</span><br><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/"</span></span><br><span class="line">  onMouseOver=&#123;<span class="keyword">this</span>.handleMouseover&#125;</span><br><span class="line">&gt;</span><br><span class="line">  &#123;item&#125;</span><br><span class="line">&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>显然，这样做当鼠标在NavLink上时，会使数组渲染的列表都有zHvr，所以考虑增加控制变量。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">  zHvr: <span class="literal">false</span>,</span><br><span class="line">  operIndex: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">map(item, index) =&gt;</span><br><span class="line">className=&#123;classnames(&#123;<span class="attr">recTopList</span>: <span class="literal">true</span>, <span class="attr">zHvr</span>: showOper &amp;&amp; index === operIndex&#125;)&#125;</span><br><span class="line">...</span><br><span class="line"><span class="comment">/*operIndex为触发鼠标事件的目标元素*/</span></span><br><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/"</span></span><br><span class="line">  onMouseOver=&#123;(e) =&gt; &#123;<span class="keyword">this</span>.handleMouseover(e, index)&#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">  &#123;item&#125;</span><br><span class="line">&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">  zHvr: <span class="literal">false</span>,</span><br><span class="line">  operIndex: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">map(item, index) =&gt;</span><br><span class="line">className=&#123;classnames(&#123;<span class="attr">recTopList</span>: <span class="literal">true</span>, <span class="attr">zHvr</span>: showOper &amp;&amp; index === operIndex &amp;&amp; top === operTopname&#125;)&#125;</span><br><span class="line">...</span><br><span class="line"><span class="comment">/*operIndex为触发鼠标事件的目标元素。行吧，这个代码废了，因为我slice了一下，就有多个列表可能有相同的index了，因此加上Topname(榜单名)控制*/</span></span><br><span class="line">&lt;NavLink</span><br><span class="line">  to=<span class="string">"/"</span></span><br><span class="line">  onMouseOver=&#123;() =&gt; &#123;<span class="keyword">this</span>.handleMouseover(index)&#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">  &#123;item&#125;</span><br><span class="line">&lt;<span class="regexp">/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>另外还有一些样式上的细节问题</p>
+<p>(2)关于<code>onmouseover</code>和<code>onmouseout</code>事件</p>
+<p>当子元素绝对定位，父元素相对定位。</p>
+<p>在父元素上注册</p>
+<p>(3)flux学习</p>
+<blockquote>
+<p>从Flux到redux</p>
+</blockquote>
+<blockquote>
+<p>MVC框架，以及衍生的MVP、MVVM框架的理解</p>
+</blockquote>
+<p>(4)(记录，待总结)</p>
+<p>如果不对状态进行有效的管理，状态在什么时候，由于什么原因，如何变化就会不受控制，就很难跟踪和测试了。</p>
+<p>(5)createStore的简单实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> createStore = <span class="function">(<span class="params">reducer</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> state;</span><br><span class="line">  <span class="keyword">let</span> listeners = [];</span><br><span class="line">  <span class="comment">/*listener为组件通过store.subscribe注册的监听函数*/</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> getState = <span class="function"><span class="params">()</span> =&gt;</span> state;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    state = reducer(state, action);</span><br><span class="line">    listeners.forEach(<span class="function"><span class="params">listener</span> =&gt;</span> listener());</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> subscribe = <span class="function">(<span class="params">listener</span>) =&gt;</span> &#123;</span><br><span class="line">    listeners.push(listener);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      listeners = listeners.filter(<span class="function"><span class="params">l</span> =&gt;</span> l !== listener);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  dispatch(&#123;&#125;);</span><br><span class="line">    <span class="comment">/*初始化state*/</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; getState, dispatch, subscribe &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>reudecers类似于arr.reduce(callback, initValue)，用reduce来理解combineReducers是最合理的。</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> combineReducers = <span class="function">(<span class="params">reducers</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">state = &#123;&#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(reducers).reduce(<span class="function">(<span class="params">nextState, key</span>) =&gt;</span> &#123;</span><br><span class="line">      nextState[key] = reducers[key](state[key], action);</span><br><span class="line">      <span class="keyword">return</span> nextState;</span><br><span class="line">    &#125;, &#123;&#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">reducer = &#123;</span><br><span class="line">  oneReducer,</span><br><span class="line">  secondReducer,</span><br><span class="line">  thirdReducer,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>(6) <code>redux-thunk</code>的实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(7) 封装一个用来提取对象的工具类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sliceObj</span>(<span class="params">obj, keys</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> keys.reduce(<span class="function">(<span class="params">result, key</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">			result[key] = obj[key];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;, &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -439,6 +464,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/20/ES6学习记录/" rel="prev" title="ES6学习记录">
+                ES6学习记录 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -508,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -530,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -629,7 +658,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.6k字</span>
+  <span class="post-count">博客全站共22.1k字</span>
 </div>
 
         

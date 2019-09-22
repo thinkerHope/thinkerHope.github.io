@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。  函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
+<meta name="description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。 函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
 <meta name="keywords" content="ES6,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习记录">
 <meta property="og:url" content="http://yoursite.com/2019/09/20/ES6学习记录/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。  函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
+<meta property="og:description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。 函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-20T15:31:44.382Z">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/git%E5%AD%A6%E4%B9%A0/git000.jpeg">
+<meta property="og:updated_time" content="2019-09-21T08:13:30.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习记录">
-<meta name="twitter:description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。  函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
+<meta name="twitter:description" content="记录一下ES6对函数、对象、数组的扩展，作为开发参考。 函数扩展和解构赋值默认值结合123456function foo(&amp;#123;x, y = 5&amp;#125;) &amp;#123;  console.log(x, y);&amp;#125;foo(&amp;#123;x: 1, y: 2&amp;#125;) // 1 2foo() // TypeError: Cannot read property &apos;x&apos; of u">
+<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/git%E5%AD%A6%E4%B9%A0/git000.jpeg">
 
 
 
@@ -378,9 +380,9 @@
       
 
       
-        <blockquote>
-<p>记录一下<code>ES6</code>对函数、对象、数组的扩展，作为开发参考。</p>
-</blockquote>
+        <p><img src="/home/boygreen/MyBlog/source/_posts/git%E5%AD%A6%E4%B9%A0/git000.jpeg" alt></p>
+<blockquote>
+<h3 id="记录一下ES6对函数、对象、数组的扩展，作为开发参考。"><a href="#记录一下ES6对函数、对象、数组的扩展，作为开发参考。" class="headerlink" title="记录一下ES6对函数、对象、数组的扩展，作为开发参考。"></a>记录一下<code>ES6</code>对函数、对象、数组的扩展，作为开发参考。</h3></blockquote>
 <h2 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h2><h4 id="和解构赋值默认值结合"><a href="#和解构赋值默认值结合" class="headerlink" title="和解构赋值默认值结合"></a>和解构赋值默认值结合</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;) <span class="comment">// 1 2</span></span><br><span class="line">foo() <span class="comment">// TypeError: Cannot read property 'x' of undefined</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -651,6 +653,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/09/21/React学习-高阶组件和mixins/" rel="prev" title="React学习 高阶组件和decorator">
+                React学习 高阶组件和decorator <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -728,7 +734,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -750,7 +756,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -820,7 +826,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数扩展"><span class="nav-number">1.</span> <span class="nav-text">函数扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#和解构赋值默认值结合"><span class="nav-number">1.0.1.</span> <span class="nav-text">和解构赋值默认值结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对函数对象的影响"><span class="nav-number">1.0.2.</span> <span class="nav-text">对函数对象的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rest参数"><span class="nav-number">1.0.3.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.0.4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数不适用场景"><span class="nav-number">1.0.5.</span> <span class="nav-text">箭头函数不适用场景</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#数组扩展"><span class="nav-number">2.</span> <span class="nav-text">数组扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展运算符"><span class="nav-number">2.0.1.</span> <span class="nav-text">... 扩展运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Array-from"><span class="nav-number">2.0.2.</span> <span class="nav-text">Array.from()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#基本用法"><span class="nav-number">2.0.2.0.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#第二个参数"><span class="nav-number">2.0.2.0.2.</span> <span class="nav-text">第二个参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-copyWithin-target-start-0-end-this-length"><span class="nav-number">2.0.3.</span> <span class="nav-text">arr.copyWithin(target, start = 0, end = this.length)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-find-callback"><span class="nav-number">2.0.4.</span> <span class="nav-text">arr.find(callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-fill"><span class="nav-number">2.0.5.</span> <span class="nav-text">arr.fill()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历数组"><span class="nav-number">2.0.6.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-includes"><span class="nav-number">2.0.7.</span> <span class="nav-text">arr.includes()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-flat"><span class="nav-number">2.0.8.</span> <span class="nav-text">arr.flat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-flatMap"><span class="nav-number">2.0.9.</span> <span class="nav-text">arr.flatMap()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象扩展"><span class="nav-number">3.</span> <span class="nav-text">对象扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#super关键字"><span class="nav-number">3.0.1.</span> <span class="nav-text">super关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解构赋值"><span class="nav-number">3.0.2.</span> <span class="nav-text">解构赋值</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一下ES6对函数、对象、数组的扩展，作为开发参考。"><span class="nav-number">1.</span> <span class="nav-text">记录一下ES6对函数、对象、数组的扩展，作为开发参考。</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#函数扩展"><span class="nav-number"></span> <span class="nav-text">函数扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#和解构赋值默认值结合"><span class="nav-number">0.1.</span> <span class="nav-text">和解构赋值默认值结合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对函数对象的影响"><span class="nav-number">0.2.</span> <span class="nav-text">对函数对象的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rest参数"><span class="nav-number">0.3.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">0.4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数不适用场景"><span class="nav-number">0.5.</span> <span class="nav-text">箭头函数不适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组扩展"><span class="nav-number"></span> <span class="nav-text">数组扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展运算符"><span class="nav-number">0.1.</span> <span class="nav-text">... 扩展运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Array-from"><span class="nav-number">0.2.</span> <span class="nav-text">Array.from()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#基本用法"><span class="nav-number">0.2.0.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#第二个参数"><span class="nav-number">0.2.0.2.</span> <span class="nav-text">第二个参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-copyWithin-target-start-0-end-this-length"><span class="nav-number">0.3.</span> <span class="nav-text">arr.copyWithin(target, start = 0, end = this.length)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-find-callback"><span class="nav-number">0.4.</span> <span class="nav-text">arr.find(callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-fill"><span class="nav-number">0.5.</span> <span class="nav-text">arr.fill()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历数组"><span class="nav-number">0.6.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-includes"><span class="nav-number">0.7.</span> <span class="nav-text">arr.includes()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-flat"><span class="nav-number">0.8.</span> <span class="nav-text">arr.flat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arr-flatMap"><span class="nav-number">0.9.</span> <span class="nav-text">arr.flatMap()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象扩展"><span class="nav-number"></span> <span class="nav-text">对象扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#super关键字"><span class="nav-number">0.1.</span> <span class="nav-text">super关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解构赋值"><span class="nav-number">0.2.</span> <span class="nav-text">解构赋值</span></a></li></ol></li></div>
             
 
           </div>
@@ -865,7 +871,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共22.1k字</span>
+  <span class="post-count">博客全站共23.4k字</span>
 </div>
 
         

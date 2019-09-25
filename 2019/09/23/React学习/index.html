@@ -83,22 +83,21 @@
 
 
 
-<meta name="description" content="记录几个有用的特性   Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 1234567891011121">
+<meta name="description" content="记录几个有用的特性  Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 12345678910111213">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React学习 01">
 <meta property="og:url" content="http://yoursite.com/2019/09/23/React学习/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="记录几个有用的特性   Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 1234567891011121">
+<meta property="og:description" content="记录几个有用的特性  Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 12345678910111213">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/%E5%9B%BE%E7%89%87/react05.jpg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/React%E5%AD%A6%E4%B9%A0/react02.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/React%E5%AD%A6%E4%B9%A0/Portal.png">
-<meta property="og:updated_time" content="2019-09-25T22:56:19.486Z">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/23/React%E5%AD%A6%E4%B9%A0/react02.jpeg">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/23/React%E5%AD%A6%E4%B9%A0/Portal.png">
+<meta property="og:updated_time" content="2019-09-25T23:02:21.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React学习 01">
-<meta name="twitter:description" content="记录几个有用的特性   Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 1234567891011121">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/%E5%9B%BE%E7%89%87/react05.jpg">
+<meta name="twitter:description" content="记录几个有用的特性  Forwarding Refs React.forwardRef accepts a render function that receives props and ref parameters and returns a React node.  自己写HTML5的audio需要在父组件中使用子组件Audio里面的audio DOM元素 12345678910111213">
+<meta name="twitter:image" content="https://thinkerhope.github.io/2019/09/23/React%E5%AD%A6%E4%B9%A0/react02.jpeg">
 
 
 
@@ -385,7 +384,6 @@
         <blockquote>
 <p>记录几个有用的特性</p>
 </blockquote>
-<p><img src="/home/boygreen/%E5%9B%BE%E7%89%87/react05.jpg" alt="react05"></p>
 <h4 id="Forwarding-Refs"><a href="#Forwarding-Refs" class="headerlink" title="Forwarding Refs"></a>Forwarding Refs</h4><blockquote>
 <p><code>React.forwardRef</code> accepts a render function that receives <code>props</code> and <code>ref</code> parameters and returns a React node.</p>
 </blockquote>
@@ -431,7 +429,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> ReactDOM.createPortal(</span><br><span class="line">    <span class="keyword">this</span>.props.children,<span class="comment">// ReactChild</span></span><br><span class="line">    domNode<span class="comment">//一个DOM元素</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里没有创建div来包裹this.props.children，而是将它直接渲染到domNode(任意一个DOM结点，无论DOM结点的位置)</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/React%E5%AD%A6%E4%B9%A0/react02.jpeg" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/23/React%E5%AD%A6%E4%B9%A0/react02.jpeg" alt="react05"></p>
 <p>在 <code>React 组件树</code>设计上，Selector 是 Button 的子组件。但是在 <code>DOM 树</code>的角度 <code>Selector</code> 是 <code>Body</code> 的子节点。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button&gt;</span><br><span class="line">	&lt;Selector /&gt;</span><br><span class="line">&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">Button.js</span></span><br><span class="line"><span class="regexp">return ReactDOM.createPortal(this.props.children, Body);</span></span><br></pre></td></tr></table></figure>
 
@@ -443,7 +441,7 @@
 <blockquote>
 <p>此时的DOM树</p>
 </blockquote>
-<p><img src="/home/boygreen/MyBlog/source/_posts/React%E5%AD%A6%E4%B9%A0/Portal.png" alt="Portal"></p>
+<p><img src="https://thinkerhope.github.io/2019/09/23/React%E5%AD%A6%E4%B9%A0/Portal.png" alt="react05"></p>
 <blockquote>
 <p>React组件树</p>
 </blockquote>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-27T07:31:29.817Z</updated>
+  <updated>2019-09-27T11:52:21.905Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>变形transform</title>
+    <link href="http://yoursite.com/2019/09/27/%E5%8F%98%E5%BD%A2transform/"/>
+    <id>http://yoursite.com/2019/09/27/变形transform/</id>
+    <published>2019-09-27T11:17:53.000Z</published>
+    <updated>2019-09-27T11:52:21.905Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>几个常用的transform</p></blockquote><p><strong>这些属性都是不影响原来的布局的。</strong></p><p><strong>rotate()</strong></p><blockquote><p>通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。</p></blockquote><p><strong>scale()</strong></p><blockquote><p>让元素根据中心原点对对象进行缩放。</p></blockquote><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">scale</span>(<span class="selector-tag">x</span>,<span class="selector-tag">y</span>)</span><br><span class="line"><span class="selector-tag">scale</span>(<span class="selector-tag">x</span>)</span><br><span class="line"><span class="selector-tag">scale</span>(<span class="selector-tag">y</span>)</span><br></pre></td></tr></table></figure><p><strong>translate()</strong> </p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translate(x</span>,<span class="selector-tag">y</span>)</span><br><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translate(x)</span></span><br><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translate(y)</span></span><br></pre></td></tr></table></figure><blockquote><p>关于translate百分比的疑惑</p></blockquote><p>实验一下就清楚了</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="attribute">border</span>: <span class="number">40px</span> solid red;</span><br><span class="line"><span class="attribute">border-width</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line"><span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line"><span class="attribute">background-color</span>:yellow;</span><br><span class="line"><span class="comment">/* Rotate div */</span></span><br><span class="line"><span class="attribute">transform</span>:<span class="built_in">translate</span>(50%);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">background</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div class="box2"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class="box1"&gt;Hello World&lt;/div&gt;</span><br></pre></td></tr></table></figure><p><img src="/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/tr02.png" alt></p><p>可见，百分比是相对自身的长宽（padding + width + border）</p><p><strong>transform-origin</strong></p><blockquote><p>默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p></blockquote><p><img src="/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/r3.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;几个常用的transform&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;这些属性都是不影响原来的布局的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;rotate()&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;通
+      
+    
+    </summary>
+    
+    
+    
+      <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>web开发小组</title>
     <link href="http://yoursite.com/2019/09/27/web%E5%BC%80%E5%8F%91%E5%B0%8F%E7%BB%84/"/>
     <id>http://yoursite.com/2019/09/27/web开发小组/</id>
     <published>2019-09-27T07:29:07.000Z</published>
-    <updated>2019-09-27T07:31:29.817Z</updated>
+    <updated>2019-09-27T07:34:38.305Z</updated>
     
-    <content type="html"><![CDATA[<p>一、项目名称</p><p>仿网易云音乐PC端（名字、logo你们想…抓紧时间换主题，研究下网易云，我现在是做得一模一样）</p><p>二、主题简介</p><p>online音乐播放网站。</p><p>三、主要功能概述</p><p>1.登录、注册（支持邮箱，网易云Api）（这个界面可以考虑重新做）</p><p>2.音乐播放（底部H5音乐播放器）(网易云Api)</p><p>3.音乐收藏（自己数据库）</p><p>4.音乐相关推荐</p><p>5.搜索（网易云Api）</p><p>6.评论（点赞，回复）（自己数据库）</p><p>7.歌单（分类、收藏）</p><p>8.MV播放（网易云Api）</p><p>9.用户之间发私信（尽力）</p><p>四、技术路线</p><p>工具：数据库Mysql，开发工具vscode，服务器（ESC）</p><p>数据库：（你们写，我不太会）</p><p>后端开发技术栈：node</p><p>前端开发技术栈：react框架（用的dva）+ react-redux（数据管理） + webpack（上线打包） + react-router（单页）+ antd （表单） + es6 (部分es7语法糖) + Hooks新特性</p><p>工作流: git + github（记录每天的进度）woed</p><p>五、人员分工</p><p>前端：name1（素材）name2 （交互）name3 （布局）（完全模仿网易云）</p><p>后端：（评论、回复、点赞、私信、收藏）</p><p>数据库设计：</p>]]></content>
+    <content type="html"><![CDATA[<p>一、项目名称</p><p>仿网易云音乐PC端（名字、logo你们想…抓紧时间换主题，研究下网易云，我现在是做得一模一样）</p><p>二、主题简介</p><p>online音乐播放网站。</p><p>三、主要功能概述</p><p>1.登录、注册（支持邮箱，网易云Api）（这个界面可以考虑重新做）</p><p>2.音乐播放（底部H5音乐播放器）(网易云Api)</p><p>3.音乐收藏（自己数据库）</p><p>4.音乐相关推荐</p><p>5.搜索（网易云Api）</p><p>6.评论（点赞，回复）（自己数据库）</p><p>7.歌单（分类、收藏）</p><p>8.MV播放（网易云Api）</p><p>9.用户之间发私信（尽力）</p><p>四、技术路线</p><p>工具：数据库Mysql，开发工具vscode，服务器（ESC）</p><p>数据库：（你们写，我不太会）</p><p>后端开发技术栈：node</p><p>前端开发技术栈：react框架（用的dva）+ react-redux（数据管理） + webpack（上线打包） + react-router（单页）+ antd （表单） + es6 (部分es7语法糖) + Hooks新特性</p><p>工作流: git + github（记录每天的进度)</p><p>五、人员分工</p><p>前端：name1（素材）name2 （交互）name3 （布局）（完全模仿网易云）</p><p>后端：（评论、回复、点赞、私信、收藏）</p><p>数据库设计：</p>]]></content>
     
     <summary type="html">
     
@@ -36,21 +66,6 @@
 &lt;p&gt;三、主要功能概述&lt;/p&gt;
 &lt;p&gt;1.登录、注册（支持邮箱，网易云A
       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>useEffect源码学习</title>
-    <link href="http://yoursite.com/2019/09/27/useEffect%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://yoursite.com/2019/09/27/useEffect源码学习/</id>
-    <published>2019-09-27T06:12:30.000Z</published>
-    <updated>2019-09-27T06:12:30.986Z</updated>
-    
-    <summary type="html">
     
     </summary>
     

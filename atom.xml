@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-27T07:30:19.693Z</updated>
+  <updated>2019-09-27T07:31:29.817Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/09/27/web%E5%BC%80%E5%8F%91%E5%B0%8F%E7%BB%84/"/>
     <id>http://yoursite.com/2019/09/27/web开发小组/</id>
     <published>2019-09-27T07:29:07.000Z</published>
-    <updated>2019-09-27T07:30:19.693Z</updated>
+    <updated>2019-09-27T07:31:29.817Z</updated>
     
     <content type="html"><![CDATA[<p>一、项目名称</p><p>仿网易云音乐PC端（名字、logo你们想…抓紧时间换主题，研究下网易云，我现在是做得一模一样）</p><p>二、主题简介</p><p>online音乐播放网站。</p><p>三、主要功能概述</p><p>1.登录、注册（支持邮箱，网易云Api）（这个界面可以考虑重新做）</p><p>2.音乐播放（底部H5音乐播放器）(网易云Api)</p><p>3.音乐收藏（自己数据库）</p><p>4.音乐相关推荐</p><p>5.搜索（网易云Api）</p><p>6.评论（点赞，回复）（自己数据库）</p><p>7.歌单（分类、收藏）</p><p>8.MV播放（网易云Api）</p><p>9.用户之间发私信（尽力）</p><p>四、技术路线</p><p>工具：数据库Mysql，开发工具vscode，服务器（ESC）</p><p>数据库：（你们写，我不太会）</p><p>后端开发技术栈：node</p><p>前端开发技术栈：react框架（用的dva）+ react-redux（数据管理） + webpack（上线打包） + react-router（单页）+ antd （表单） + es6 (部分es7语法糖) + Hooks新特性</p><p>工作流: git + github（记录每天的进度）woed</p><p>五、人员分工</p><p>前端：name1（素材）name2 （交互）name3 （布局）（完全模仿网易云）</p><p>后端：（评论、回复、点赞、私信、收藏）</p><p>数据库设计：</p>]]></content>
     

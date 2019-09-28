@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-27T11:52:21.905Z</updated>
+  <updated>2019-09-28T02:41:21.581Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我每一天都很喜欢你</title>
+    <link href="http://yoursite.com/2019/09/28/%E6%88%91%E6%AF%8F%E4%B8%80%E5%A4%A9%E9%83%BD%E5%BE%88%E5%96%9C%E6%AC%A2%E4%BD%A0/"/>
+    <id>http://yoursite.com/2019/09/28/我每一天都很喜欢你/</id>
+    <published>2019-09-28T00:50:07.000Z</published>
+    <updated>2019-09-28T02:41:21.581Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/home/boygreen/MyBlog/source/_posts/%E6%88%91%E6%AF%8F%E4%B8%80%E5%A4%A9%E9%83%BD%E5%BE%88%E5%96%9C%E6%AC%A2%E4%BD%A0/binary.jpg" alt></p><blockquote><h3 id="我喜欢你-从程序员嘴里说出来是什么样子的，哈哈哈哈哈哈"><a href="#我喜欢你-从程序员嘴里说出来是什么样子的，哈哈哈哈哈哈" class="headerlink" title="我喜欢你 从程序员嘴里说出来是什么样子的，哈哈哈哈哈哈"></a><strong>我喜欢你 从程序员嘴里说出来是什么样子的，哈哈哈哈哈哈</strong></h3></blockquote><p><strong>基础</strong></p><blockquote><p>字符串和ascii码之间的转换</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串转ascii码，用charCodeAt();</span></span><br><span class="line"><span class="comment">//ascii码转字符串，用fromCharCode();</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">"A"</span>;</span><br><span class="line"><span class="keyword">let</span> code = str.charCodeAt();</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="built_in">String</span>.fromCharCode(code);</span><br></pre></td></tr></table></figure><blockquote><p>十进制和其它机制之间的转换</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其它进制转十进制，用</span></span><br><span class="line"># parseInt(string, radix-如果该参数小于 2 或者大于 36，则parseInt() 将返回 NaN);</span><br><span class="line"># 如果未设置radix或为0，则会根据string来判断要解析的数字的基数;</span><br><span class="line"><span class="comment">//十进制转其它进制，用</span></span><br><span class="line"># NumberObject.toString(radix-默认为10);</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">130</span>;</span><br><span class="line">a.toSting(<span class="number">2</span>);<span class="comment">//十进制 -&gt; 二进制</span></span><br><span class="line">a.toString(<span class="number">8</span>)<span class="comment">//十进制 -&gt; 八进制</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">10010110</span>;</span><br><span class="line"><span class="built_in">parseInt</span>(b, <span class="number">2</span>);<span class="comment">//二进制 -&gt; 10进制</span></span><br><span class="line"><span class="keyword">let</span> c = <span class="number">226</span>;</span><br><span class="line"><span class="built_in">parseInt</span>(c, <span class="number">8</span>);<span class="comment">//8进制 -&gt; 10进制</span></span><br></pre></td></tr></table></figure><blockquote><p>字符串和二进制流的相互转换</p></blockquote><p><strong>将二进制字符串转换成Unicode字符串</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binaryToStr</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">let</span> result = [];</span><br><span class="line">     <span class="keyword">let</span> list = str.split(<span class="string">" "</span>);</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;list.length;i++)&#123;</span><br><span class="line">           <span class="keyword">let</span> item = list[i];</span><br><span class="line">           <span class="keyword">let</span> asciiCode = <span class="built_in">parseInt</span>(item,<span class="number">2</span>);</span><br><span class="line">           <span class="keyword">let</span> charValue = <span class="built_in">String</span>.fromCharCode(asciiCode);</span><br><span class="line">           result.push(charValue);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result.join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>将字符串转换为二进制，中间用空格隔开</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strToBinary</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line">    <span class="keyword">let</span> list = str.split(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;list.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i != <span class="number">0</span>)&#123;</span><br><span class="line">            result.push(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> item = list[i];</span><br><span class="line">        <span class="keyword">let</span> binaryStr = item.charCodeAt().toString(<span class="number">2</span>);</span><br><span class="line">        result.push(binaryStr);</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">return</span> result.join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strToBinary(&quot;我喜欢你&quot;)</span><br><span class="line">&quot;110001000010001 101010110011100 110101100100010 100111101100000&quot;</span><br></pre></td></tr></table></figure><p><strong>二进制转换为十六进制</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">编码</span><br><span class="line"><span class="keyword">let</span> code = strToBinary(<span class="string">"我喜欢你"</span>).split(<span class="string">" "</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(item, <span class="number">2</span>).toString(<span class="number">16</span>);</span><br><span class="line">&#125;).join(<span class="string">" "</span>);</span><br><span class="line"><span class="string">"6211 559c 6b22 4f60"</span></span><br><span class="line">解码</span><br><span class="line"><span class="keyword">let</span> char = <span class="string">"6211 559c 6b22 4f60"</span>.split(<span class="string">" "</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(item, <span class="number">16</span>).toString(<span class="number">2</span>);</span><br><span class="line">&#125;).join(<span class="string">" "</span>)</span><br><span class="line">binaryToStr(char);</span><br><span class="line"><span class="comment">//"我喜欢你"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//你喜欢人的人的名字</span></span><br><span class="line">比如</span><br><span class="line"><span class="string">"s"</span>.charCodeAt();</span><br><span class="line"><span class="string">"j"</span>.charCodeAt();</span><br><span class="line"><span class="string">"y"</span>.charCodeAt();</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ 6211 559c 6b22 4f60-115-106-121</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/home/boygreen/MyBlog/source/_posts/%E6%88%91%E6%AF%8F%E4%B8%80%E5%A4%A9%E9%83%BD%E5%BE%88%E5%96%9C%E6%AC%A2%E4%BD%A0/binary.jp
+      
+    
+    </summary>
+    
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>变形transform</title>
@@ -43,33 +67,6 @@
     
     
       <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web开发小组</title>
-    <link href="http://yoursite.com/2019/09/27/web%E5%BC%80%E5%8F%91%E5%B0%8F%E7%BB%84/"/>
-    <id>http://yoursite.com/2019/09/27/web开发小组/</id>
-    <published>2019-09-27T07:29:07.000Z</published>
-    <updated>2019-09-27T07:34:38.305Z</updated>
-    
-    <content type="html"><![CDATA[<p>一、项目名称</p><p>仿网易云音乐PC端（名字、logo你们想…抓紧时间换主题，研究下网易云，我现在是做得一模一样）</p><p>二、主题简介</p><p>online音乐播放网站。</p><p>三、主要功能概述</p><p>1.登录、注册（支持邮箱，网易云Api）（这个界面可以考虑重新做）</p><p>2.音乐播放（底部H5音乐播放器）(网易云Api)</p><p>3.音乐收藏（自己数据库）</p><p>4.音乐相关推荐</p><p>5.搜索（网易云Api）</p><p>6.评论（点赞，回复）（自己数据库）</p><p>7.歌单（分类、收藏）</p><p>8.MV播放（网易云Api）</p><p>9.用户之间发私信（尽力）</p><p>四、技术路线</p><p>工具：数据库Mysql，开发工具vscode，服务器（ESC）</p><p>数据库：（你们写，我不太会）</p><p>后端开发技术栈：node</p><p>前端开发技术栈：react框架（用的dva）+ react-redux（数据管理） + webpack（上线打包） + react-router（单页）+ antd （表单） + es6 (部分es7语法糖) + Hooks新特性</p><p>工作流: git + github（记录每天的进度)</p><p>五、人员分工</p><p>前端：name1（素材）name2 （交互）name3 （布局）（完全模仿网易云）</p><p>后端：（评论、回复、点赞、私信、收藏）</p><p>数据库设计：</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一、项目名称&lt;/p&gt;
-&lt;p&gt;仿网易云音乐PC端（名字、logo你们想…抓紧时间换主题，研究下网易云，我现在是做得一模一样）&lt;/p&gt;
-&lt;p&gt;二、主题简介&lt;/p&gt;
-&lt;p&gt;online音乐播放网站。&lt;/p&gt;
-&lt;p&gt;三、主要功能概述&lt;/p&gt;
-&lt;p&gt;1.登录、注册（支持邮箱，网易云A
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
@@ -307,9 +304,9 @@
     
     
     
-      <category term="React" scheme="http://yoursite.com/tags/React/"/>
-    
       <category term="dva" scheme="http://yoursite.com/tags/dva/"/>
+    
+      <category term="React" scheme="http://yoursite.com/tags/React/"/>
     
   </entry>
   

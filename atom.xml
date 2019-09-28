@@ -495,9 +495,9 @@
     
     
     
-      <category term="css-modules" scheme="http://yoursite.com/tags/css-modules/"/>
-    
       <category term="webpack" scheme="http://yoursite.com/tags/webpack/"/>
+    
+      <category term="css-modules" scheme="http://yoursite.com/tags/css-modules/"/>
     
       <category term="FE 模块化" scheme="http://yoursite.com/tags/FE-%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     

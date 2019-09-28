@@ -83,21 +83,22 @@
 
 
 
-<meta name="description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。  scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)trans">
+<meta name="description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。   scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)tran">
 <meta name="keywords" content="css3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变形transform">
 <meta property="og:url" content="http://yoursite.com/2019/09/27/变形transform/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。  scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)trans">
+<meta property="og:description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。   scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)tran">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/tr02.png">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/r3.png">
-<meta property="og:updated_time" content="2019-09-27T11:52:21.905Z">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/t1.png">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/tr02.png">
+<meta property="og:image" content="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/r3.png">
+<meta property="og:updated_time" content="2019-09-28T02:50:28.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变形transform">
-<meta name="twitter:description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。  scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)trans">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/tr02.png">
+<meta name="twitter:description" content="几个常用的transform  这些属性都是不影响原来的布局的。 rotate()  通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。   scale()  让元素根据中心原点对对象进行缩放。  123scale(x,y)scale(x)scale(y)  translate()  123transform:translate(x,y)transform:translate(x)tran">
+<meta name="twitter:image" content="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/t1.png">
 
 
 
@@ -389,6 +390,7 @@
 <blockquote>
 <p>通过指定的角度参数使元素相对原点进行旋转，正值则顺时针。</p>
 </blockquote>
+<p><img src="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/t1.png" alt></p>
 <p><strong>scale()</strong></p>
 <blockquote>
 <p>让元素根据中心原点对对象进行缩放。</p>
@@ -404,13 +406,13 @@
 <p>实验一下就清楚了</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="attribute">border</span>: <span class="number">40px</span> solid red;</span><br><span class="line"><span class="attribute">border-width</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">padding-left</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line"><span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line"><span class="attribute">background-color</span>:yellow;</span><br><span class="line"><span class="comment">/* Rotate div */</span></span><br><span class="line"><span class="attribute">transform</span>:<span class="built_in">translate</span>(50%);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">background</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div class="box2"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class="box1"&gt;Hello World&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/tr02.png" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/tr02.png" alt></p>
 <p>可见，百分比是相对自身的长宽（padding + width + border）</p>
 <p><strong>transform-origin</strong></p>
 <blockquote>
 <p>默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p>
 </blockquote>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%8F%98%E5%BD%A2transform/r3.png" alt></p>
+<p><img src="https://thinkerhope.github.io/2019/09/27/%E5%8F%98%E5%BD%A2transform/r3.png" alt></p>
 
       
     </div>

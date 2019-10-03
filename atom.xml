@@ -464,9 +464,9 @@
     
     
     
-      <category term="dva" scheme="http://yoursite.com/tags/dva/"/>
-    
       <category term="React" scheme="http://yoursite.com/tags/React/"/>
+    
+      <category term="dva" scheme="http://yoursite.com/tags/dva/"/>
     
   </entry>
   

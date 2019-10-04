@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="记录我的点滴">
 <meta property="og:description" content="彼岸花开，蓝蝶依肩。 (1)  后端返回的数据一般都是直接new Date()的Long类型时间。需要自己手写转换工具。  12345678910111213141516171819202122232425262728293031/* * 时间格式化工具 * 把Long类型的1527672756454日期还原yyyy-MM-dd格式日期 */export function dateFormat(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-03T12:07:46.611Z">
+<meta property="og:updated_time" content="2019-10-04T01:58:45.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网易云开发日志 忘记第几天了">
 <meta name="twitter:description" content="彼岸花开，蓝蝶依肩。 (1)  后端返回的数据一般都是直接new Date()的Long类型时间。需要自己手写转换工具。  12345678910111213141516171819202122232425262728293031/* * 时间格式化工具 * 把Long类型的1527672756454日期还原yyyy-MM-dd格式日期 */export function dateFormat(">
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  561
+                  555
                 </span>
               
 
@@ -411,10 +411,10 @@
 </blockquote>
 <p>解决</p>
 <p>方式一  webpack中添加如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">performance: &#123;</span><br><span class="line">	hints:false   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">performance: &#123;</span><br><span class="line">	hints:<span class="literal">false</span>   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>方式二 webpack中添加如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">performance: &#123;</span><br><span class="line">    hints: &quot;warning&quot;, // 枚举</span><br><span class="line">    maxAssetSize: 30000000, // 整数类型（以字节为单位）</span><br><span class="line">    maxEntrypointSize: 50000000, // 整数类型（以字节为单位）</span><br><span class="line">    assetFilter: function(assetFilename) &#123;</span><br><span class="line">    // 提供资源文件名的断言函数</span><br><span class="line">    return assetFilename.endsWith(&apos;.css&apos;) || assetFilename.endsWith(&apos;.js&apos;);</span><br><span class="line">    </span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">performance: &#123;</span><br><span class="line">    hints: <span class="string">"warning"</span>, <span class="comment">// 枚举</span></span><br><span class="line">    maxAssetSize: <span class="number">30000000</span>, <span class="comment">// 整数类型（以字节为单位）</span></span><br><span class="line">    maxEntrypointSize: <span class="number">50000000</span>, <span class="comment">// 整数类型（以字节为单位）</span></span><br><span class="line">    assetFilter: <span class="function"><span class="keyword">function</span>(<span class="params">assetFilename</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 提供资源文件名的断言函数</span></span><br><span class="line">    <span class="keyword">return</span> assetFilename.endsWith(<span class="string">'.css'</span>) || assetFilename.endsWith(<span class="string">'.js'</span>);</span><br><span class="line">    </span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 
       

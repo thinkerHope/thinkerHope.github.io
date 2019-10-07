@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。   123456789//快慢针法：假设 ：慢针速度为v 快针为2v 快慢针在b点相遇，环的起始点为a环的周长为r, b到a的距离为c则我们得到以下公式：1.两者到相遇走的路程为S1=a+b; S2=a+b+n*r; S2=2*S12.由上得到 a=n*r-b3.因为环长为r，则 a=n*r-(r-c)  4.最终得到 a=（n-1）r+c">
+<meta name="description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。通常快指针两个步长，慢指针一个步长。  简图如下 1234        ⬇️&amp;lt;-&amp;lt;-&amp;lt;-⬆️        ⬇️      ⬆️♦️－&amp;gt;-&amp;gt;-&amp;gt;⬇️-&amp;gt;-&amp;gt;-&amp;gt;⬆️A       B       C   思路  123判断是否相遇只要看快慢针会不会相遇就行了//一般情况都是快针2个步长，">
 <meta name="keywords" content="链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快慢针判断链表成环">
 <meta property="og:url" content="http://yoursite.com/2019/10/05/快慢针判断链表成环/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。   123456789//快慢针法：假设 ：慢针速度为v 快针为2v 快慢针在b点相遇，环的起始点为a环的周长为r, b到a的距离为c则我们得到以下公式：1.两者到相遇走的路程为S1=a+b; S2=a+b+n*r; S2=2*S12.由上得到 a=n*r-b3.因为环长为r，则 a=n*r-(r-c)  4.最终得到 a=（n-1）r+c">
+<meta property="og:description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。通常快指针两个步长，慢指针一个步长。  简图如下 1234        ⬇️&amp;lt;-&amp;lt;-&amp;lt;-⬆️        ⬇️      ⬆️♦️－&amp;gt;-&amp;gt;-&amp;gt;⬇️-&amp;gt;-&amp;gt;-&amp;gt;⬆️A       B       C   思路  123判断是否相遇只要看快慢针会不会相遇就行了//一般情况都是快针2个步长，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%BF%AB%E6%85%A2%E9%92%88%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%88%90%E7%8E%AF/sAndf.png">
-<meta property="og:updated_time" content="2019-10-05T10:32:56.025Z">
+<meta property="og:updated_time" content="2019-10-07T23:27:11.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快慢针判断链表成环">
-<meta name="twitter:description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。   123456789//快慢针法：假设 ：慢针速度为v 快针为2v 快慢针在b点相遇，环的起始点为a环的周长为r, b到a的距离为c则我们得到以下公式：1.两者到相遇走的路程为S1=a+b; S2=a+b+n*r; S2=2*S12.由上得到 a=n*r-b3.因为环长为r，则 a=n*r-(r-c)  4.最终得到 a=（n-1）r+c">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%BF%AB%E6%85%A2%E9%92%88%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%88%90%E7%8E%AF/sAndf.png">
+<meta name="twitter:description" content="快慢针常用来判断链表是否成环，成环则返回第一个环起点。通常快指针两个步长，慢指针一个步长。  简图如下 1234        ⬇️&amp;lt;-&amp;lt;-&amp;lt;-⬆️        ⬇️      ⬆️♦️－&amp;gt;-&amp;gt;-&amp;gt;⬇️-&amp;gt;-&amp;gt;-&amp;gt;⬆️A       B       C   思路  123判断是否相遇只要看快慢针会不会相遇就行了//一般情况都是快针2个步长，">
 
 
 
@@ -367,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  204
+                  505
                 </span>
               
 
@@ -383,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -405,14 +403,25 @@
 
       
         <blockquote>
-<p>快慢针常用来判断链表是否成环，成环则返回第一个环起点。</p>
+<p>快慢针常用来判断链表是否成环，成环则返回第一个环起点。通常快指针两个步长，慢指针一个步长。</p>
 </blockquote>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%BF%AB%E6%85%A2%E9%92%88%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%88%90%E7%8E%AF/sAndf.png" alt></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快慢针法：</span></span><br><span class="line">假设 ：慢针速度为v 快针为<span class="number">2</span>v 快慢针在b点相遇，环的起始点为a环的周长为r, b到a的距离为c</span><br><span class="line">则我们得到以下公式：</span><br><span class="line"><span class="number">1.</span>两者到相遇走的路程为S1=a+b; S2=a+b+n*r; S2=<span class="number">2</span>*S1</span><br><span class="line"><span class="number">2.</span>由上得到 a=n*r-b</span><br><span class="line"><span class="number">3.</span>因为环长为r，则 a=n*r-(r-c)  </span><br><span class="line"><span class="number">4.</span>最终得到 a=（n<span class="number">-1</span>）r+c</span><br><span class="line">从最终的结论中我们可以看出，第一圈的时候a=c ，那我们想要找到起始点则让快针回到head一次走一步，慢针从相遇点一次走一步，相遇时</span><br><span class="line">就是环的起始点了</span><br></pre></td></tr></table></figure>
+<p>简图如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">        ⬇️&lt;-&lt;-&lt;-⬆️</span><br><span class="line">        ⬇️      ⬆️</span><br><span class="line">♦️－&gt;-&gt;-&gt;⬇️-&gt;-&gt;-&gt;⬆️</span><br><span class="line">A       B       C</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>接下来就是算法实现了</p>
+<p>思路</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">判断是否相遇只要看快慢针会不会相遇就行了</span><br><span class="line">//一般情况都是快针2个步长，慢针1个步长</span><br><span class="line">假设会在C处相遇，这个时候慢针走了N步(不一定就是A -&gt; B -&gt; C，可能慢针也转了几圈，这个不影响推导，别被绕进去了), 快针就走了2N步。也就是说从C处开始，慢针再走N步就可以再一次到C处了(不用去想中间转了几圈，不然又被绕进去了)，既然都可以到C，那么就一定能在入口处B相遇了。so我们可以把快针(慢针也无所谓啦，都指向同一个结点了)退回到A点，和慢针一样一个步长，再次相遇点就是入口处B点了。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>思路清晰了，-接下来就是算法实现了</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(head) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> slow = head;</span><br><span class="line">	<span class="keyword">let</span> fast = head;</span><br><span class="line">	<span class="keyword">while</span>(slow &amp;&amp; fast.next) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        <span class="keyword">if</span>(slow === fast) &#123;</span><br><span class="line">            slow = head;</span><br><span class="line">            <span class="keyword">while</span>(slow!=fast) &#123;</span><br><span class="line">                slow = slow.next;</span><br><span class="line">                fast = fast.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> fast;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以利用快慢针巧妙地判断两条单链表是否成环。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">solution</span>(<span class="params">headA, headB</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(headA &amp;&amp; headB)) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//让B链表成环，如果A和B链表相交的话，B链表成环则A链表就一定也成环，且环入口即为两条链表相交的点。</span></span><br><span class="line">    <span class="keyword">let</span> last = headB;</span><br><span class="line">    <span class="keyword">while</span>(last.next) &#123;</span><br><span class="line">        last = last.next;</span><br><span class="line">    &#125;</span><br><span class="line">    last.next = headB;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> slow = headA;</span><br><span class="line">    <span class="keyword">let</span> fast = headA;</span><br><span class="line">    <span class="keyword">while</span>(slow &amp;&amp; fast.next) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        <span class="keyword">if</span>(slow === fast) &#123;</span><br><span class="line">            fast = headA;</span><br><span class="line">            <span class="keyword">while</span>(slow !== fast) &#123;</span><br><span class="line">                slow = slow.next;</span><br><span class="line">                fast = fast.next;</span><br><span class="line">            &#125;</span><br><span class="line">            last.next = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">return</span> fast;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    last.next = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说一下，这个算法的执行用时是<code>60ms</code>(emmm…)，有个问题待讨论，把变量声明<code>let</code>换成<code>var</code>用时是<code>64ms</code>.</p>
 
       
     </div>
@@ -679,7 +688,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共32.7k字</span>
+  <span class="post-count">博客全站共33k字</span>
 </div>
 
         

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="umi框架,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="记录我的点滴" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="学习一门框架最快的方式，就是找个简单的栗子上手了。 快速上手环境准备 node v8.1以上  推荐用yarn，并使用国内源 12345678910# 国内源# 需要root权限$ npm i yarn tyarn -g# 后面文档里的 yarn 换成 tyarn$ tyarn -v# 阿里内网源$ tnpm i yarn @ali/yarn -g# 后面文档里的 yarn 换成 ayarn$ a">
+<meta name="keywords" content="umi框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="umi(快速上手)">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/umi学习-快速上手/index.html">
+<meta property="og:site_name" content="记录我的点滴">
+<meta property="og:description" content="学习一门框架最快的方式，就是找个简单的栗子上手了。 快速上手环境准备 node v8.1以上  推荐用yarn，并使用国内源 12345678910# 国内源# 需要root权限$ npm i yarn tyarn -g# 后面文档里的 yarn 换成 tyarn$ tyarn -v# 阿里内网源$ tnpm i yarn @ali/yarn -g# 后面文档里的 yarn 换成 ayarn$ a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-10T15:14:47.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="umi(快速上手)">
+<meta name="twitter:description" content="学习一门框架最快的方式，就是找个简单的栗子上手了。 快速上手环境准备 node v8.1以上  推荐用yarn，并使用国内源 12345678910# 国内源# 需要root权限$ npm i yarn tyarn -g# 后面文档里的 yarn 换成 tyarn$ tyarn -v# 阿里内网源$ tnpm i yarn @ali/yarn -g# 后面文档里的 yarn 换成 ayarn$ a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/10/umi学习-快速上手/">
+
+
+
+
+
+  <title>umi(快速上手) | 记录我的点滴</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+     <a href="https://github.com/thinkerHope" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记录我的点滴</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Yu Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            友链
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br>
+            
+            友情链接
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/umi学习-快速上手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boygreen_Yu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录我的点滴">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">umi(快速上手)</h1>
+        
+
+        <div class="post-meta">
+		
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T09:03:30+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习一门框架最快的方式，就是找个简单的栗子上手了。</p>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li><p>node <code>v8.1</code>以上</p>
+</li>
+<li><p>推荐用yarn，并使用国内源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 国内源</span></span><br><span class="line"><span class="comment"># 需要root权限</span></span><br><span class="line">$ npm i yarn tyarn -g</span><br><span class="line"><span class="comment"># 后面文档里的 yarn 换成 tyarn</span></span><br><span class="line">$ tyarn -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里内网源</span></span><br><span class="line">$ tnpm i yarn @ali/yarn -g</span><br><span class="line"><span class="comment"># 后面文档里的 yarn 换成 ayarn</span></span><br><span class="line">$ ayarn -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全局安装<code>umi</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add umi</span><br><span class="line"><span class="comment"># 确保版本2.00+</span></span><br><span class="line">$ umi -v</span><br><span class="line">2.9.6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找个地方建立空目录</span></span><br><span class="line">$ mkdir myapp &amp;&amp; <span class="built_in">cd</span> myapp</span><br><span class="line"><span class="comment"># umi generate</span></span><br><span class="line">$ umi g page index</span><br><span class="line">$ umi g page users</span><br><span class="line"><span class="comment"># 启动本地服务器</span></span><br><span class="line">$ umi dev</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="约定式路由"><a href="#约定式路由" class="headerlink" title="约定式路由"></a>约定式路由</h4><blockquote>
+<p><code>umi dev</code>后<code>pages</code> 下多了个 <code>.umi</code> 的目录作为<code>umi</code>的临时目录，每次重启或者<code>pages</code>下的文件修改都会重新生成这个文件夹下的文件，所以不要直接在里面修改代码。</p>
+</blockquote>
+<p>在<code>index</code>和<code>users</code>里直接加一些路由跳转逻辑</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//pages/index.js</span></span><br><span class="line">+ <span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">'umi/link'</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./index.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=&#123;styles.normal&#125;&gt;</span><br><span class="line">      &lt;h1&gt;Page index&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">+     &lt;Link to="/u</span>sers<span class="string">"&gt;go to /users&lt;/Link&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  );</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//pagess/users.js</span></span><br><span class="line">+ <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'umi/router'</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./index.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=&#123;styles.normal&#125;&gt;</span><br><span class="line">      &lt;h1&gt;Page index&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">+     &lt;button onClick=&#123;() =&gt; &#123; router.goBack(); &#125;&#125;&gt;go back&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是，<code>index</code>和<code>users</code>两个页面可以路由跳转了。</p>
+<h4 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h4><ul>
+<li><p>构建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ umi build</span><br><span class="line"><span class="comment"># 构建产物默认生成到./dist下</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地验证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布之前，做本地验证</span></span><br><span class="line">$ yarn global add serve</span><br><span class="line">$ serve ./dist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add now</span><br><span class="line">$ now ./dist</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="测试与配置检查"><a href="#测试与配置检查" class="headerlink" title="测试与配置检查"></a>测试与配置检查</h4><ul>
+<li><p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内置了基于 jest 的测试工具 umi-test </span></span><br><span class="line">$ umi <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置检查</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ umi inspect</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="脚手架创建umi项目"><a href="#脚手架创建umi项目" class="headerlink" title="脚手架创建umi项目"></a>脚手架创建<code>umi</code>项目</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line">$ mkdir myapp &amp;&amp; <span class="built_in">cd</span> myapp</span><br><span class="line">$ yarn create umi</span><br><span class="line"><span class="comment"># 选择project、TypeScipt、需要的功能(如dva、antd)</span></span><br><span class="line"><span class="comment"># 选择之后又会自动创建好目录和文件</span></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">$ yarn start</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由-约定式路由"><a href="#路由-约定式路由" class="headerlink" title="路由 约定式路由"></a>路由 约定式路由</h2><h4 id="基础路由"><a href="#基础路由" class="headerlink" title="基础路由"></a>基础路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// umi根据pages目录自动生成路由配置</span></span><br><span class="line">+ pages/</span><br><span class="line">  + users/</span><br><span class="line">    - index.js</span><br><span class="line">    - list.js</span><br><span class="line">  - index.js</span><br><span class="line"></span><br><span class="line"><span class="comment">//生成路由配置</span></span><br><span class="line">  [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="string">'./pages/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/users/'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/users/list'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/list.js'</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//umi约定，带$前缀的目录或文件为动态路由</span></span><br><span class="line">pages/</span><br><span class="line">  + $post/</span><br><span class="line">    - index.js</span><br><span class="line">    - comments.js</span><br><span class="line">  + users/</span><br><span class="line">    $id.js</span><br><span class="line">  - index.js</span><br><span class="line"></span><br><span class="line"><span class="comment">//生成路由配置    </span></span><br><span class="line">[</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="string">'./pages/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/users/:id'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/$id.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/:post/'</span>, <span class="attr">component</span>: <span class="string">'./pages/$post/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/:post/comments'</span>, <span class="attr">component</span>: <span class="string">'./pages/$post/comments.js'</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="可选的动态路由"><a href="#可选的动态路由" class="headerlink" title="可选的动态路由"></a>可选的动态路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//umi约定带$后缀的为可选动态路由</span></span><br><span class="line">+ pages/</span><br><span class="line">  + users/</span><br><span class="line">    - $id$.js</span><br><span class="line">  - index.js</span><br><span class="line">  </span><br><span class="line"><span class="comment">//生成路由配置</span></span><br><span class="line">[</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>: component: <span class="string">'./pages/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/users/:id?'</span>: component: <span class="string">'./pages/users/$id$.js'</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//umi约定目录下有_layout.js时会生成嵌套路由，以_layout.js为该目录的layout</span></span><br><span class="line">+ pages/</span><br><span class="line">  + users/</span><br><span class="line">    - _layout.js</span><br><span class="line">    - $id.js</span><br><span class="line">    - index.js</span><br><span class="line">    </span><br><span class="line"><span class="comment">//生成路由配置</span></span><br><span class="line">[</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/users'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/_layout.js'</span>,</span><br><span class="line">    routes: [</span><br><span class="line">     &#123; <span class="attr">path</span>: <span class="string">'/users/'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/index.js'</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">path</span>: <span class="string">'/users/:id'</span>, <span class="attr">component</span>: <span class="string">'./pages/users/$id.js'</span> &#125;,</span><br><span class="line">   ],</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="全局layout"><a href="#全局layout" class="headerlink" title="全局layout"></a>全局layout</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// umi约定src/layouts/index.js 为全局路由，返回一个 React 组件，通过 props.children 渲染子组件。</span></span><br><span class="line"><span class="comment">// 形如：</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;Header /&gt;</span><br><span class="line">      &#123; props.children &#125;</span><br><span class="line">      &lt;Footer /&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="不同的全局layout"><a href="#不同的全局layout" class="headerlink" title="不同的全局layout"></a>不同的全局layout</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// umi不支持直接配置。</span></span><br><span class="line"><span class="comment">// 但可以在layouts/index.js 对 location.path 做区分，渲染不同的 layout 。</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (props.location.pathname === <span class="string">'/login'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;SimpleLayout&gt;&#123; props.children &#125;&lt;/SimpleLayout&gt;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;Header /&gt;</span><br><span class="line">      &#123; props.children &#125;</span><br><span class="line">      &lt;Footer /&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="404路由"><a href="#404路由" class="headerlink" title="404路由"></a>404路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//umi约定pages/404.js为404页面，需返回React组件</span></span><br><span class="line"><span class="comment">//比如可以是：</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;I am a customized <span class="number">404</span> page&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="通过注释扩展路由"><a href="#通过注释扩展路由" class="headerlink" title="通过注释扩展路由"></a>通过注释扩展路由</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 约定路由文件的首个注释如果包含 yaml 格式的配置，则会被用于扩展路由。</span></span><br><span class="line"><span class="comment">// 如下：</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * title: Index Page</span></span><br><span class="line"><span class="comment"> * Routes:</span></span><br><span class="line"><span class="comment"> *   - ./src/routes/a.js</span></span><br><span class="line"><span class="comment"> *   - ./src/routes/b.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 生成路由</span></span><br><span class="line">[</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="string">'./index.js'</span>,</span><br><span class="line">    title: <span class="string">'Index Page'</span>,</span><br><span class="line">    Routes: [ <span class="string">'./src/routes/a.js'</span>, <span class="string">'./src/routes/b.js'</span> ],</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置式路由"><a href="#配置式路由" class="headerlink" title="配置式路由"></a>配置式路由</h2><p>一个栗子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要配置.umirc.(ts|js) 或者 config/config.(ts|js)中的routes属性</span></span><br><span class="line"><span class="comment">// 只要该配置存在，就不会对src/pages目录做约定式的解析</span></span><br><span class="line"><span class="comment">// component 是相对于 src/pages 目录的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="string">'./a'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/list'</span>, <span class="attr">component</span>: <span class="string">'./b'</span>, <span class="attr">Routes</span>: [<span class="string">'./routes/PrivateRoute.js'</span>] &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/users'</span>, <span class="attr">component</span>: <span class="string">'./users/_layout'</span>,</span><br><span class="line">      routes: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'/users/detail'</span>, <span class="attr">component</span>: <span class="string">'./users/detail'</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'/users/:id'</span>, <span class="attr">component</span>: <span class="string">'./users/id'</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="权限路由"><a href="#权限路由" class="headerlink" title="权限路由"></a>权限路由</h2><blockquote>
+<p>配置路由的Routes来实现权限路由</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 约定式的通过 yaml 注释添加，配置式的直接配上即可。</span></span><br><span class="line"><span class="comment">// 如下 umi 会用 ./routes/PrivateRoute.js 来渲染 /list</span></span><br><span class="line">[</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">component</span>: <span class="string">'./pages/index.js'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/list'</span>, <span class="attr">component</span>: <span class="string">'./pages/list.js'</span>, <span class="attr">Routes</span>: [<span class="string">'./routes/PrivateRoute.js'</span>] &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个./routes/PrivateRoute.js的栗子</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (props) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;PrivateRoute (routes/PrivateRoute.js)&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &#123; props.children &#125;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由动效"><a href="#路由动效" class="headerlink" title="路由动效"></a>路由动效</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以react-transition-group实现路由动效为例</span></span><br><span class="line"><span class="comment">// 安装依赖</span></span><br><span class="line"><span class="comment">// $ yarn add react-transition-group</span></span><br><span class="line"><span class="comment">// 在 layout 组件（layouts/index.js 或者 pages 子目录下的 _layout.js）里在渲染子组件时用 TransitionGroup 和 CSSTransition 包裹一层，并以 location.pathname 为 key。</span></span><br><span class="line"><span class="comment">// 在global.css中定义fade样式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> withRouter <span class="keyword">from</span> <span class="string">'umi/withRouter'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; TransitionGroup, CSSTransition &#125; <span class="keyword">from</span> <span class="string">"react-transition-group"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withRouter(</span><br><span class="line">  (&#123; location &#125;) =&gt;</span><br><span class="line">    &lt;TransitionGroup&gt;</span><br><span class="line">      &lt;CSSTransition key=&#123;location.pathname&#125; classNames=<span class="string">"fade"</span> timeout=&#123;<span class="number">300</span>&#125;&gt;</span><br><span class="line">        &#123; children &#125;</span><br><span class="line">      &lt;<span class="regexp">/CSSTransition&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>TransitionGroup&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="面包屑"><a href="#面包屑" class="headerlink" title="面包屑"></a>面包屑</h2><blockquote>
+<p>面包屑其实就是一个告诉来访者他们目前在网站中所处的位置及如何返回的导航组件。(一般设置为3层结构)</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以 react-router-breadcrumbs-hoc为例</span></span><br><span class="line"><span class="comment">// 安装依赖 $ yarn add react-router-breadcrumbs-hoc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后实现一个 Breakcrumbs.js</span></span><br><span class="line"><span class="comment">// 然后在需要的地方引入此React组件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> NavLink <span class="keyword">from</span> <span class="string">'umi/navlink'</span>;</span><br><span class="line"><span class="keyword">import</span> withBreadcrumbs <span class="keyword">from</span> <span class="string">'react-router-breadcrumbs-hoc'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">breadcrumb</span>: <span class="string">'首页'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/list'</span>, <span class="attr">breadcrumb</span>: <span class="string">'List Page'</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withBreadcrumbs(routes)(<span class="function">(<span class="params">&#123; breadcrumbs &#125;</span>) =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;breadcrumbs.map(<span class="function">(<span class="params">breadcrumb, index</span>) =&gt;</span> (</span><br><span class="line">      &lt;span key=&#123;breadcrumb.key&#125;&gt;</span><br><span class="line">        &lt;NavLink to=&#123;breadcrumb.props.match.url&#125;&gt;</span><br><span class="line">          &#123;breadcrumb&#125;</span><br><span class="line">        &lt;<span class="regexp">/NavLink&gt;</span></span><br><span class="line"><span class="regexp">        &#123;(index &lt; breadcrumbs.length - 1) &amp;&amp; &lt;i&gt; /</span> &lt;/i&gt;&#125;</span><br><span class="line">      &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    ))&#125;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面间跳转"><a href="#页面间跳转" class="headerlink" title="页面间跳转"></a>页面间跳转</h2><p><strong>声明式</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常作为组件使用</span></span><br><span class="line"><span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">'umi/link'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; (</span><br><span class="line">  &lt;Link to=<span class="string">"/list"</span>&gt;Go to list page&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>命令式</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常在时间处理中被调用</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'umi/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">goToListPage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  router.push(<span class="string">'/list'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+        
+
+      
+</div>
+    
+
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:20px;">-------------要说再见啦<i class="fa fa-paw"></i>感谢大佬的光临~-------------</div>
+    
+</div>
+
+  
+</div>
+    
+
+    
+     
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/umi框架/" rel="tag"><i class="fa fa-tag"></i> umi框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/10/umi学习记录/" rel="next" title="umi(介绍篇)">
+                <i class="fa fa-chevron-left"></i> umi(介绍篇)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/12/antd表格使用注意/" rel="prev" title="antd表格使用注意">
+                antd表格使用注意 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="boygreen_Yu">
+            
+              <p class="site-author-name" itemprop="name">boygreen_Yu</p>
+              <p class="site-description motion-element" itemprop="description">透过指尖目视锦瑟流年 邂逅一场繁华的悸动</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+		
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+<h3 class="widget-title">Tag Cloud</h3>
+<div id="myCanvasContainer" class="widget tagcloud">
+    <canvas width="250" height="250" id="resCanvas" style="width=100%">
+        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE-模块化/">FE 模块化</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hooks/">Hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/antd/">antd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-modules/">css-modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react-redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-router-dom/">react-router-dom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react组件/">react组件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/umi框架/">umi框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件开发/">组件开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a><span class="tag-list-count">1</span></li></ul>
+    </canvas>
+</div>
+</div>
+
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkerHope" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="dannygxm@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+         
+    
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <i class="fa  fa-fw fa-link"></i>
+          Links&nbsp;
+          <i class="fa  fa-fw fa-link"></i>
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+            <li class="links-of-blogroll-item">
+              <a href="http://bonky.top" title="loveconvert" target="_blank">loveconvert</a>
+            </li>
+          
+        </ul>
+         
+
+      </div>
+     
+
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速上手"><span class="nav-number">1.</span> <span class="nav-text">快速上手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境准备"><span class="nav-number">1.0.1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#约定式路由"><span class="nav-number">1.0.2.</span> <span class="nav-text">约定式路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署发布"><span class="nav-number">1.0.3.</span> <span class="nav-text">部署发布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试与配置检查"><span class="nav-number">1.0.4.</span> <span class="nav-text">测试与配置检查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚手架创建umi项目"><span class="nav-number">1.0.5.</span> <span class="nav-text">脚手架创建umi项目</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#路由-约定式路由"><span class="nav-number">2.</span> <span class="nav-text">路由 约定式路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础路由"><span class="nav-number">2.0.1.</span> <span class="nav-text">基础路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态路由"><span class="nav-number">2.0.2.</span> <span class="nav-text">动态路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选的动态路由"><span class="nav-number">2.0.3.</span> <span class="nav-text">可选的动态路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套路由"><span class="nav-number">2.0.4.</span> <span class="nav-text">嵌套路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局layout"><span class="nav-number">2.0.5.</span> <span class="nav-text">全局layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同的全局layout"><span class="nav-number">2.0.6.</span> <span class="nav-text">不同的全局layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#404路由"><span class="nav-number">2.0.7.</span> <span class="nav-text">404路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过注释扩展路由"><span class="nav-number">2.0.8.</span> <span class="nav-text">通过注释扩展路由</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置式路由"><span class="nav-number">3.</span> <span class="nav-text">配置式路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限路由"><span class="nav-number">4.</span> <span class="nav-text">权限路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由动效"><span class="nav-number">5.</span> <span class="nav-text">路由动效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面包屑"><span class="nav-number">6.</span> <span class="nav-text">面包屑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面间跳转"><span class="nav-number">7.</span> <span class="nav-text">页面间跳转</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boygreen_Yu</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共37k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" color="0,0,255" opacity="0.8" zindex="-1" count="30" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!-- 为博客添加宠物 -->
+
+<!-- 点击爆炸效果 -->
+<!-- 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+ -->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

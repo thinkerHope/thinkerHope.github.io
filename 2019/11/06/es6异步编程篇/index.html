@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="js,技巧,">
+  <meta name="keywords" content="es6,">
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="一个eval()的运用栗子 12345// 求数组中的最大值var arr = [6, 4, 1, 8, 2, 11, 23];// 这里的arr隐式转换了一下var max = eval(&quot;Math.max(&quot; + arr + &quot;)&quot;);console.log(max)  eval() 是全局对象的一个函数属性 参数是一个字符串。如果字符串表示的是表达式，eval() 会对表达式进行求值。 如果">
-<meta name="keywords" content="js,技巧">
+<meta name="description" content="Genretor篇运用场景(1) 一个抽奖的小栗子 123456789101112131415161718192021222324function draw(count) &amp;#123;  // 执行一段抽奖逻辑  // ...  console.log(`剩余$&amp;#123;count&amp;#125;次`)&amp;#125;// 执行抽奖的方法function* remain(count) &amp;#123;  w">
+<meta name="keywords" content="es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Function代替eval">
-<meta property="og:url" content="http://yoursite.com/2019/11/05/用Function代替eval/index.html">
+<meta property="og:title" content="es6异步编程篇">
+<meta property="og:url" content="http://yoursite.com/2019/11/06/es6异步编程篇/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="一个eval()的运用栗子 12345// 求数组中的最大值var arr = [6, 4, 1, 8, 2, 11, 23];// 这里的arr隐式转换了一下var max = eval(&quot;Math.max(&quot; + arr + &quot;)&quot;);console.log(max)  eval() 是全局对象的一个函数属性 参数是一个字符串。如果字符串表示的是表达式，eval() 会对表达式进行求值。 如果">
+<meta property="og:description" content="Genretor篇运用场景(1) 一个抽奖的小栗子 123456789101112131415161718192021222324function draw(count) &amp;#123;  // 执行一段抽奖逻辑  // ...  console.log(`剩余$&amp;#123;count&amp;#125;次`)&amp;#125;// 执行抽奖的方法function* remain(count) &amp;#123;  w">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-05T07:04:32.453Z">
+<meta property="og:updated_time" content="2019-11-06T11:52:59.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Function代替eval">
-<meta name="twitter:description" content="一个eval()的运用栗子 12345// 求数组中的最大值var arr = [6, 4, 1, 8, 2, 11, 23];// 这里的arr隐式转换了一下var max = eval(&quot;Math.max(&quot; + arr + &quot;)&quot;);console.log(max)  eval() 是全局对象的一个函数属性 参数是一个字符串。如果字符串表示的是表达式，eval() 会对表达式进行求值。 如果">
+<meta name="twitter:title" content="es6异步编程篇">
+<meta name="twitter:description" content="Genretor篇运用场景(1) 一个抽奖的小栗子 123456789101112131415161718192021222324function draw(count) &amp;#123;  // 执行一段抽奖逻辑  // ...  console.log(`剩余$&amp;#123;count&amp;#125;次`)&amp;#125;// 执行抽奖的方法function* remain(count) &amp;#123;  w">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/05/用Function代替eval/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/06/es6异步编程篇/">
 
 
 
 
 
-  <title>用Function代替eval | 记录我的点滴</title>
+  <title>es6异步编程篇 | 记录我的点滴</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/用Function代替eval/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/06/es6异步编程篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用Function代替eval</h1>
+          <h1 class="post-title" itemprop="name headline">es6异步编程篇</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T14:28:14+08:00">
-                2019-11-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-06T18:44:26+08:00">
+                2019-11-06
               </time>
             
 
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  364
+                  427
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -380,26 +380,32 @@
       
 
       
-        <p>一个<code>eval()</code>的运用栗子</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 求数组中的最大值</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">6</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">11</span>, <span class="number">23</span>];</span><br><span class="line"><span class="comment">// 这里的arr隐式转换了一下</span></span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">eval</span>(<span class="string">"Math.max("</span> + arr + <span class="string">")"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(max)</span><br></pre></td></tr></table></figure>
+        <h1 id="Genretor篇"><a href="#Genretor篇" class="headerlink" title="Genretor篇"></a>Genretor篇</h1><h4 id="运用场景"><a href="#运用场景" class="headerlink" title="运用场景"></a>运用场景</h4><p><strong>(1) 一个抽奖的小栗子</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行一段抽奖逻辑</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`剩余<span class="subst">$&#123;count&#125;</span>次`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行抽奖的方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">remain</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    count--</span><br><span class="line">    <span class="keyword">yield</span> draw(count)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> startDrawing = remain(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> btn = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>)</span><br><span class="line">btn.id = <span class="string">'start'</span></span><br><span class="line">btn.textContent = <span class="string">'开始抽奖'</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(btn)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'start'</span>).addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  startDrawing.next()</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 
-<p><code>eval()</code> 是全局对象的一个函数属性</p>
-<p>参数是一个字符串。如果字符串表示的是表达式，<code>eval()</code> 会对表达式进行求值。</p>
-<p>如果 <code>eval()</code> 的参数不是字符串， <code>eval()</code> 会将参数原封不动地返回。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"2 + 2"</span>)); <span class="comment">// 返回了包含"2 + 2"的字符串对象</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">"2 + 2"</span>);             <span class="comment">// returns 4</span></span><br><span class="line"><span class="comment">// 绕过限制</span></span><br><span class="line"><span class="keyword">var</span> expression = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"2 + 2"</span>);</span><br><span class="line"><span class="built_in">eval</span>(expression.toString());</span><br></pre></td></tr></table></figure>
+<p><strong>(2)长轮询</strong></p>
+<blockquote>
+<p>实现实时把服务器数据更新到客户端</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 模拟一个请求</span><br><span class="line">function* ajax() &#123;</span><br><span class="line">  yield new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    // 此处用一个定时器来模拟请求数据的耗时，并约定当返回的json中code为0表示有新数据更新</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      resolve(&#123;code: 0&#125;)</span><br><span class="line">    &#125;, 200)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function update() &#123;</span><br><span class="line">  let promise = ajax().next().value;</span><br><span class="line">  promise.then(res =&gt; &#123;</span><br><span class="line">    if(res.code !== 0) &#123;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        console.log(&quot;2秒后继续查询...&quot;)</span><br><span class="line">        update();</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      console.log(res);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">update();</span><br></pre></td></tr></table></figure>
 
-<p><strong>但是，不建议用<code>eval()</code></strong></p>
-<ul>
-<li>它使用与调用者相同的权限执行代码，第三方代码可以看到某一个 <code>eval()</code> 被调用时的作用域; 字符串代码被恶意方（不怀好意的人）修改。</li>
-<li>比其他替代方法更慢，因为它必须调用 JS 解释器，而许多其他结构则可被现代 JS 引擎进行优化。</li>
-</ul>
-<p><strong>用<code>Function</code>代替<code>eval</code></strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Function</span> ([arg1[, arg2[, ...argN]],] functionBody)</span><br></pre></td></tr></table></figure>
+<p><strong>(3) 部署<code>ajax</code>, 实现同步</strong></p>
+<blockquote>
+<p>异步函数的同步表达</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">main</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="keyword">yield</span> request(<span class="string">"http://some.url"</span>);</span><br><span class="line">  <span class="keyword">let</span> resp = <span class="built_in">JSON</span>.parse(result);</span><br><span class="line">  <span class="built_in">console</span>.log(resp.value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> it = main();</span><br><span class="line">it.next();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  axio(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    it.next(res.data);    </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eval</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">looseJsonParse</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">eval</span>(obj);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(looseJsonParse(</span><br><span class="line">   <span class="string">"&#123;a:(4-1), b:function()&#123;&#125;, c:new Date()&#125;"</span></span><br><span class="line">))</span><br><span class="line"><span class="comment">// 代替</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">looseJsonParse</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Function</span>(<span class="string">'"use strict";return ('</span> + obj + <span class="string">')'</span>)();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(looseJsonParse(</span><br><span class="line">   <span class="string">"&#123;a:(4-1), b:function()&#123;&#125;, c:new Date()&#125;"</span></span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p><strong>(4) 部署iterator接口</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> o1 = &#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="number">3</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">this</span>[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面代码<code>eval()</code>要慢得多。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个更复杂栗子</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Date</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>,<span class="string">"Sunday"</span>][n%<span class="number">7</span> || <span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runCodeWithDateFunction</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Function</span>(<span class="string">'"use strict";return ('</span> + obj + <span class="string">')'</span>)()(</span><br><span class="line">        <span class="built_in">Date</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(runCodeWithDateFunction(</span><br><span class="line">   <span class="string">"function(Date)&#123; return Date(5) &#125;"</span></span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<h4 id="自动执行"><a href="#自动执行" class="headerlink" title="自动执行"></a>自动执行</h4><p><strong><code>Thunk</code>函数</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译器实现"传名调用"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> m * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(x + <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> thunk = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + <span class="number">5</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">thunk</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> thunk() * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>JavaScript</code>的 <code>Thunk</code> 函数</p>
+<blockquote>
+<p>JavaScript采取的是传值调用, thunk函数含义有所不同</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 任何函数，只要参数有回调函数，就能写成 Thunk 函数的形式</span></span><br><span class="line"><span class="keyword">const</span> Thunk = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> fn.call(<span class="keyword">this</span>, ...args, callback);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -434,9 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
-          
-            <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
+            <a href="/tags/es6/" rel="tag"><i class="fa fa-tag"></i> es6</a>
           
         </div>
       
@@ -449,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/04/数据字典/" rel="next" title="数据字典">
-                <i class="fa fa-chevron-left"></i> 数据字典
+              <a href="/2019/11/05/es6高级特性/" rel="next" title="es6高级特性">
+                <i class="fa fa-chevron-left"></i> es6高级特性
               </a>
             
           </div>
@@ -458,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/05/es2019新特性及实现原理/" rel="prev" title="es2019新特性及实现原理">
-                es2019新特性及实现原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -630,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Genretor篇"><span class="nav-number">1.</span> <span class="nav-text">Genretor篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运用场景"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">运用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动执行"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">自动执行</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

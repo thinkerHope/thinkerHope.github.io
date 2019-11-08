@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="description" content="es2018（ES9）新特性对象的扩展运算符123456789const obj1 = &amp;#123;a: 10&amp;#125;;const obj2 = &amp;#123;b: 20&amp;#125;;const obj3 = &amp;#123;c: 30&amp;#125;;// ES2018console.log(&amp;#123;...obj1, ...obj2, ...obj3&amp;#125;);    // → &amp;#123;a">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="es2019新特性及实现原理">
+<meta property="og:title" content="es2018新特性及实现原理">
 <meta property="og:url" content="http://yoursite.com/2019/11/05/es2019新特性及实现原理/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta property="og:description" content="es2018（ES9）新特性对象的扩展运算符123456789const obj1 = &amp;#123;a: 10&amp;#125;;const obj2 = &amp;#123;b: 20&amp;#125;;const obj3 = &amp;#123;c: 30&amp;#125;;// ES2018console.log(&amp;#123;...obj1, ...obj2, ...obj3&amp;#125;);    // → &amp;#123;a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-05T15:33:22.716Z">
+<meta property="og:updated_time" content="2019-11-08T00:50:38.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="es2019新特性及实现原理">
-<meta name="twitter:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="twitter:title" content="es2018新特性及实现原理">
+<meta name="twitter:description" content="es2018（ES9）新特性对象的扩展运算符123456789const obj1 = &amp;#123;a: 10&amp;#125;;const obj2 = &amp;#123;b: 20&amp;#125;;const obj3 = &amp;#123;c: 30&amp;#125;;// ES2018console.log(&amp;#123;...obj1, ...obj2, ...obj3&amp;#125;);    // → &amp;#123;a">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>es2019新特性及实现原理 | 记录我的点滴</title>
+  <title>es2018新特性及实现原理 | 记录我的点滴</title>
   
 
 
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">es2019新特性及实现原理</h1>
+          <h1 class="post-title" itemprop="name headline">es2018新特性及实现原理</h1>
         
 
         <div class="post-meta">
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  740
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -380,7 +380,54 @@
       
 
       
-        
+        <h1 id="es2018（ES9）新特性"><a href="#es2018（ES9）新特性" class="headerlink" title="es2018（ES9）新特性"></a>es2018（ES9）新特性</h1><h3 id="对象的扩展运算符"><a href="#对象的扩展运算符" class="headerlink" title="对象的扩展运算符"></a>对象的扩展运算符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">10</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;<span class="attr">b</span>: <span class="number">20</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> obj3 = &#123;<span class="attr">c</span>: <span class="number">30</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2018</span></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...obj1, ...obj2, ...obj3&#125;);    <span class="comment">// → &#123;a: 10, b: 20, c: 30&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2015</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.assign(&#123;&#125;, obj1, obj2, obj3));    <span class="comment">// → &#123;a: 10, b: 20, c: 30&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>在进行对象融合时，Spread操作结果并不总是与<code>Object.assign()</code>一致</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">'a'</span>, &#123;</span><br><span class="line">  <span class="keyword">set</span>(value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'set called!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">a</span>: <span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(&#123;...obj&#125;);    </span><br><span class="line"><span class="comment">// → &#123;a: 10&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.assign(&#123;&#125;, obj));    </span><br><span class="line"><span class="comment">// → set called!</span></span><br><span class="line"><span class="comment">// → &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Object.assign()</code>方法继承了<code>setter</code>属性；而<code>spread</code>操作忽略了<code>setter</code>。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>可枚举</li>
+<li>非继承</li>
+<li>浅拷贝</li>
+</ul>
+<h3 id="异步迭代"><a href="#异步迭代" class="headerlink" title="异步迭代"></a>异步迭代</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es8异步迭代器</span></span><br><span class="line"><span class="keyword">const</span> justjavac = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator]: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> items = [<span class="string">`j`</span>, <span class="string">`u`</span>, <span class="string">`s`</span>, <span class="string">`t`</span>, <span class="string">`j`</span>, <span class="string">`a`</span>, <span class="string">`v`</span>, <span class="string">`a`</span>, <span class="string">`c`</span>];</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      next: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">        done: items.length === <span class="number">0</span>,</span><br><span class="line">        value: items.shift()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> item <span class="keyword">of</span> justjavac) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看一下异步迭代器的实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步迭代器</span></span><br><span class="line"><span class="comment">// 普通迭代器直接返回 IteratorResult</span></span><br><span class="line">interface AsyncIterator &#123;</span><br><span class="line">    next(value) : <span class="built_in">Promise</span>&lt;IteratorResult&gt;;</span><br><span class="line">    [optional] <span class="keyword">throw</span>(value) : <span class="built_in">Promise</span>&lt;IteratorResult&gt;;</span><br><span class="line">    [optional] <span class="keyword">return</span>(value) : <span class="built_in">Promise</span>&lt;IteratorResult&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface IteratorResult &#123;</span><br><span class="line">    value : any;</span><br><span class="line">    done : bool;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>异步生成器函数</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跑一下看结果</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToBase64Data</span>(<span class="params">url</span>) </span>&#123; <span class="comment">// 转成base64格式</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(url);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveToLocal</span>(<span class="params">img</span>) </span>&#123; <span class="comment">// 保存到本地</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="params">resolve</span>=&gt;</span> &#123;</span><br><span class="line">    setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(<span class="string">"success"</span>);</span><br><span class="line">    &#125;, <span class="number">200</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">saveImages</span>(<span class="params">img</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> file = <span class="keyword">await</span> saveToLocal(<span class="string">"????"</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(file)</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> a = <span class="keyword">yield</span> <span class="keyword">await</span> convertToBase64Data(<span class="string">"&gt;&gt;&gt;"</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"hhhhh"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> b = <span class="keyword">await</span> saveToLocal(<span class="string">"gun"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(b)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意 for-await-of 必须放在async里面</span></span><br><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> item <span class="keyword">of</span> saveImages()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()；</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如下会执行到yield那里的await</span></span><br><span class="line">saveImages().next().then()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally"></a>Promise.prototype.finally</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当您需要在操作完成后进行一些清理时，finally()方法就派上用场了</span></span><br><span class="line">fetch(<span class="string">'https://www.google.com'</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response.status);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123; </span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#spinner'</span>).style.display = <span class="string">'none'</span>;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="正则新特性"><a href="#正则新特性" class="headerlink" title="正则新特性"></a>正则新特性</h3><ul>
+<li><h4 id="s-dotAll-标志"><a href="#s-dotAll-标志" class="headerlink" title="s (dotAll) 标志"></a>s (dotAll) 标志</h4><blockquote>
+<p>匹配除换行符(如换行符(\n)或回车符(\r)之外的任何字符</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/one[\d\D]two/</span>.test(<span class="string">'one\ntwo'</span>));    <span class="comment">// → true</span></span><br><span class="line"><span class="comment">// s 激活 "." 模式</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/one[\d\D]two/</span>.test(<span class="string">'one\ntwo'</span>));    <span class="comment">// → true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h4 id="命名捕获组"><a href="#命名捕获组" class="headerlink" title="命名捕获组"></a>命名捕获组</h4><blockquote>
+<p>引入了使用(?…)语法的命名捕获组</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">const</span> re = <span class="regexp">/(?&lt;year&gt;)\d&#123;4&#125;/</span>-(?&lt;Month&gt;\d&#123;2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/;</span><br><span class="line">const match = re.exec("2019-01-10");</span><br><span class="line"></span><br><span class="line">console.log(match.groups);          // → &#123;year: "2019", month: "01", day: "10"&#125;</span><br><span class="line">console.log(match.groups.year);     // → 2019</span><br><span class="line">console.log(match.groups.month);    // → 01</span><br><span class="line">console.log(match.groups.day);      // → 10</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用\k语法重复调用名称捕获组</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在一个在句子中找到连续重复的单词 </span></span><br><span class="line"><span class="comment">// \b为词边界</span></span><br><span class="line"><span class="keyword">const</span> re = <span class="regexp">/\b(?&lt;dup&gt;\w+)\s+\k&lt;dup&gt;\b/</span>;</span><br><span class="line"><span class="keyword">const</span> match = re.exec(<span class="string">'Get that that cat off the table!'</span>);        </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(match.index);    <span class="comment">// → 4</span></span><br><span class="line"><span class="built_in">console</span>.log(match[<span class="number">0</span>]);       <span class="comment">// → that that</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<p>要将命名捕获组插入replace()方法的替换字符串中，需要使用$构造。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const str = &apos;red &amp; blue&apos;;</span><br><span class="line">console.log(str.replace(/(?&lt;red&gt;red) &amp; (?&lt;blue&gt;blue)/, &apos;$&lt;blue&gt; &amp; $&lt;red&gt;&apos;));  </span><br><span class="line">// → blue &amp; red</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -484,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,6 +658,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#es2018（ES9）新特性"><span class="nav-number">1.</span> <span class="nav-text">es2018（ES9）新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的扩展运算符"><span class="nav-number">1.0.1.</span> <span class="nav-text">对象的扩展运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步迭代"><span class="nav-number">1.0.2.</span> <span class="nav-text">异步迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-prototype-finally"><span class="nav-number">1.0.3.</span> <span class="nav-text">Promise.prototype.finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则新特性"><span class="nav-number">1.0.4.</span> <span class="nav-text">正则新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#s-dotAll-标志"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">s (dotAll) 标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名捕获组"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">命名捕获组</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -640,7 +712,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.2k字</span>
+  <span class="post-count">博客全站共39.6k字</span>
 </div>
 
         

@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="js,">
 
 
 
@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
-<meta name="keywords" content="FE 生活">
+<meta name="description" content="重新认识了一下函数  函数的三种角色一些函数作为对象的属性  length：形参的个数； name：函数名； prototype：类的原型，在原型上定义的方法都是当前这个类的实例的公有方法； __proto__：把函数当做一个普通对象，指向Function这个类的原型  函数的角色  普通函数。它本身是一个普通的函数，执行的时候会形成私有的作用域，然后进行形参赋值、预解析、代码执行、执行完成后内">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据字典">
-<meta property="og:url" content="http://yoursite.com/2019/11/04/数据字典/index.html">
+<meta property="og:title" content="你真的理解call和apply吗">
+<meta property="og:url" content="http://yoursite.com/2019/11/08/你真的理解call-和apply-吗/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
+<meta property="og:description" content="重新认识了一下函数  函数的三种角色一些函数作为对象的属性  length：形参的个数； name：函数名； prototype：类的原型，在原型上定义的方法都是当前这个类的实例的公有方法； __proto__：把函数当做一个普通对象，指向Function这个类的原型  函数的角色  普通函数。它本身是一个普通的函数，执行的时候会形成私有的作用域，然后进行形参赋值、预解析、代码执行、执行完成后内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-04T14:41:47.539Z">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3call-%E5%92%8Capply-%E5%90%97/2555024-95309047f0e9f13d.png">
+<meta property="og:updated_time" content="2019-11-08T15:01:42.908Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据字典">
-<meta name="twitter:description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
+<meta name="twitter:title" content="你真的理解call和apply吗">
+<meta name="twitter:description" content="重新认识了一下函数  函数的三种角色一些函数作为对象的属性  length：形参的个数； name：函数名； prototype：类的原型，在原型上定义的方法都是当前这个类的实例的公有方法； __proto__：把函数当做一个普通对象，指向Function这个类的原型  函数的角色  普通函数。它本身是一个普通的函数，执行的时候会形成私有的作用域，然后进行形参赋值、预解析、代码执行、执行完成后内">
+<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3call-%E5%92%8Capply-%E5%90%97/2555024-95309047f0e9f13d.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/04/数据字典/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/08/你真的理解call-和apply-吗/">
 
 
 
 
 
-  <title>数据字典 | 记录我的点滴</title>
+  <title>你真的理解call和apply吗 | 记录我的点滴</title>
   
 
 
@@ -280,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/数据字典/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/你真的理解call-和apply-吗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据字典</h1>
+          <h1 class="post-title" itemprop="name headline">你真的理解call和apply吗</h1>
         
 
         <div class="post-meta">
@@ -311,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T22:40:38+08:00">
-                2019-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:37:37+08:00">
+                2019-11-08
               </time>
             
 
@@ -321,28 +323,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">-数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -365,7 +345,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  689
+                  930
                 </span>
               
 
@@ -381,7 +361,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -402,59 +382,55 @@
       
 
       
-        <h1 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h1><p>数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。</p>
-<h4 id="数据字典的两种形式"><a href="#数据字典的两种形式" class="headerlink" title="数据字典的两种形式"></a>数据字典的两种形式</h4><p>（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体中只保留属性的代码。这里属性的数量是不变的，而属性取值的数量可以是变化的。</p>
-<blockquote>
-<p>《职员表》</p>
-<p>姓名　　证件　　性别</p>
-<p>张三　　身份证　男</p>
-<p>李四   身份证   女</p>
-<p>….</p>
+        <blockquote>
+<p>重新认识了一下函数</p>
 </blockquote>
-<p>如“证件”，现在叫“身份证”，有一天想改为叫“居民身份证”。</p>
-<p>这样，改名后就要手动改数据库。但如果使用了数据字典，《职员表》里面存的就是：</p>
-<blockquote>
-<p>《职员表》</p>
-<p>姓名　　证件　　性别</p>
-<p>张三　　001     男</p>
-<p>李四   001      女</p>
-<p>….</p>
-</blockquote>
-<p>另外增加了《证件表》：</p>
-<blockquote>
-<p>《证件表》</p>
-<p>证件id  证件名</p>
-<p>001      身份证</p>
-<p>002      暂住证</p>
-<p>…</p>
-</blockquote>
-<p>《证件表》就是第一种数据字典。这样就只需要改变《证件表》。</p>
-<p><strong>局限性</strong></p>
-<p>这样的设计在属性比较少时是可行的，但是随着系统复杂性的增加，系统中会出现大量结构类似的信息表和信息类，数量一直会增加到一个不可接受的地步。</p>
-<p>（二） 用一个表来放结构相同的所有属性信息，不同属性的不同取值统一编码，用“类型”来区别不同的属性，主体中保留属性代码的列表。这样主体所拥有的属性数量就是可变的了。</p>
-<p>第二种数据字典就是为了解决上述问题而设计的。</p>
-<p>对于《职员表》，使用第一种数据字典时，其表结构是：</p>
-<p>职员ID、姓名、国籍ID、证件ID、学历ID…….</p>
-<p>采用第二种数据字典后，其表结构是：</p>
-<p>职员ID、姓名</p>
-<p>另外增加《属性表》，该表是《职员表》和《系统代码表》的关系表，其表结构是：</p>
-<p>属性ID、职员ID、系统代码表_标识</p>
-<blockquote>
-<p>《职员表》</p>
-<p>职员ID            姓名</p>
-<p>1                     张三</p>
-<p>2                   李四</p>
-<p>…..</p>
-</blockquote>
-<blockquote>
-<p>《属性表》</p>
-<p>属性ID            职员ID                系统代码表_标识</p>
-<p>1                         1                         001  （表示张三是中国籍）</p>
-<p>2                         1                         501  （表示张三的证件是身份证）</p>
-<p>3                         2                         002  （表示李四是美国籍）</p>
-<p>4                         2                         501  （表示李四的证件是身份证）</p>
-<p>…..</p>
-</blockquote>
+<h2 id="函数的三种角色"><a href="#函数的三种角色" class="headerlink" title="函数的三种角色"></a>函数的三种角色</h2><p><strong>一些函数作为对象的属性</strong></p>
+<ul>
+<li><code>length</code>：形参的个数；</li>
+<li><code>name</code>：函数名；</li>
+<li><code>prototype</code>：类的原型，在原型上定义的方法都是当前这个类的实例的公有方法；</li>
+<li><code>__proto__</code>：把函数当做一个普通对象，指向Function这个类的原型</li>
+</ul>
+<p><strong>函数的角色</strong></p>
+<ul>
+<li><strong>普通函数</strong>。它本身是一个普通的函数，执行的时候会形成私有的作用域，然后进行形参赋值、预解析、代码执行、执行完成后内存销毁；</li>
+<li><strong>类</strong>。有自己的实例，也有一个叫做<code>prototype</code>的属性是自己的原型，它的实例都可以指向自己的原型；</li>
+<li><strong>普通对象</strong>。它作为对象可以有一些自己的私有属性，也可以通过<code>__proto__</code>找到<code>Function.prototype</code>；</li>
+</ul>
+<p><img src="/home/boygreen/MyBlog/source/_posts/%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3call-%E5%92%8Capply-%E5%90%97/2555024-95309047f0e9f13d.png" alt></p>
+<h2 id="call方法原理"><a href="#call方法原理" class="headerlink" title="call方法原理"></a><code>call</code>方法原理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 允许传null</span></span><br><span class="line">    <span class="keyword">let</span> context = context || <span class="built_in">window</span>;</span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line">    <span class="comment">// 重新执行这个函数</span></span><br><span class="line">    <span class="keyword">let</span> args = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">        args.push(<span class="string">"arguments["</span> + i + <span class="string">"]"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 函数是可以有返回值的</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">""</span>,  <span class="string">`<span class="subst">$&#123; <span class="string">"context.fn("</span> + args + <span class="string">")"</span> &#125;</span>`</span>)();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">delete</span> context.fn;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line">fn.myCall(obj); <span class="comment">// fn作为普通对象, 所以myCall中的this为fn函数本身</span></span><br><span class="line">sum.myCall(obj);</span><br></pre></td></tr></table></figure>
+
+<p>一个经典栗子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn1.call(fn2); <span class="comment">// 1</span></span><br><span class="line">fn1.call.call(fn2); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>第二个输出有了前面的基础就很好理解了。前面了解到函数可以作为普通对象，然后有原型链搜索这一过程。</p>
+<p>首先<code>fn1</code>通过原型链找到<code>Function.prototype</code>上的<code>call</code>方法，然后再让<code>call</code>方法通过原型再找到<code>Function</code>原型上的<code>call</code>（因为<code>call</code>本身的值也是一个函数，所以同样可以让<code>Function.prototype</code>），在第二次找到<code>call</code>的时候再让方法执行，方法中的<code>this</code>是<code>fn1.call</code>，首先让这个方法中的<code>this</code>变为<code>fn2</code>，然后再让<code>fn1.call</code>执行。</p>
+<h2 id="call、apply、bind的区别"><a href="#call、apply、bind的区别" class="headerlink" title="call、apply、bind的区别"></a>call、apply、bind的区别</h2><p><code>call</code>和<code>apply</code>基本一样，就是传递参数形式不一样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num1 + num2);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">fn.call(obj , <span class="number">100</span> , <span class="number">200</span>);</span><br><span class="line">fn.apply(obj , [<span class="number">100</span>, <span class="number">200</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><code>bind</code>有点不一样，它会返回函数，而不是立即执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var tempFn = fn.bind(obj, 1, 2);</span><br><span class="line">tempFn();</span><br></pre></td></tr></table></figure>
+
+<p>补充一下<code>ES5</code>的严格模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span> -- 严格模式</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">fn.call(); <span class="comment">// 普通模式下this是window，在严格模式下this是undefined</span></span><br><span class="line">fn.call(<span class="literal">null</span>); <span class="comment">// 普通模式下this是window，在严格模式下this是null</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>); <span class="comment">// 普通模式下this是window，在严格模式下this是undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><code>apply</code>和<code>call</code>的实现基本一样，就是处理arguments不一样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">arguments</span>[<span class="number">1</span>]) &#123;</span><br><span class="line">    result = context.fn(...arguments[<span class="number">1</span>])</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    result = context.fn()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自己实现一个bind"><a href="#自己实现一个bind" class="headerlink" title="自己实现一个bind"></a>自己实现一个bind</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myBind</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">let</span> self=<span class="keyword">this</span>;<span class="comment">//保存原函数</span></span><br><span class="line">    <span class="comment">// 有了前面的基础，就可以理解为什么要[].shift.call(arguments)了</span></span><br><span class="line">    <span class="keyword">let</span> context=[].shift.call(<span class="built_in">arguments</span>);<span class="comment">//保存需要绑定的this上下文</span></span><br><span class="line">    <span class="keyword">let</span> args=[].slice.call(<span class="built_in">arguments</span>);<span class="comment">//将剩余参数转化为数组</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	self.apply(context,[].concat.call(args, [].slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Function-apply-bind"><a href="#Function-apply-bind" class="headerlink" title="Function.apply.bind"></a><code>Function.apply.bind</code></h2><p>看一个<code>js</code>的高级技巧</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve([<span class="number">10</span>,<span class="number">20</span>]).then(<span class="built_in">Function</span>.apply.bind(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;, <span class="literal">null</span>));     <span class="comment">// 10,20</span></span><br></pre></td></tr></table></figure>
+
+<p>先不管Promise</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="built_in">Function</span>.apply.bind(sum, <span class="literal">null</span>);</span><br><span class="line">foo([<span class="number">10</span>, <span class="number">20</span>]);   <span class="comment">// 10, 20</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sum.apply(null, [10, 20])</code>很好理解，<code>bind(sum)</code>使<code>Function.apply</code>这个函数里面的this指向了<code>sum</code>这个函数对象，所以<code>Function.apply.bind(sum,  null)</code>等价于<code>sum.apply.bind(sum, null)</code>，<code>bind</code>的使命已经完成了。所以就等价于<code>sum.apply</code>。</p>
+<p><strong><code>Function.bind.apply</code></strong></p>
+<p><code>Function.bind.apply(sum, null)</code></p>
+<p>原理一样的。等价于<code>sum.bind(sum, null)</code>，就等价于<code>sum</code></p>
+<p>看起来很简单，其实还是有很多东西的，哈哈，是不是感觉收获颇丰啊，不用谢了啦。</p>
 
       
     </div>
@@ -486,6 +462,12 @@
      
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"><i class="fa fa-tag"></i> js</a>
+          
+        </div>
+      
 
       
       
@@ -495,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/31/常用JS函数学习/" rel="next" title="常用JS函数学习">
-                <i class="fa fa-chevron-left"></i> 常用JS函数学习
+              <a href="/2019/11/06/es6异步编程篇/" rel="next" title="es6异步编程篇">
+                <i class="fa fa-chevron-left"></i> es6异步编程篇
               </a>
             
           </div>
@@ -504,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/05/用Function代替eval/" rel="prev" title="用Function代替eval">
-                用Function代替eval <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -695,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据字典"><span class="nav-number">1.</span> <span class="nav-text">数据字典</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典的两种形式"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">数据字典的两种形式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的三种角色"><span class="nav-number">1.</span> <span class="nav-text">函数的三种角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call方法原理"><span class="nav-number">2.</span> <span class="nav-text">call方法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call、apply、bind的区别"><span class="nav-number">3.</span> <span class="nav-text">call、apply、bind的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现一个bind"><span class="nav-number">4.</span> <span class="nav-text">自己实现一个bind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-apply-bind"><span class="nav-number">5.</span> <span class="nav-text">Function.apply.bind</span></a></li></ol></div>
             
 
           </div>

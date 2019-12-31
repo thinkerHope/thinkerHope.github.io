@@ -83,18 +83,23 @@
 
 
 
-<meta name="description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
+<meta name="description" content="JS移位运算符（&amp;lt;&amp;lt;、&amp;gt;&amp;gt;和&amp;gt;&amp;gt;&amp;gt;）了解一下移位运算符以及在算法中的应用 “&amp;lt;&amp;lt;”运算符 左移位运算  在移位运算过程中，符号位始终保持不变。如果右侧空出位置，则自动填充为 0；超出 32 位的值，则自动丢弃。 1console.log(5 &amp;lt;&amp;lt; 2);  //返回值20   “&amp;gt;&amp;gt;”运算符 右移位运算  与左移运算操作">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据字典">
-<meta property="og:url" content="http://yoursite.com/2019/11/04/数据字典/index.html">
+<meta property="og:title" content="移位运算符">
+<meta property="og:url" content="http://yoursite.com/2019/11/23/移位运算符/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
+<meta property="og:description" content="JS移位运算符（&amp;lt;&amp;lt;、&amp;gt;&amp;gt;和&amp;gt;&amp;gt;&amp;gt;）了解一下移位运算符以及在算法中的应用 “&amp;lt;&amp;lt;”运算符 左移位运算  在移位运算过程中，符号位始终保持不变。如果右侧空出位置，则自动填充为 0；超出 32 位的值，则自动丢弃。 1console.log(5 &amp;lt;&amp;lt; 2);  //返回值20   “&amp;gt;&amp;gt;”运算符 右移位运算  与左移运算操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-04T14:41:47.539Z">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGG61JU.gif">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH0003W.gif">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH214508.gif">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGHZ0200.gif">
+<meta property="og:updated_time" content="2019-11-24T13:31:07.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据字典">
-<meta name="twitter:description" content="数据字典数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。 数据字典的两种形式（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体">
+<meta name="twitter:title" content="移位运算符">
+<meta name="twitter:description" content="JS移位运算符（&amp;lt;&amp;lt;、&amp;gt;&amp;gt;和&amp;gt;&amp;gt;&amp;gt;）了解一下移位运算符以及在算法中的应用 “&amp;lt;&amp;lt;”运算符 左移位运算  在移位运算过程中，符号位始终保持不变。如果右侧空出位置，则自动填充为 0；超出 32 位的值，则自动丢弃。 1console.log(5 &amp;lt;&amp;lt; 2);  //返回值20   “&amp;gt;&amp;gt;”运算符 右移位运算  与左移运算操作">
+<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGG61JU.gif">
 
 
 
@@ -124,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/04/数据字典/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/23/移位运算符/">
 
 
 
 
 
-  <title>数据字典 | 记录我的点滴</title>
+  <title>移位运算符 | 记录我的点滴</title>
   
 
 
@@ -280,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/数据字典/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/23/移位运算符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据字典</h1>
+          <h1 class="post-title" itemprop="name headline">移位运算符</h1>
         
 
         <div class="post-meta">
@@ -311,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-04T22:40:38+08:00">
-                2019-11-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-23T10:20:12+08:00">
+                2019-11-23
               </time>
             
 
@@ -321,28 +326,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">-数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -365,7 +348,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  689
+                  539
                 </span>
               
 
@@ -402,59 +385,43 @@
       
 
       
-        <h1 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h1><p>数据字典是一种通用的程序设计方法。可以认为，不论什么程序，都是为了处理一定的主体，这里的主体可能是人员、商品（超子）、网页、接口、数据库表、甚至需求分析等等。当主体有很多的属性，每种属性有很多的取值，而且属性的数量和属性取值的数量是不断变化的，特别是当这些数量的变化很快时，就应该考虑引入数据字典的设计方法。</p>
-<h4 id="数据字典的两种形式"><a href="#数据字典的两种形式" class="headerlink" title="数据字典的两种形式"></a>数据字典的两种形式</h4><p>（一）把主体的属性代码化放入独立的表中，不是和主体放在一起，主体中只保留属性的代码。这里属性的数量是不变的，而属性取值的数量可以是变化的。</p>
-<blockquote>
-<p>《职员表》</p>
-<p>姓名　　证件　　性别</p>
-<p>张三　　身份证　男</p>
-<p>李四   身份证   女</p>
-<p>….</p>
+        <h1 id="JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）"><a href="#JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）" class="headerlink" title="JS移位运算符（&lt;&lt;、&gt;&gt;和&gt;&gt;&gt;）"></a>JS移位运算符（&lt;&lt;、&gt;&gt;和&gt;&gt;&gt;）</h1><p>了解一下移位运算符以及在算法中的应用</p>
+<h2 id="“-lt-lt-”运算符"><a href="#“-lt-lt-”运算符" class="headerlink" title="“&lt;&lt;”运算符"></a>“&lt;&lt;”运算符</h2><blockquote>
+<p>左移位运算</p>
 </blockquote>
-<p>如“证件”，现在叫“身份证”，有一天想改为叫“居民身份证”。</p>
-<p>这样，改名后就要手动改数据库。但如果使用了数据字典，《职员表》里面存的就是：</p>
-<blockquote>
-<p>《职员表》</p>
-<p>姓名　　证件　　性别</p>
-<p>张三　　001     男</p>
-<p>李四   001      女</p>
-<p>….</p>
+<p>在移位运算过程中，符号位始终保持不变。如果右侧空出位置，则自动填充为 0；超出 32 位的值，则自动丢弃。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> &lt;&lt; <span class="number">2</span>);  <span class="comment">//返回值20</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGG61JU.gif" alt></p>
+<h2 id="“-gt-gt-”运算符"><a href="#“-gt-gt-”运算符" class="headerlink" title="“&gt;&gt;”运算符"></a>“&gt;&gt;”运算符</h2><blockquote>
+<p>右移位运算</p>
 </blockquote>
-<p>另外增加了《证件表》：</p>
-<blockquote>
-<p>《证件表》</p>
-<p>证件id  证件名</p>
-<p>001      身份证</p>
-<p>002      暂住证</p>
-<p>…</p>
+<p>与左移运算操作相反，它把 32 位数字中的所有有效位整体右移，再使用符号位的值填充空位。移动过程中超出的值将被丢弃。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH0003W.gif" alt></p>
+<p>把数值 -1000 向右移 8 位，则返回值为 -4。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(-1000  &gt;&gt; 8);  //返回值 -4</span><br></pre></td></tr></table></figure>
+
+<p>用算式进行演示，如图所示。当符号位值为 1 时，则有效位左侧的空位全部使用 1 进行填充。</p>
+<p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH214508.gif" alt></p>
+<h2 id="“-gt-gt-gt-”运算符"><a href="#“-gt-gt-gt-”运算符" class="headerlink" title="“&gt;&gt;&gt;”运算符"></a>“&gt;&gt;&gt;”运算符</h2><blockquote>
+<p>无符号右移位运算</p>
 </blockquote>
-<p>《证件表》就是第一种数据字典。这样就只需要改变《证件表》。</p>
-<p><strong>局限性</strong></p>
-<p>这样的设计在属性比较少时是可行的，但是随着系统复杂性的增加，系统中会出现大量结构类似的信息表和信息类，数量一直会增加到一个不可接受的地步。</p>
-<p>（二） 用一个表来放结构相同的所有属性信息，不同属性的不同取值统一编码，用“类型”来区别不同的属性，主体中保留属性代码的列表。这样主体所拥有的属性数量就是可变的了。</p>
-<p>第二种数据字典就是为了解决上述问题而设计的。</p>
-<p>对于《职员表》，使用第一种数据字典时，其表结构是：</p>
-<p>职员ID、姓名、国籍ID、证件ID、学历ID…….</p>
-<p>采用第二种数据字典后，其表结构是：</p>
-<p>职员ID、姓名</p>
-<p>另外增加《属性表》，该表是《职员表》和《系统代码表》的关系表，其表结构是：</p>
-<p>属性ID、职员ID、系统代码表_标识</p>
-<blockquote>
-<p>《职员表》</p>
-<p>职员ID            姓名</p>
-<p>1                     张三</p>
-<p>2                   李四</p>
-<p>…..</p>
-</blockquote>
-<blockquote>
-<p>《属性表》</p>
-<p>属性ID            职员ID                系统代码表_标识</p>
-<p>1                         1                         001  （表示张三是中国籍）</p>
-<p>2                         1                         501  （表示张三的证件是身份证）</p>
-<p>3                         2                         002  （表示李四是美国籍）</p>
-<p>4                         2                         501  （表示李四的证件是身份证）</p>
-<p>…..</p>
-</blockquote>
+<p>它把无符号的 32 位整数所有数位整体右移。对于无符号数或正数右移运算，无符号右移与有符号右移运算的结果是相同的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br></pre></td></tr></table></figure>
+
+<p>对于负数来说，无符号右移将使用 0 来填充所有的空位，同时会把负数作为正数来处理，所得结果会非常大所以，使用无符号右移运算符时要特别小心，避免意外错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">-1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值 -4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-1000</span> &gt;&gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值 16777212</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGHZ0200.gif" alt></p>
+<h1 id="算法应用"><a href="#算法应用" class="headerlink" title="算法应用"></a>算法应用</h1><p>计算2进制中1的个数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumberOf1</span>(<span class="params">n</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n===<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((n &gt;&gt;&gt; i &amp; <span class="number">1</span>) === <span class="number">1</span>)&#123;  <span class="comment">// 右移并与1进行&amp;运算</span></span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里补充一下 &amp; (位与运算)</p>
+<p> &amp;为位与运算，将两边转为二进制<br>  进行比较的时候，如果两边数字的长度不够，就从右到左对齐，前面没有的部分补零就好</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0bxxx表示一个数为二进制</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0b100010</span>&amp;<span class="number">0b000111</span>) <span class="comment">// 000010 - 2</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -495,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/31/常用JS函数学习/" rel="next" title="常用JS函数学习">
-                <i class="fa fa-chevron-left"></i> 常用JS函数学习
+              <a href="/2019/11/21/css百分比总结/" rel="next" title="css百分比总结">
+                <i class="fa fa-chevron-left"></i> css百分比总结
               </a>
             
           </div>
@@ -505,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/05/用Function代替eval/" rel="prev" title="用Function代替eval">
-                用Function代替eval <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/24/ES标准中的比较算法/" rel="prev" title="ES标准中的比较算法">
+                ES标准中的比较算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,7 +553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +564,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +575,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -620,7 +587,7 @@
 <h3 class="widget-title">Tag Cloud</h3>
 <div id="myCanvasContainer" class="widget tagcloud">
     <canvas width="250" height="250" id="resCanvas" style="width=100%">
-        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">-面试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE-模块化/">FE 模块化</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hooks/">Hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-modules/">css-modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react-redux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-router-dom/">react-router-dom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react组件/">react组件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/umi框架/">umi框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件开发/">组件开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a><span class="tag-list-count">1</span></li></ul>
+        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">-面试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FE-模块化/">FE 模块化</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hooks/">Hooks</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-modules/">css-modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es7/">es7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-router-dom/">react-router-dom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react组件/">react组件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ts/">ts</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/umi框架/">umi框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码规范/">代码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/心情/">心情</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件开发/">组件开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a><span class="tag-list-count">1</span></li></ul>
     </canvas>
 </div>
 </div>
@@ -695,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据字典"><span class="nav-number">1.</span> <span class="nav-text">数据字典</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典的两种形式"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">数据字典的两种形式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）"><span class="nav-number">1.</span> <span class="nav-text">JS移位运算符（&lt;&lt;、&gt;&gt;和&gt;&gt;&gt;）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#“-lt-lt-”运算符"><span class="nav-number">1.1.</span> <span class="nav-text">“&lt;&lt;”运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“-gt-gt-”运算符"><span class="nav-number">1.2.</span> <span class="nav-text">“&gt;&gt;”运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“-gt-gt-gt-”运算符"><span class="nav-number">1.3.</span> <span class="nav-text">“&gt;&gt;&gt;”运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法应用"><span class="nav-number">2.</span> <span class="nav-text">算法应用</span></a></li></ol></div>
             
 
           </div>
@@ -715,7 +682,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -740,7 +707,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.1k字</span>
+  <span class="post-count">博客全站共41.6k字</span>
 </div>
 
         

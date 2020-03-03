@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="简单了解一下非嵌套关系的组件之间是如何实现通信的  在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install eve">
+<meta name="description" content="EventEmitter非嵌套关系的组件实现通信 在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install even">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EventEmitter组件通信">
+<meta property="og:title" content="EventEmitter">
 <meta property="og:url" content="http://yoursite.com/2020/01/20/EventEmitter组件通信/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="简单了解一下非嵌套关系的组件之间是如何实现通信的  在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install eve">
+<meta property="og:description" content="EventEmitter非嵌套关系的组件实现通信 在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install even">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-20T09:49:50.908Z">
+<meta property="og:updated_time" content="2020-03-03T14:45:29.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EventEmitter组件通信">
-<meta name="twitter:description" content="简单了解一下非嵌套关系的组件之间是如何实现通信的  在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install eve">
+<meta name="twitter:title" content="EventEmitter">
+<meta name="twitter:description" content="EventEmitter非嵌套关系的组件实现通信 在componentDidMount事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在componentWillUnmount事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用Node.js Events模块的浏览器版实现  实现这样一个功能: 点击List2中的一个按钮,改变List1中的信息显示 1npm install even">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>EventEmitter组件通信 | 记录我的点滴</title>
+  <title>EventEmitter | 记录我的点滴</title>
   
 
 
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EventEmitter组件通信</h1>
+          <h1 class="post-title" itemprop="name headline">EventEmitter</h1>
         
 
         <div class="post-meta">
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  386
+                  674
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -380,8 +380,7 @@
       
 
       
-        <p><strong>简单了解一下非嵌套关系的组件之间是如何实现通信的</strong></p>
-<blockquote>
+        <h2 id="EventEmitter"><a href="#EventEmitter" class="headerlink" title="EventEmitter"></a>EventEmitter</h2><h4 id="非嵌套关系的组件实现通信"><a href="#非嵌套关系的组件实现通信" class="headerlink" title="非嵌套关系的组件实现通信"></a>非嵌套关系的组件实现通信</h4><blockquote>
 <p>在<code>componentDidMount</code>事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在<code>componentWillUnmount</code>事件中取消事件的订阅; 以常用的发布/订阅模式举例,借用<code>Node.js Events</code>模块的浏览器版实现</p>
 </blockquote>
 <p>实现这样一个功能: 点击<code>List2</code>中的一个按钮,改变<code>List1</code>中的信息显示</p>
@@ -397,6 +396,18 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// APP.jsx</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> List1 <span class="keyword">from</span> <span class="string">'./components/List1'</span>;</span><br><span class="line"><span class="keyword">import</span> List2 <span class="keyword">from</span> <span class="string">'./components/List2'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;List1 /&gt;</span><br><span class="line">                &lt;List2 /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>自定义事件是典型的发布订阅模式,通过向事件对象上添加监听器和触发事件来实现组件之间的通信</p>
+<p>（2）辅助 <code>toolbox</code> 实现 <code>create</code> 和 <code>destory</code></p>
+<p>需求是一个长按弹出的 <code>toolbox</code> 框框，要实现点击其它非 toolbox 区域框框消失的功能</p>
+<p>之前的方式: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils/toolbox.js</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ToolboxCtrl</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  create(args) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    render(</span><br><span class="line">      &lt;<span class="keyword">this</span>.tb </span><br><span class="line">        &#123;...props&#125;</span><br><span class="line">        handleClickAway=&#123;() =&gt; <span class="keyword">this</span>.destory()&#125; </span><br><span class="line">      /&gt;, </span><br><span class="line">      div</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  destory() &#123;&#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// com/toolbox.js</span></span><br><span class="line"><span class="keyword">const</span> ToolBox = <span class="function">(<span class="params">&#123; handleClickAway &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ref = useClickAway(<span class="function"><span class="params">()</span> =&gt;</span> handleClickAway())</span><br><span class="line">  <span class="keyword">const</span> handleItemClick = <span class="function"><span class="params">e</span> =&gt;</span> handleClickAway()</span><br><span class="line">  <span class="keyword">return</span> (&lt;div ref=&#123;ref&#125; onClick=&#123;e =&gt; handleItemClick(e)&#125;&gt;...&lt;/div&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>useClickAway</code> 是自定义的 <code>Hooks</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">useClickAway</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    onClickAway, </span></span></span><br><span class="line"><span class="function"><span class="params">    dom, </span></span></span><br><span class="line"><span class="function"><span class="params">    eventName = <span class="string">'click'</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> element = useRef()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> handler = useCallback(</span><br><span class="line">        event =&gt; &#123;</span><br><span class="line">          <span class="keyword">const</span> targetElement = <span class="keyword">typeof</span> dom === <span class="string">'function'</span> ? dom() : dom</span><br><span class="line">          <span class="keyword">const</span> el = targetElement || element.current</span><br><span class="line">          <span class="keyword">if</span> (!el || el.contains(event.target)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          onClickAway(event)</span><br><span class="line">        &#125;,</span><br><span class="line">        [element.current, onClickAway, dom],</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">      useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">document</span>.addEventListener(eventName, handler)</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="built_in">document</span>.removeEventListener(eventName, handler)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, [eventName, handler])</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> element</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下没有问题…但是中间遇到很奇怪的bug…原因没有研究出来</p>
+<p>最后还是用 <code>eventEmitter</code> 解决的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com/toolbox.js</span></span><br><span class="line"><span class="keyword">const</span> ToolBox = <span class="function">(<span class="params">&#123; handleClickAway &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    emitter.on(<span class="string">'toolbox.destory'</span>, handleClickAway)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> emitter.off(<span class="string">'toolbox.destory'</span>, handleClickAway)</span><br><span class="line">  &#125;, [])</span><br><span class="line">  <span class="keyword">const</span> ref = useClickAway(<span class="function"><span class="params">()</span> =&gt;</span> handleClickAway())</span><br><span class="line">  <span class="keyword">const</span> handleItemClick = <span class="function"><span class="params">e</span> =&gt;</span> handleClickAway()</span><br><span class="line">  <span class="keyword">return</span> (&lt;div ref=&#123;ref&#125; onClick=&#123;e =&gt; handleItemClick(e)&#125;&gt;...&lt;/div&gt;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在点击某个元素的时候, 以实现 useClickAway 的效果</span></span><br><span class="line">emitter.emit(<span class="string">'toolbox.destory'</span>)</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -501,8 +512,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -619,6 +639,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#EventEmitter"><span class="nav-number">1.</span> <span class="nav-text">EventEmitter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非嵌套关系的组件实现通信"><span class="nav-number">1.0.1.</span> <span class="nav-text">非嵌套关系的组件实现通信</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -657,7 +693,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共45.1k字</span>
+  <span class="post-count">博客全站共45.4k字</span>
 </div>
 
         

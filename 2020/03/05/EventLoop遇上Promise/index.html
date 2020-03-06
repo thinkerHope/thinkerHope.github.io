@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="description" content="面试时的EventLoop/Promise难度进阶 版本一：得心应手版1234567setTimeout(()=&amp;gt;&amp;#123;   console.log(1) &amp;#125;,0)Promise.resolve().then(()=&amp;gt;&amp;#123;   console.log(2) &amp;#125;)console.log(3)  考察点：了解宏任务(marcotask)微任务 版本二：游刃">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS词法环境">
-<meta property="og:url" content="http://yoursite.com/2020/01/05/JS词法环境/index.html">
+<meta property="og:title" content="EventLoop遇上Promise">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/EventLoop遇上Promise/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta property="og:description" content="面试时的EventLoop/Promise难度进阶 版本一：得心应手版1234567setTimeout(()=&amp;gt;&amp;#123;   console.log(1) &amp;#125;,0)Promise.resolve().then(()=&amp;gt;&amp;#123;   console.log(2) &amp;#125;)console.log(3)  考察点：了解宏任务(marcotask)微任务 版本二：游刃">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-05T10:34:08.249Z">
+<meta property="og:updated_time" content="2020-03-06T07:40:46.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS词法环境">
-<meta name="twitter:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="twitter:title" content="EventLoop遇上Promise">
+<meta name="twitter:description" content="面试时的EventLoop/Promise难度进阶 版本一：得心应手版1234567setTimeout(()=&amp;gt;&amp;#123;   console.log(1) &amp;#125;,0)Promise.resolve().then(()=&amp;gt;&amp;#123;   console.log(2) &amp;#125;)console.log(3)  考察点：了解宏任务(marcotask)微任务 版本二：游刃">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/05/JS词法环境/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/05/EventLoop遇上Promise/">
 
 
 
 
 
-  <title>JS词法环境 | 记录我的点滴</title>
+  <title>EventLoop遇上Promise | 记录我的点滴</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/JS词法环境/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/EventLoop遇上Promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS词法环境</h1>
+          <h1 class="post-title" itemprop="name headline">EventLoop遇上Promise</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T18:34:08+08:00">
-                2020-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-05T21:42:11+08:00">
+                2020-03-05
               </time>
             
 
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  162
                 </span>
               
 
@@ -380,7 +380,16 @@
       
 
       
-        
+        <p>面试时的<code>EventLoop/Promise</code>难度进阶</p>
+<h4 id="版本一：得心应手版"><a href="#版本一：得心应手版" class="headerlink" title="版本一：得心应手版"></a>版本一：得心应手版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>) </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">2</span>) </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>考察点</strong>：了解宏任务(<code>marcotask</code>)微任务</p>
+<h4 id="版本二：游刃有余版"><a href="#版本二：游刃有余版" class="headerlink" title="版本二：游刃有余版"></a>版本二：游刃有余版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>) </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> a=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">    resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">3</span>) </span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">4</span>) </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>考察点</strong>：Promise的理解程度</p>
+<h4 id="版本三：炉火纯青版"><a href="#版本三：炉火纯青版" class="headerlink" title="版本三：炉火纯青版"></a>版本三：炉火纯青版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise1"</span>)</span><br><span class="line">    resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then11"</span>)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"promise2"</span>)</span><br><span class="line">        resolve()</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"then21"</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"then23"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then12"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -420,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/04/setTimeout和Promise看eventloop/" rel="next" title="setTimeout和Promise看eventloop">
-                <i class="fa fa-chevron-left"></i> setTimeout和Promise看eventloop
+              <a href="/2020/03/03/时间锁/" rel="next" title="时间锁">
+                <i class="fa fa-chevron-left"></i> 时间锁
               </a>
             
           </div>
@@ -429,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/14/useEffect深入学习/" rel="prev" title="useEffect深入学习">
-                useEffect深入学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,6 +616,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#版本一：得心应手版"><span class="nav-number">1.</span> <span class="nav-text">版本一：得心应手版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本二：游刃有余版"><span class="nav-number">2.</span> <span class="nav-text">版本二：游刃有余版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本三：炉火纯青版"><span class="nav-number">3.</span> <span class="nav-text">版本三：炉火纯青版</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -640,7 +670,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共45.6k字</span>
+  <span class="post-count">博客全站共45.8k字</span>
 </div>
 
         

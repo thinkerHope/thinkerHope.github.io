@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-03T15:07:45.114Z</updated>
+  <updated>2020-03-06T07:40:46.074Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EventLoop遇上Promise</title>
+    <link href="http://yoursite.com/2020/03/05/EventLoop%E9%81%87%E4%B8%8APromise/"/>
+    <id>http://yoursite.com/2020/03/05/EventLoop遇上Promise/</id>
+    <published>2020-03-05T13:42:11.000Z</published>
+    <updated>2020-03-06T07:40:46.074Z</updated>
+    
+    <content type="html"><![CDATA[<p>面试时的<code>EventLoop/Promise</code>难度进阶</p><h4 id="版本一：得心应手版"><a href="#版本一：得心应手版" class="headerlink" title="版本一：得心应手版"></a>版本一：得心应手版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>) </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">2</span>) </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>)</span><br></pre></td></tr></table></figure><p><strong>考察点</strong>：了解宏任务(<code>marcotask</code>)微任务</p><h4 id="版本二：游刃有余版"><a href="#版本二：游刃有余版" class="headerlink" title="版本二：游刃有余版"></a>版本二：游刃有余版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">1</span>) </span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> a=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">    resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">3</span>) </span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">4</span>) </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br></pre></td></tr></table></figure><p><strong>考察点</strong>：Promise的理解程度</p><h4 id="版本三：炉火纯青版"><a href="#版本三：炉火纯青版" class="headerlink" title="版本三：炉火纯青版"></a>版本三：炉火纯青版</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise1"</span>)</span><br><span class="line">    resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then11"</span>)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"promise2"</span>)</span><br><span class="line">        resolve()</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"then21"</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"then23"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"then12"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;面试时的&lt;code&gt;EventLoop/Promise&lt;/code&gt;难度进阶&lt;/p&gt;
+&lt;h4 id=&quot;版本一：得心应手版&quot;&gt;&lt;a href=&quot;#版本一：得心应手版&quot; class=&quot;headerlink&quot; title=&quot;版本一：得心应手版&quot;&gt;&lt;/a&gt;版本一：得心应手版&lt;/h4
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>时间锁</title>
@@ -90,21 +113,6 @@
     <id>http://yoursite.com/2020/01/14/useEffect深入学习/</id>
     <published>2020-01-13T16:17:38.000Z</published>
     <updated>2020-01-13T16:17:38.984Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS词法环境</title>
-    <link href="http://yoursite.com/2020/01/05/JS%E8%AF%8D%E6%B3%95%E7%8E%AF%E5%A2%83/"/>
-    <id>http://yoursite.com/2020/01/05/JS词法环境/</id>
-    <published>2020-01-05T10:34:08.000Z</published>
-    <updated>2020-01-05T10:34:08.249Z</updated>
     
     <summary type="html">
     

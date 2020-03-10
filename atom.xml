@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-08T05:24:32.517Z</updated>
+  <updated>2020-03-10T08:32:09.513Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>系统了解前端性能优化的手段</title>
+    <link href="http://yoursite.com/2020/03/10/%E7%B3%BB%E7%BB%9F%E4%BA%86%E8%A7%A3%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%89%8B%E6%AE%B5/"/>
+    <id>http://yoursite.com/2020/03/10/系统了解前端性能优化的手段/</id>
+    <published>2020-03-10T08:32:09.000Z</published>
+    <updated>2020-03-10T08:32:09.513Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>图片压缩</title>
+    <link href="http://yoursite.com/2020/03/10/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://yoursite.com/2020/03/10/图片压缩/</id>
+    <published>2020-03-10T07:45:47.000Z</published>
+    <updated>2020-03-10T07:45:47.585Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP压缩</title>
+    <link href="http://yoursite.com/2020/03/10/HTTP%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://yoursite.com/2020/03/10/HTTP压缩/</id>
+    <published>2020-03-10T07:23:45.000Z</published>
+    <updated>2020-03-10T08:48:24.582Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="什么是HTTP压缩"><a href="#什么是HTTP压缩" class="headerlink" title="什么是HTTP压缩"></a><strong>什么是HTTP压缩</strong></h4><p>HTTP压缩是指: Web服务器和浏览器之间压缩传输”文本内容“的方法。 HTTP采用通用的压缩算法，比如gzip来压缩HTML,Javascript, CSS文件。 能大大减少网络传输的数据量，提高了用户显示网页的速度。当然，同时会增加一点点服务器的开销。 本文从HTTP协议的角度，来理解HTTP压缩这个概念。</p><h4 id="HTTP内容编码和HTTP压缩的区别"><a href="#HTTP内容编码和HTTP压缩的区别" class="headerlink" title="HTTP内容编码和HTTP压缩的区别"></a><strong>HTTP内容编码和HTTP压缩的区别</strong></h4><p>HTTP压缩，在HTTP协议中，其实是内容编码的一种。</p><p>在http协议中，可以对内容（也就是body部分）进行编码， 可以采用Gzip这样的编码。 从而达到压缩的目的。 也可以使用其他的编码把内容搅乱或加密，以此来防止未授权的第三方看到文档的内容。所以我们说HTTP压缩，其实就是HTTP内容编码的一种。 所以大家不要把HTTP压缩和HTTP内容编码两个概念混淆了。</p><h4 id="内容编码类型"><a href="#内容编码类型" class="headerlink" title="内容编码类型"></a><strong>内容编码类型</strong></h4><p>HTTP定义了一些标准的内容编码类型，并允许用扩展的形式添加更多的编码。</p><p>Content-Encoding header 就用这些标准化的代号来说明编码时使用的算法</p><p>Content-Encoding值</p><p>　　gzip　　表明实体采用GNU zip编码</p><p>　　compress 表明实体采用Unix的文件压缩程序</p><p>　　deflate　　表明实体是用zlib的格式压缩的</p><p>　　identity　　表明没有对实体进行编码。当没有Content-Encoding header时， 就默认为这种情况</p><p>　　Gzip, compress, 以及deflate编码都是<code>无损压缩算法</code>，用于减少传输报文的大小，不会导致信息损失。 其中<code>Gzip</code>通常<strong>效率最高</strong>， 使用最为广泛。</p><h4 id="Gzip的缺点"><a href="#Gzip的缺点" class="headerlink" title="Gzip的缺点"></a><strong>Gzip的缺点</strong></h4><p> <code>jpeg</code>这类文件用<code>gzip</code>压缩的不够好。</p><p>对HTTP传输内容进行压缩是改良前端响应性能的可用方法之一，大型网站都在用。但是也有缺点，就是压缩过程占用cpu的资源，客户端浏览器解析也占据了一部分时间。但是随着硬件性能不断的提高，这些问题正在不断的弱化。</p><h4 id="Gzip压缩原理"><a href="#Gzip压缩原理" class="headerlink" title="Gzip压缩原理"></a><strong>Gzip压缩原理</strong></h4><p>简单来说， Gzip压缩是在一个文本文件中找出类似的字符串， 并临时替换他们，使整个文件变小。这种形式的压缩对Web来说非常适合， 因为<code>HTML</code>、<code>CSS</code>、<code>js</code>文件通常包含大量的重复的字符串，例如空格，标签。</p><h4 id="http协议如何支持压缩文件的传输"><a href="#http协议如何支持压缩文件的传输" class="headerlink" title="http协议如何支持压缩文件的传输"></a>http协议如何支持压缩文件的传输</h4><p>1、浏览器请求数据时，通过<code>Accept-Encoding</code>（<code>Request Header</code>）说明自己可以接受的压缩方法</p><p>2、服务端接收到请求后，选取Accept-Encoding中的一种对响应数据进行压缩</p><p>3、服务端返回响应数据时，在<code>Content-Encoding</code>（<code>Response Header</code>）字段中说明数据的压缩方式</p><p>4、浏览器接收到响应数据后根据Content-Encoding对结果进行解压</p><p>注：如果服务器没有对响应数据进行压缩，则不返回Content-Encoding，浏览器也不进行解压</p><h4 id="什么时候压缩"><a href="#什么时候压缩" class="headerlink" title="什么时候压缩"></a>什么时候压缩</h4><p><img src="/home/boygreen/%E5%9B%BE%E7%89%87/571311-20180831155733264-1153384828.png" alt></p><h4 id="构建时压缩（webpack）"><a href="#构建时压缩（webpack）" class="headerlink" title="构建时压缩（webpack）"></a>构建时压缩（webpack）</h4><p><code>webpack</code>的<code>compression-webpack-plugin</code>插件用于支持构建项目时压缩文件，Vue项目为例，具体配置如下：</p><p>1、首先安装插件，命令：npm install –save-dev compression-webpack-plugin</p><p>2、在config/index.js文件中打开Gzip开关，配置需要压缩的文件扩展名</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">productionGzip: <span class="literal">true</span>,</span><br><span class="line">productionGzipExtensions: [<span class="string">'js'</span>, <span class="string">'css'</span>],</span><br></pre></td></tr></table></figure><p>3、webpack.prod.conf.js中设置具体压缩配置项</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (config.build.productionGzip) &#123;</span><br><span class="line">  <span class="keyword">const</span> CompressionWebpackPlugin = <span class="built_in">require</span>(<span class="string">'compression-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line">  webpackConfig.plugins.push(</span><br><span class="line">    <span class="keyword">new</span> CompressionWebpackPlugin(&#123;</span><br><span class="line">      asset: <span class="string">'[path].gz[query]'</span>,</span><br><span class="line">      algorithm: <span class="string">'gzip'</span>,</span><br><span class="line">      test: <span class="keyword">new</span> <span class="built_in">RegExp</span>(</span><br><span class="line">        <span class="string">'\\.('</span> + </span><br><span class="line">        config.build.productionGzipExtensions.join(<span class="string">'|'</span>) +</span><br><span class="line">        <span class="string">')$'</span></span><br><span class="line">      ),</span><br><span class="line">      threshold: <span class="number">10240</span>,</span><br><span class="line">      minRatio: <span class="number">0.8</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4、打包后会同时保留原文件和压缩后的文件，存储等条件允许的情况下，原文件也建议发布到服务器以支持不兼容gzip的浏览器</p><p>5、服务端<code>nginx</code>启动<code>gzip_static</code></p><p>gzip_static是nginx对于静态文件的处理模块，该模块可以读取预先压缩的gz文件，这样可以减少每次请求进行gzip压缩的CPU资源消耗。该模块启用后，nginx首先检查是否存在请求静态文件的gz结尾的文件，如果有则直接返回该gz文件内容。</p><p>为了要兼容不支持gzip的浏览器，启用gzip_static模块就必须同时保留原始静态文件和gz文件。这样的话，在有大量静态文件的情况下，将会大大增加磁盘空间。我们可以利用nginx的反向代理功能实现只保留gz文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;什么是HTTP压缩&quot;&gt;&lt;a href=&quot;#什么是HTTP压缩&quot; class=&quot;headerlink&quot; title=&quot;什么是HTTP压缩&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是HTTP压缩&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;HTTP压缩是指: Web服务器和浏览器之间压缩传
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Promise/A+原理</title>
@@ -328,21 +380,6 @@
   </entry>
   
   <entry>
-    <title>css百分比总结</title>
-    <link href="http://yoursite.com/2019/11/21/css%E7%99%BE%E5%88%86%E6%AF%94%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2019/11/21/css百分比总结/</id>
-    <published>2019-11-21T15:50:42.000Z</published>
-    <updated>2019-11-21T15:50:42.948Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>函数toString的妙用(字节跳动二面)</title>
     <link href="http://yoursite.com/2019/11/21/%E5%87%BD%E6%95%B0toString%E7%9A%84%E5%A6%99%E7%94%A8/"/>
     <id>http://yoursite.com/2019/11/21/函数toString的妙用/</id>
@@ -383,21 +420,6 @@
   </entry>
   
   <entry>
-    <title>前端性能优化</title>
-    <link href="http://yoursite.com/2019/11/12/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    <id>http://yoursite.com/2019/11/12/前端性能优化/</id>
-    <published>2019-11-12T13:27:52.000Z</published>
-    <updated>2019-11-12T13:27:52.378Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>实现将emoji表情插入到textarea指定位置</title>
     <link href="http://yoursite.com/2019/11/11/%E5%AE%9E%E7%8E%B0%E5%B0%86emoji%E8%A1%A8%E6%83%85%E6%8F%92%E5%85%A5%E5%88%B0textarea%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2019/11/11/实现将emoji表情插入到textarea指定位置/</id>
@@ -405,31 +427,6 @@
     <updated>2019-11-11T04:49:18.957Z</updated>
     
     <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>你真的理解call和apply吗</title>
-    <link href="http://yoursite.com/2019/11/08/%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3call%E5%92%8Capply%E5%90%97/"/>
-    <id>http://yoursite.com/2019/11/08/你真的理解call和apply吗/</id>
-    <published>2019-11-08T11:37:37.000Z</published>
-    <updated>2019-11-18T06:57:35.354Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>重新认识了一下函数</p></blockquote><h2 id="函数的三种角色"><a href="#函数的三种角色" class="headerlink" title="函数的三种角色"></a>函数的三种角色</h2><p><strong>一些函数作为对象的属性</strong></p><ul><li><code>length</code>：形参的个数；</li><li><code>name</code>：函数名；</li><li><code>prototype</code>：类的原型，在原型上定义的方法都是当前这个类的实例的公有方法；</li><li><code>__proto__</code>：把函数当做一个普通对象，指向Function这个类的原型</li></ul><p><strong>函数的角色</strong></p><ul><li><strong>普通函数</strong>。它本身是一个普通的函数，执行的时候会形成私有的作用域，然后进行形参赋值、预解析、代码执行、执行完成后内存销毁；</li><li><strong>类</strong>。有自己的实例，也有一个叫做<code>prototype</code>的属性是自己的原型，它的实例都可以指向自己的原型；</li><li><strong>普通对象</strong>。它作为对象可以有一些自己的私有属性，也可以通过<code>__proto__</code>找到<code>Function.prototype</code>；</li></ul><p><img src="https://thinkerhope.github.io/2019/11/08/%E4%BD%A0%E7%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3call%E5%92%8Capply%E5%90%97/2555024-95309047f0e9f13d.png" alt></p><h2 id="call方法原理"><a href="#call方法原理" class="headerlink" title="call方法原理"></a><code>call</code>方法原理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 允许传null</span></span><br><span class="line">    <span class="keyword">let</span> context = context || <span class="built_in">window</span>;</span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line">    <span class="comment">// 重新执行这个函数</span></span><br><span class="line">    <span class="keyword">let</span> args = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">        args.push(<span class="string">"arguments["</span> + i + <span class="string">"]"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 函数是可以有返回值的</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">""</span>,  <span class="string">`<span class="subst">$&#123; <span class="string">"context.fn("</span> + args + <span class="string">")"</span> &#125;</span>`</span>)();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">delete</span> context.fn;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line">fn.myCall(obj); <span class="comment">// fn作为普通对象, 所以myCall中的this为fn函数本身</span></span><br><span class="line">sum.myCall(obj);</span><br></pre></td></tr></table></figure><p>一个经典栗子（需要深入理解<code>call</code>原理和原型链）</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn1.call(fn2); <span class="comment">// 1</span></span><br><span class="line">fn1.call.call(fn2); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure><p>第二个输出有了前面的基础就很好理解了。前面了解到函数可以作为普通对象，然后有原型链搜索这一过程。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fn2 &#123;</span><br><span class="line">fn: fn1.call</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>第二次的<code>call</code>将<code>fn1.call</code>这个函数的<code>this</code>绑定到<code>fn2</code>上(将<code>fn2</code>作为普通对象)，再将<code>fn1.call</code>重新执行，此时，<code>fn1.call</code>函数里面的this就指向了<code>fn2</code>这个对象了，所以不是重新执行<code>fn1()</code>，而是重新执行<code>fn2()</code>。</p><p><strong>思考</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>) || [].slice.call(<span class="built_in">arguments</span>)</span><br></pre></td></tr></table></figure><p>这个方法用于将类数组对象转化为数组。</p><p><strong>call、apply、bind的区别</strong></p><p><code>call</code>和<code>apply</code>基本一样，就是传递参数形式不一样</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num1 + num2);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">fn.call(obj , <span class="number">100</span> , <span class="number">200</span>);</span><br><span class="line">fn.apply(obj , [<span class="number">100</span>, <span class="number">200</span>]);</span><br></pre></td></tr></table></figure><p><code>bind</code>有点不一样，它会返回函数，而不是立即执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var tempFn = fn.bind(obj, 1, 2);</span><br><span class="line">tempFn();</span><br></pre></td></tr></table></figure><p>补充一下<code>ES5</code>的严格模式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span> -- 严格模式</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">fn.call(); <span class="comment">// 普通模式下this是window，在严格模式下this是undefined</span></span><br><span class="line">fn.call(<span class="literal">null</span>); <span class="comment">// 普通模式下this是window，在严格模式下this是null</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>); <span class="comment">// 普通模式下this是window，在严格模式下this是undefined</span></span><br></pre></td></tr></table></figure><p><code>apply</code>和<code>call</code>的实现基本一样，就是处理arguments不一样。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">arguments</span>[<span class="number">1</span>]) &#123;</span><br><span class="line">    result = context.fn(...arguments[<span class="number">1</span>])</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    result = context.fn()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="自己实现一个bind"><a href="#自己实现一个bind" class="headerlink" title="自己实现一个bind"></a>自己实现一个bind</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myBind</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> self=<span class="keyword">this</span>;<span class="comment">//保存原函数</span></span><br><span class="line">    <span class="comment">// 有了前面的基础，就可以理解为什么要[].shift.call(arguments)了</span></span><br><span class="line">    <span class="keyword">let</span> context=[].shift.call(<span class="built_in">arguments</span>);<span class="comment">//保存需要绑定的this上下文</span></span><br><span class="line">    <span class="keyword">let</span> args=[].slice.call(<span class="built_in">arguments</span>);<span class="comment">//将剩余参数转化为数组</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    self.apply(context,[].concat.call(args, [].slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Function-apply-bind"><a href="#Function-apply-bind" class="headerlink" title="Function.apply.bind"></a><code>Function.apply.bind</code></h2><p>看一个<code>js</code>的高级技巧</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve([<span class="number">10</span>,<span class="number">20</span>]).then(<span class="built_in">Function</span>.apply.bind(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;, <span class="literal">null</span>));     <span class="comment">// 10,20</span></span><br></pre></td></tr></table></figure><p>先不管Promise</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="built_in">Function</span>.apply.bind(sum, <span class="literal">null</span>);</span><br><span class="line">foo([<span class="number">10</span>, <span class="number">20</span>]);   <span class="comment">// 10, 20</span></span><br></pre></td></tr></table></figure><p><code>sum.apply(null, [10, 20])</code>很好理解，<code>bind(sum)</code>使<code>Function.apply</code>这个函数里面的this指向了<code>sum</code>这个函数对象，所以<code>Function.apply.bind(sum, null)</code>等价于<code>sum.apply.bind(sum, null)</code>，<code>bind</code>的使命已经完成了。所以就等价于<code>sum.apply</code>。</p><p><strong>Function.bind.apply</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.bind.apply(sum, <span class="literal">null</span>)</span><br></pre></td></tr></table></figure><p>原理一样的。等价于<code>sum.bind(sum, null)</code>，就等价于<code>sum</code></p><p>看起来很简单，其实还是有很多东西的，哈哈，是不是感觉收获颇丰啊，不用谢了啦。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;重新认识了一下函数&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;函数的三种角色&quot;&gt;&lt;a href=&quot;#函数的三种角色&quot; class=&quot;headerlink&quot; title=&quot;函数的三种角色&quot;&gt;&lt;/a&gt;函数的三种角色&lt;/h2&gt;&lt;p&gt;&lt;stron
-      
     
     </summary>
     

@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="基本过程：  初始化 Promise 状态（pending） 立即执行 Promise 中传入的 fn 函数，将Promise 内部 resolve、reject 函数作为参数传递给 fn ，按事件机制时机处理 执行 then(..) 注册回调处理数组（then 方法可被同一个 promise 调用多次） Promise里的关键是要保证，then方法传入的参数 onFulfilled 和 onRe">
+<meta name="description" content="浏览器渲染过程如下：  解析HTML，生成DOM树，解析CSS，生成CSSOM树 将DOM树和CSSOM树结合，生成渲染树(Render Tree) Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小） Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素 Display:将像素发送给GPU，展示在页面上。（这一步其实还有很">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Promise&#x2F;A+原理">
-<meta property="og:url" content="http://yoursite.com/2020/03/07/Promise-A-原理/index.html">
+<meta property="og:title" content="浏览器渲染原理及过程">
+<meta property="og:url" content="http://yoursite.com/2020/03/10/浏览器渲染原理及过程/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="基本过程：  初始化 Promise 状态（pending） 立即执行 Promise 中传入的 fn 函数，将Promise 内部 resolve、reject 函数作为参数传递给 fn ，按事件机制时机处理 执行 then(..) 注册回调处理数组（then 方法可被同一个 promise 调用多次） Promise里的关键是要保证，then方法传入的参数 onFulfilled 和 onRe">
+<meta property="og:description" content="浏览器渲染过程如下：  解析HTML，生成DOM树，解析CSS，生成CSSOM树 将DOM树和CSSOM树结合，生成渲染树(Render Tree) Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小） Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素 Display:将像素发送给GPU，展示在页面上。（这一步其实还有很">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-08T05:24:32.517Z">
+<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E5%8F%8A%E8%BF%87%E7%A8%8B/%E6%B8%B2%E6%9F%93.png">
+<meta property="og:updated_time" content="2020-03-23T13:13:18.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Promise&#x2F;A+原理">
-<meta name="twitter:description" content="基本过程：  初始化 Promise 状态（pending） 立即执行 Promise 中传入的 fn 函数，将Promise 内部 resolve、reject 函数作为参数传递给 fn ，按事件机制时机处理 执行 then(..) 注册回调处理数组（then 方法可被同一个 promise 调用多次） Promise里的关键是要保证，then方法传入的参数 onFulfilled 和 onRe">
+<meta name="twitter:title" content="浏览器渲染原理及过程">
+<meta name="twitter:description" content="浏览器渲染过程如下：  解析HTML，生成DOM树，解析CSS，生成CSSOM树 将DOM树和CSSOM树结合，生成渲染树(Render Tree) Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小） Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素 Display:将像素发送给GPU，展示在页面上。（这一步其实还有很">
+<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E5%8F%8A%E8%BF%87%E7%A8%8B/%E6%B8%B2%E6%9F%93.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/07/Promise-A-原理/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/10/浏览器渲染原理及过程/">
 
 
 
 
 
-  <title>Promise/A+原理 | 记录我的点滴</title>
+  <title>浏览器渲染原理及过程 | 记录我的点滴</title>
   
 
 
@@ -280,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/Promise-A-原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/10/浏览器渲染原理及过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Promise/A+原理</h1>
+          <h1 class="post-title" itemprop="name headline">浏览器渲染原理及过程</h1>
         
 
         <div class="post-meta">
@@ -311,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-07T21:19:37+08:00">
-                2020-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-10T23:01:16+08:00">
+                2020-03-10
               </time>
             
 
@@ -343,7 +345,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  203
+                  822
                 </span>
               
 
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -380,18 +382,41 @@
       
 
       
-        <p>基本过程：</p>
+        <p><img src="/home/boygreen/MyBlog/source/_posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E5%8F%8A%E8%BF%87%E7%A8%8B/%E6%B8%B2%E6%9F%93.png" alt></p>
+<p>浏览器渲染过程如下：</p>
 <ol>
-<li>初始化 Promise 状态（<code>pending</code>）</li>
-<li>立即执行 Promise 中传入的 fn 函数，将Promise 内部 resolve、reject 函数作为参数传递给 fn ，按事件机制时机处理</li>
-<li>执行 then(..) 注册回调处理数组（<strong>then 方法可被同一个 promise 调用多次</strong>）</li>
-<li><strong><code>Promise</code>里的关键是要保证，then方法传入的参数 onFulfilled 和 <code>onRejected</code>，必须在<code>then</code>方法被调用的那一轮事件循环之后的新执行栈中执行。</strong></li>
+<li>解析HTML，生成DOM树，解析CSS，生成CSSOM树</li>
+<li>将DOM树和CSSOM树结合，生成渲染树(Render Tree)</li>
+<li>Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小）</li>
+<li>Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素</li>
+<li>Display:将像素发送给GPU，展示在页面上。（这一步其实还有很多内容，比如会在GPU将多个合成层合并为同一个层，并展示在页面中。而css3硬件加速的原理则是新建合成层）</li>
 </ol>
-<p>拆分：</p>
-<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><p>先从 Promise 执行结果看一下，有如下一段代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(&#123; <span class="attr">test</span>: <span class="number">1</span> &#125;)</span><br><span class="line">        resolve(&#123; <span class="attr">test</span>: <span class="number">2</span> &#125;)</span><br><span class="line">        reject(&#123; <span class="attr">test</span>: <span class="number">2</span> &#125;)</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'result1'</span>, data)</span><br><span class="line">&#125;,(data1)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'result2'</span>,data1)</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'result3'</span>, data)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//result1 &#123; test: 1 &#125;</span></span><br><span class="line"><span class="comment">//result3 undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>coding</p>
+<h2 id="解析DOM树和CSSOM树"><a href="#解析DOM树和CSSOM树" class="headerlink" title="解析DOM树和CSSOM树"></a>解析DOM树和CSSOM树</h2><h4 id="HTML标记进行Dom树解析"><a href="#HTML标记进行Dom树解析" class="headerlink" title="HTML标记进行Dom树解析"></a>HTML标记进行Dom树解析</h4><p>浏览器接收到html代码，可能是一份完整的文档，也可能是一个chunk，即开始解析。解析过程是先构建dom树，再根据dom树构建渲染树，最后浏览器将渲染树绘制到页面上。<br>构建dom树的过程即根据html代码自上而下进行构建，当遇到script文件加载／执行会阻塞后面dom树的构建（javascript可能会改变dom树），而遇到css文件则会阻塞Render Tree的构建，即dom树依然继续构建（除非遇到script标签并且css文件依旧未加载完成），但不会渲染绘制到页面上。而无论哪个阻塞，该加载的文件还是会加载，例如html文档中的其他css／js／图片文件。<br>另外javascript被加载后就会被执行，执行的过程也阻塞DOM树的构建。是执行完了才解析其他内容，而不是执行完了才加载其他内容。</p>
+<p><code>img</code>的加载不会阻塞html的解析，但img加载后并不渲染，它需要等待Render Tree</p>
+<p>生成完后才和Render Tree一起渲染出来。未下载完的图片需等下载完后才渲染。</p>
+<h4 id="CSS标记进行CSSOM树解析"><a href="#CSS标记进行CSSOM树解析" class="headerlink" title="CSS标记进行CSSOM树解析"></a>CSS标记进行CSSOM树解析</h4><p><strong>注意</strong></p>
+<p>render tree不是等到CSSOM树和DOM树构建完成才构建的，边解析CSS和DOM就会渲染了。</p>
+<h4 id="JS异步脚本"><a href="#JS异步脚本" class="headerlink" title="JS异步脚本"></a>JS异步脚本</h4><h2 id="CSS和JS阻塞问题总结"><a href="#CSS和JS阻塞问题总结" class="headerlink" title="CSS和JS阻塞问题总结"></a>CSS和JS阻塞问题总结</h2><p><strong>总结：</strong></p>
+<ul>
+<li>CSS<ul>
+<li>css加载不会阻塞DOM树的解析，但会阻塞Render Tree的构建 (即DOM树的渲染)</li>
+<li><strong>css加载和解析会阻塞后面js语句的执行</strong></li>
+</ul>
+</li>
+<li>JS<ul>
+<li>JS的加载和执行都会阻塞页面的渲染</li>
+<li>JS不阻塞资源的加载(这有赖于chrome的<code>预加载机制</code>)</li>
+<li>JS顺序执行，阻塞后续JS逻辑的执行</li>
+</ul>
+</li>
+</ul>
+<p><strong>提高css加载速度:</strong></p>
+<ul>
+<li>使用CDN(因为CDN会根据你的网络状况，替你挑选最近的一个具有缓存内容的节点为你提供资源，因此可以减少加载时间)</li>
+<li>对css进行压缩(可以用很多打包工具，比如webpack,gulp等，也可以通过开启gzip压缩)</li>
+<li>合理的使用缓存(设置cache-control,expires,以及E-tag都是不错的，不过要注意一个问题，就是文件更新后，你要避免缓存而带来的影响。其中一个解决防范是在文件名字后面加一个版本号)</li>
+<li>减少http请求数，将多个css文件合并，或者是干脆直接写成内联样式(内联样式的一个缺点就是不能缓存)</li>
+</ul>
 
       
     </div>
@@ -432,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/06/必备的chrome插件/" rel="next" title="必备的chrome插件">
-                <i class="fa fa-chevron-left"></i> 必备的chrome插件
+              <a href="/2020/03/10/前端图片优化/" rel="next" title="前端图片优化">
+                <i class="fa fa-chevron-left"></i> 前端图片优化
               </a>
             
           </div>
@@ -442,8 +467,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/10/HTTP压缩/" rel="prev" title="HTTP压缩">
-                HTTP压缩 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/19/彻底理解正则表达式的-符/" rel="prev" title="彻底理解正则表达式的^$符">
+                彻底理解正则表达式的^$符 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +548,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -632,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#链式调用"><span class="nav-number">1.</span> <span class="nav-text">链式调用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析DOM树和CSSOM树"><span class="nav-number">1.</span> <span class="nav-text">解析DOM树和CSSOM树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML标记进行Dom树解析"><span class="nav-number">1.0.1.</span> <span class="nav-text">HTML标记进行Dom树解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS标记进行CSSOM树解析"><span class="nav-number">1.0.2.</span> <span class="nav-text">CSS标记进行CSSOM树解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS异步脚本"><span class="nav-number">1.0.3.</span> <span class="nav-text">JS异步脚本</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS和JS阻塞问题总结"><span class="nav-number">2.</span> <span class="nav-text">CSS和JS阻塞问题总结</span></a></li></div>
             
 
           </div>
@@ -677,7 +702,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共49.9k字</span>
+  <span class="post-count">博客全站共52.5k字</span>
 </div>
 
         

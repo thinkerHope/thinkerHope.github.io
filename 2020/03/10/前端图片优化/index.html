@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="记录我的点滴">
 <meta property="og:description" content="图片类型和使用场景常用的web图片格式有：JPEG/JPG、PNG、WebP、Base64、SVG JPEG/JPG特点：有损压缩、体积小、加载快、不支持透明适用场景：适用于呈现色彩丰富的图片，在我们日常开发中，JPG 图片经常作为大的背景图、轮播图或 Banner 图出现。 PNG特点：无损压缩、质量高、体积大、支持透明适用场景：PNG 在处理线条和颜色对比度方面有优势，主要用它来呈现小的 Lo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-10T09:45:27.736Z">
+<meta property="og:updated_time" content="2020-03-10T12:17:59.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端图片优化">
 <meta name="twitter:description" content="图片类型和使用场景常用的web图片格式有：JPEG/JPG、PNG、WebP、Base64、SVG JPEG/JPG特点：有损压缩、体积小、加载快、不支持透明适用场景：适用于呈现色彩丰富的图片，在我们日常开发中，JPG 图片经常作为大的背景图、轮播图或 Banner 图出现。 PNG特点：无损压缩、质量高、体积大、支持透明适用场景：PNG 在处理线条和颜色对比度方面有优势，主要用它来呈现小的 Lo">
@@ -429,6 +429,10 @@
 <p>节流函数：只允许一个函数在N秒内执行一次。下面是一个简单的节流函数：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// throttle函数省略</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,throttle(lazyload, <span class="number">500</span>, <span class="number">1000</span>));</span><br></pre></td></tr></table></figure>
 
+<p><code>IntersectionObserver</code>来实现图片可视区域的懒加载</p>
+<p>即使使用了函数节流，也会造成页面回流</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>利用雪碧图减少http请求</li>
 <li>base64编码内联小图片</li>
@@ -485,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/10/浏览器渲染原理及过程/" rel="prev" title="浏览器渲染原理及过程">
+                浏览器渲染原理及过程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -563,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -717,7 +725,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共49.9k字</span>
+  <span class="post-count">博客全站共52.5k字</span>
 </div>
 
         

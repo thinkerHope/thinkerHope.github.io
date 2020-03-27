@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-24T10:11:27.785Z</updated>
+  <updated>2020-03-26T02:42:04.717Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>异步加载css文件</title>
+    <link href="http://yoursite.com/2020/03/26/%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BDcss%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2020/03/26/异步加载css文件/</id>
+    <published>2020-03-26T01:24:11.000Z</published>
+    <updated>2020-03-26T02:42:04.717Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="preload"><a href="#preload" class="headerlink" title="preload"></a><code>preload</code></h4><p>都知道，<code>stylesheets</code>的加载会阻塞渲染，延迟页面展示，为了提高首屏渲染的加载速度，可以将非关键CSS延迟异步加载，&lt;link rel=”preload”&gt;提供了支持。其次，<code>loadCSS</code>(<a href="https://github.com/filamentgroup/loadCSS)提供`JavaScript" target="_blank" rel="noopener">https://github.com/filamentgroup/loadCSS)提供`JavaScript</a> Polyfill`以支持跨浏览器兼容。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"preload"</span> <span class="attr">href</span>=<span class="string">"path/to/mystylesheet.css"</span> <span class="attr">as</span>=<span class="string">"style"</span> <span class="attr">onload</span>=<span class="string">"this.onload=null;this.rel='stylesheet'"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"path/to/mystylesheet.css"</span>&gt;</span><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br><span class="line">/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */</span><br><span class="line">(function()&#123; ... &#125;());</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p><code>rel=preload</code>，会让浏览器的主渲染机制介入前就进行预加载，但它载入后并不会被解析。load可以处理这个</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"preload"</span> href=<span class="string">"path/to/mystylesheet.css"</span> <span class="keyword">as</span>=<span class="string">"style"</span> onload=<span class="string">"this.rel='stylesheet'"</span>&gt;</span><br></pre></td></tr></table></figure><h4 id="loadCSS-Funtion-API"><a href="#loadCSS-Funtion-API" class="headerlink" title="loadCSS Funtion API"></a><code>loadCSS Funtion API</code></h4><ul><li><p><strong>before</strong></p><p>默认，loadCSS把stylesheet插入到页面所有的CSS和JS资源后面，使用before精确插入点</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"loadcss"</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// load a CSS file just before the script element containing this code</span></span></span><br><span class="line"><span class="javascript">  loadCSS( <span class="string">"path/to/mystylesheet.css"</span>, <span class="built_in">document</span>.getElementById(<span class="string">"loadcss"</span>) );</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>*<em>media *</em>  默认值是all</p></li><li><p><strong>attributes</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loadCSS( </span><br><span class="line">  <span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"</span>,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"crossorigin"</span>: <span class="string">"anonymous"</span>,</span><br><span class="line">    <span class="string">"integrity"</span>: <span class="string">"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li><li><p><strong>Using with <code>onload</code></strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stylesheet = loadCSS( <span class="string">"path/to/mystylesheet.css"</span> );</span><br><span class="line">onloadCSS( stylesheet, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"Stylesheet has loaded."</span> );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;preload&quot;&gt;&lt;a href=&quot;#preload&quot; class=&quot;headerlink&quot; title=&quot;preload&quot;&gt;&lt;/a&gt;&lt;code&gt;preload&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;都知道，&lt;code&gt;stylesheets&lt;/code&gt;的加载会阻塞渲染，
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>移动端点击返回强制刷新页面方案</title>
+    <link href="http://yoursite.com/2020/03/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%82%B9%E5%87%BB%E8%BF%94%E5%9B%9E%E5%BC%BA%E5%88%B6%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2020/03/25/移动端点击返回强制刷新页面方案/</id>
+    <published>2020-03-25T15:53:28.000Z</published>
+    <updated>2020-03-25T15:53:28.137Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HTTP缓存相关的精彩文章</title>
+    <link href="http://yoursite.com/2020/03/25/HTTP%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E7%9A%84%E7%B2%BE%E5%BD%A9%E6%96%87%E7%AB%A0/"/>
+    <id>http://yoursite.com/2020/03/25/HTTP缓存相关的精彩文章/</id>
+    <published>2020-03-25T09:28:39.000Z</published>
+    <updated>2020-03-25T09:46:32.844Z</updated>
+    
+    <content type="html"><![CDATA[<p>掘金学习链接:</p><p><a href="https://juejin.im/post/5a673af06fb9a01c927ed880" target="_blank" rel="noopener">https://juejin.im/post/5a673af06fb9a01c927ed880</a></p><p><a href="https://juejin.im/post/5c136bd16fb9a049d37efc47" target="_blank" rel="noopener">https://juejin.im/post/5c136bd16fb9a049d37efc47</a></p><p>强缓存相关字段:</p><ul><li><p><code>Pragma</code>: 仅作为<code>HTTP/1.0</code>向后兼容, 为通用请求头首部字段，<code>RFC</code>中该字段只有<code>no-cache</code>一个可选值</p></li><li><p><code>Cache-Control</code></p></li><li><p><code>Expires</code></p></li></ul><p><code>Cache-Control</code>为非0的max-age或者设置了大于请求日期的Expires才有可能命中强缓存(同时时设置了Expires和max-age,则Expires会被忽略)</p><p>当满足这个条件,同时响应报文首部中Cache-Control不存在no-cache、no-store且请求报文首部不存在Pragma字段,才会真正命中强缓存</p><p>协商缓存相关字段:</p><ul><li><p><code>Last-Modified</code>(Response Header)/<code>If-Modified-Since</code>(Rquest Header)</p><p> <code>If-Modified-Since</code>是一个请求首部字段，并且只能用在<strong>GET</strong>或者<strong>HEAD</strong>请求中。</p><p><code>Last-Modified</code>是一个响应首部字段，包含服务器认定的资源作出修改的日期及时间。当带着<code>If-Modified-Since</code>头访问服务器请求资源时，服务器会检查<code>Last-Modified</code>，如果<code>Last-Modified</code>的时间早于或等于<code>If-Modified-Since</code>则会返回一个不带主体的<code>304</code>响应，否则将重新返回资源</p></li><li><p><code>ETag</code>(Response Header)/<code>If-None-Match</code>(Rquest Header)</p><p><code>ETag</code>是一个响应首部字段，它是根据实体内容生成的一段<code>hash</code>字符串，<strong>标识资源的状态</strong>，由服务端产生。<code>If-None-Match</code>是一个条件式的请求首部。如果请求资源时在请求首部加上这个字段，值为之前服务器端返回的资源上的<code>ETag</code>，则当且仅当服务器上没有任何资源的<code>ETag</code>属性值与这个首部中列出的时候，服务器才会返回带有所请求资源实体的200响应，否则服务器会返回不带实体的<code>304</code>响应。<code>ETag</code>优先级比<code>Last-Modified</code>高，同时存在时会以<code>ETag</code>为准。</p><blockquote><p>ETag属性之间的比较采用的是<strong>弱比较算法</strong>，即两个文件除了每个比特都相同外，内容一致也可以认为是相同的。例如，如果两个页面仅仅在页脚的生成时间有所不同，就可以认为二者是相同的。</p></blockquote></li></ul><p><strong>因为<code>ETag</code>的特性，所以相较于<code>Last-Modified</code>有一些优势：</strong></p><ul><li><p>某些情况下服务器无法获取资源的最后修改时间</p></li><li><p>资源的最后修改时间变了但是内容没变，使用<code>ETag</code>可以正确缓存</p></li><li><p>如果资源修改非常频繁，在秒以下的时间进行修改，<code>Last-Modified</code>只能精确到秒</p></li></ul><p><img src="/home/boygreen/MyBlog/source/_posts/HTTP%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E7%9A%84%E7%B2%BE%E5%BD%A9%E6%96%87%E7%AB%A0/etag.png" alt></p><p><img src="/home/boygreen/MyBlog/source/_posts/HTTP%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E7%9A%84%E7%B2%BE%E5%BD%A9%E6%96%87%E7%AB%A0/cache01.png" alt></p><p><img src="/home/boygreen/MyBlog/source/_posts/HTTP%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E7%9A%84%E7%B2%BE%E5%BD%A9%E6%96%87%E7%AB%A0/cache02.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;掘金学习链接:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5a673af06fb9a01c927ed880&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://juejin.im/post/5a673af06f
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>使用postcss来做移动端适配</title>
@@ -134,9 +194,9 @@
     <link href="http://yoursite.com/2020/03/10/%E7%B3%BB%E7%BB%9F%E4%BA%86%E8%A7%A3%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%89%8B%E6%AE%B5/"/>
     <id>http://yoursite.com/2020/03/10/系统了解前端性能优化的手段/</id>
     <published>2020-03-10T08:32:09.000Z</published>
-    <updated>2020-03-13T02:14:26.320Z</updated>
+    <updated>2020-03-24T11:52:48.766Z</updated>
     
-    <content type="html"><![CDATA[<p>减少请求数量、减小资源大小、优化网络连接、优化资源加载、减少重绘回流、使用性能更好的<code>API</code>和构建优化，作为一片摘录博客，目的是作为学习记录，初识前端性能优化，对其有个相对系统的了解叭。</p><h2 id="减少请求数量"><a href="#减少请求数量" class="headerlink" title="减少请求数量"></a>减少请求数量</h2><h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>如果不进行文件合并，有如下3个隐患</p><ul><li>文件与文件之间有插入的上行请求，增加了N-1个网络延迟</li><li>受丢包问题影响更严重</li><li>经过代理服务器时可能会被断开</li></ul><p>但是，文件合并本身也有自己的问题</p><ul><li><p>首屏渲染问题，合并后的文件显然会比合并前大，如果渲染依赖 js 的话，如果js请求慢的话，就会有影响</p></li><li><p>缓存失效问题，<code>a, b, c</code> 中任一一个<code>js文件</code>有变动，都会导致合并文件有变动，会导致合并 <code>js文件</code>失效，前面的可能只会导致<code>a.js</code>失效</p></li></ul><p>所以，对于文件合并，有如下改进建议</p><ul><li>公共库合并</li><li>不同页面单独合并（适用于单页应用）</li></ul><h4 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h4><p><strong>雪碧图</strong></p><ul><li>减少加载网页图片时对服务器的请求次数</li><li>提高页面的加载速度</li></ul><p><strong>Base64</strong></p><p>将图片的内容以Base64格式内嵌到HTML中，可以减少HTTP请求数量</p><p><strong>Iconfont</strong></p><h4 id="减少重定向"><a href="#减少重定向" class="headerlink" title="减少重定向"></a>减少重定向</h4><p>​    当页面发生了重定向，就会延迟整个HTML文档的传输</p><p>　如果一定要使用重定向，如http重定向到https，要使用301永久重定向，而不是302临时重定向。因为，如果使用302，则每一次访问http，都会被重定向到https的页面。而永久重定向，在第一次从http重定向到https之后 ，每次访问http，会直接返回https的页面</p><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>参考强缓存/协商缓存</p><h4 id="避免使用空的src和href"><a href="#避免使用空的src和href" class="headerlink" title="避免使用空的src和href"></a>避免使用空的src和href</h4><p>a标签设置空的href，会重定向到当前的页面地址</p><p>form设置空的method，会提交表单到当前的页面地址</p><h2 id="减小资源大小"><a href="#减小资源大小" class="headerlink" title="减小资源大小"></a>减小资源大小</h2><h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul><li>HTML压缩</li></ul><p>压缩这些在文本文件中有意义，但是在html中不显示的字符，包括空格，制表符，换行符等，还有一些其他意义的字符，如html注释也可以被压缩</p><ul><li>CSS压缩</li></ul><p>CSS压缩包括无效代码删除与CSS语义合并</p><ul><li>JS压缩</li></ul><p>JS压缩与混乱包括无效字符及注释的删除、代码语义的缩减和优化、降低代码可读性，实现代码保护</p><ul><li>图片压缩</li></ul><p>需谨慎</p><h4 id="webp"><a href="#webp" class="headerlink" title="webp"></a>webp</h4><p>在安卓下可以使用webp格式的图片，它具有更优的图像数据压缩算法，能带来更小的图片体积，同等画面质量下，体积比jpg、png少了25%以上，而且同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性</p><h4 id="开启Gzip"><a href="#开启Gzip" class="headerlink" title="开启Gzip"></a>开启Gzip</h4><p>HTTP协议上的GZIP编码</p><h2 id="优化网络连接"><a href="#优化网络连接" class="headerlink" title="优化网络连接"></a>优化网络连接</h2><h4 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h4><p><code>CDN</code>全称是<code>Content Delivery Network</code>，即内容分发网络，它能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度</p><h4 id="DNS预热（DNS-Prefetch）"><a href="#DNS预热（DNS-Prefetch）" class="headerlink" title="DNS预热（DNS Prefetch）"></a>DNS预热（DNS Prefetch）</h4><p><code>DNS</code>的解析流程：<strong>浏览器缓存-系统缓存-路由器缓存-ISP DNS缓存-DNS源服务器</strong></p><p>当我们访问过一次域名之后，就会在每个节点上生成DNS缓存，<strong>即完成<code>DNS预热</code></strong>，这样同一地区（或网络服务商）的其他用户再次访问该域名时就不需要重新回源，直接读取最近的DNS缓存，从而减少请求次数，提升了网站访问速度</p><p>方法是在 head 标签里面写上几个 link 标签</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefecth"</span> <span class="attr">href</span>=<span class="string">"https://www.google.com"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefecth"</span> <span class="attr">href</span>=<span class="string">"https://www.google-analytics.com"</span>&gt;</span></span><br></pre></td></tr></table></figure><p>对以上几个网站提前解析 DNS，<strong>由于它是并行的，不会堵塞页面渲染</strong>，这样可以缩短资源加载的时间</p>]]></content>
+    <content type="html"><![CDATA[<p>减少请求数量、减小资源大小、优化网络连接、优化资源加载、减少重绘回流、使用性能更好的<code>API</code>和构建优化，作为一片摘录博客，目的是作为学习记录，初识前端性能优化，对其有个相对系统的了解叭。</p><h2 id="减少请求数量"><a href="#减少请求数量" class="headerlink" title="减少请求数量"></a>减少请求数量</h2><h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><p>如果不进行文件合并，有如下3个隐患</p><ul><li>文件与文件之间有插入的上行请求，增加了N-1个网络延迟</li><li>受丢包问题影响更严重</li><li>经过代理服务器时可能会被断开</li></ul><p>但是，文件合并本身也有自己的问题</p><ul><li><p>首屏渲染问题，合并后的文件显然会比合并前大，如果渲染依赖 <code>js</code> 的话，如果<code>js</code>请求慢的话，就会有影响</p></li><li><p>缓存失效问题，<code>a, b, c</code> 中任一一个<code>js文件</code>有变动，都会导致合并文件有变动，会导致合并 <code>js文件</code>失效，前面的可能只会导致<code>a.js</code>失效</p></li></ul><p>所以，对于文件合并，有如下改进建议</p><ul><li>公共库合并</li><li>不同页面单独合并（适用于单页应用）</li></ul><h4 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h4><p><strong>雪碧图</strong></p><ul><li>减少加载网页图片时对服务器的请求次数</li><li>提高页面的加载速度</li></ul><p><strong>Base64</strong></p><p>将图片的内容以Base64格式内嵌到HTML中，可以减少HTTP请求数量</p><p><strong>Iconfont</strong></p><h4 id="减少重定向"><a href="#减少重定向" class="headerlink" title="减少重定向"></a>减少重定向</h4><p>​    当页面发生了重定向，就会延迟整个HTML文档的传输</p><p>　如果一定要使用重定向，如http重定向到https，要使用301永久重定向，而不是302临时重定向。因为，如果使用302，则每一次访问http，都会被重定向到https的页面。而永久重定向，在第一次从http重定向到https之后 ，每次访问http，会直接返回https的页面</p><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>参考强缓存/协商缓存</p><h4 id="避免使用空的src和href"><a href="#避免使用空的src和href" class="headerlink" title="避免使用空的src和href"></a>避免使用空的src和href</h4><p>a标签设置空的href，会重定向到当前的页面地址</p><p>form设置空的method，会提交表单到当前的页面地址</p><h2 id="减小资源大小"><a href="#减小资源大小" class="headerlink" title="减小资源大小"></a>减小资源大小</h2><h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><ul><li>HTML压缩</li></ul><p>压缩这些在文本文件中有意义，但是在html中不显示的字符，包括空格，制表符，换行符等，还有一些其他意义的字符，如html注释也可以被压缩</p><ul><li>CSS压缩</li></ul><p>CSS压缩包括无效代码删除与CSS语义合并</p><ul><li>JS压缩</li></ul><p>JS压缩与混乱包括无效字符及注释的删除、代码语义的缩减和优化、降低代码可读性，实现代码保护</p><ul><li>图片压缩</li></ul><p>需谨慎</p><h4 id="webp"><a href="#webp" class="headerlink" title="webp"></a>webp</h4><p>在安卓下可以使用webp格式的图片，它具有更优的图像数据压缩算法，能带来更小的图片体积，同等画面质量下，体积比jpg、png少了25%以上，而且同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性</p><h4 id="开启Gzip"><a href="#开启Gzip" class="headerlink" title="开启Gzip"></a>开启Gzip</h4><p>HTTP协议上的GZIP编码</p><h2 id="优化网络连接"><a href="#优化网络连接" class="headerlink" title="优化网络连接"></a>优化网络连接</h2><h4 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h4><p><code>CDN</code>全称是<code>Content Delivery Network</code>，即内容分发网络，它能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度</p><h4 id="DNS预热（DNS-Prefetch）"><a href="#DNS预热（DNS-Prefetch）" class="headerlink" title="DNS预热（DNS Prefetch）"></a>DNS预热（DNS Prefetch）</h4><p><code>DNS</code>的解析流程：<strong>浏览器缓存-系统缓存-路由器缓存-ISP DNS缓存-DNS源服务器</strong></p><p>当我们访问过一次域名之后，就会在每个节点上生成DNS缓存，<strong>即完成<code>DNS预热</code></strong>，这样同一地区（或网络服务商）的其他用户再次访问该域名时就不需要重新回源，直接读取最近的DNS缓存，从而减少请求次数，提升了网站访问速度</p><p>方法是在 head 标签里面写上几个 link 标签</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefecth"</span> <span class="attr">href</span>=<span class="string">"https://www.google.com"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefecth"</span> <span class="attr">href</span>=<span class="string">"https://www.google-analytics.com"</span>&gt;</span></span><br></pre></td></tr></table></figure><p>对以上几个网站提前解析 DNS，<strong>由于它是并行的，不会堵塞页面渲染</strong>，这样可以缩短资源加载的时间</p>]]></content>
     
     <summary type="html">
     
@@ -390,68 +450,6 @@
       
         &lt;p&gt;假设某应用中有以下三个页面：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解js中的浮点数</title>
-    <link href="http://yoursite.com/2019/11/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3js%E4%B8%AD%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/11/24/深入理解js中的浮点数/</id>
-    <published>2019-11-24T13:51:46.000Z</published>
-    <updated>2019-11-27T11:12:51.781Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ES标准中的比较算法</title>
-    <link href="http://yoursite.com/2019/11/24/ES%E6%A0%87%E5%87%86%E4%B8%AD%E7%9A%84%E6%AF%94%E8%BE%83%E7%AE%97%E6%B3%95/"/>
-    <id>http://yoursite.com/2019/11/24/ES标准中的比较算法/</id>
-    <published>2019-11-24T13:20:40.000Z</published>
-    <updated>2019-11-24T13:48:52.448Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>ES</code>中的 <code>==</code> 和 <code>===</code> 都很熟悉了。</p><p>两者的区别：</p><ul><li><p>== 在类型相同时，使用 === 判断，=== 在类型不同时直接<code>false</code></p></li><li><p>== 会在类型不同时，发生隐式转换</p><p>规则如下：</p><p>（1）一个 <code>null</code>，一个 <code>undefied</code>，那么<code>true</code></p><p>（2）一个字符串，一个数值，会把字符串转成数值之后再进行比较</p></li></ul><p>熟悉<code>ES6</code>不会对<code>Object.is()</code>陌生</p><p><code>NaN</code>独白：懂我的人终于出现<del>(≧▽≦)/</del>啦</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="number">0</span>, <span class="number">-0</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure><p>在<code>js</code>中我们一般认为正负0是不相等的，然而<code>===</code>情况下<code>NaN</code>不等于<code>NaN</code>，<code>+0</code>等于<code>-0</code></p><p>简单实现</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.is) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.is = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x === y) &#123; </span><br><span class="line">      <span class="comment">// 针对 +0不等于-0</span></span><br><span class="line">      <span class="comment">// 1 / -0 &lt; 0</span></span><br><span class="line">      <span class="comment">// 1 / +0 &gt; 0</span></span><br><span class="line">      <span class="keyword">return</span> x !== <span class="number">0</span> || <span class="number">1</span> / x === <span class="number">1</span> / y;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 针对 NaN等于NaN</span></span><br><span class="line">      <span class="keyword">return</span> x !== x &amp;&amp; y !== y;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里重点提到ES标准中的 <strong>SameValueZero</strong> 算法</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">s.add(<span class="number">0</span>)</span><br><span class="line">s.add(<span class="literal">NaN</span>)</span><br><span class="line">s.has(<span class="number">-0</span>) <span class="comment">// true</span></span><br><span class="line">s.has(<span class="literal">NaN</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>和<code>Object.is()</code>比较算法的区别就在 +0 和 -0是一样的。 </p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = [<span class="number">0</span>, <span class="literal">NaN</span>]</span><br><span class="line">a.includes(<span class="number">-0</span>) <span class="comment">// true</span></span><br><span class="line">a.includes(<span class="literal">NaN</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>可以看出<code>includes</code>也是基于 <code>SameValueZero</code> 来比较的。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;ES&lt;/code&gt;中的 &lt;code&gt;==&lt;/code&gt; 和 &lt;code&gt;===&lt;/code&gt; 都很熟悉了。&lt;/p&gt;
-&lt;p&gt;两者的区别：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;== 在类型相同时，使用 === 判断，=== 在类型不同时直接&lt;code&gt;false&lt;/co
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>移位运算符</title>
-    <link href="http://yoursite.com/2019/11/23/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    <id>http://yoursite.com/2019/11/23/移位运算符/</id>
-    <published>2019-11-23T02:20:12.000Z</published>
-    <updated>2019-11-24T13:31:07.795Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）"><a href="#JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）" class="headerlink" title="JS移位运算符（&lt;&lt;、&gt;&gt;和&gt;&gt;&gt;）"></a>JS移位运算符（&lt;&lt;、&gt;&gt;和&gt;&gt;&gt;）</h1><p>了解一下移位运算符以及在算法中的应用</p><h2 id="“-lt-lt-”运算符"><a href="#“-lt-lt-”运算符" class="headerlink" title="“&lt;&lt;”运算符"></a>“&lt;&lt;”运算符</h2><blockquote><p>左移位运算</p></blockquote><p>在移位运算过程中，符号位始终保持不变。如果右侧空出位置，则自动填充为 0；超出 32 位的值，则自动丢弃。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span> &lt;&lt; <span class="number">2</span>);  <span class="comment">//返回值20</span></span><br></pre></td></tr></table></figure><p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGG61JU.gif" alt></p><h2 id="“-gt-gt-”运算符"><a href="#“-gt-gt-”运算符" class="headerlink" title="“&gt;&gt;”运算符"></a>“&gt;&gt;”运算符</h2><blockquote><p>右移位运算</p></blockquote><p>与左移运算操作相反，它把 32 位数字中的所有有效位整体右移，再使用符号位的值填充空位。移动过程中超出的值将被丢弃。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br></pre></td></tr></table></figure><p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH0003W.gif" alt></p><p>把数值 -1000 向右移 8 位，则返回值为 -4。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(-1000  &gt;&gt; 8);  //返回值 -4</span><br></pre></td></tr></table></figure><p>用算式进行演示，如图所示。当符号位值为 1 时，则有效位左侧的空位全部使用 1 进行填充。</p><p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGH214508.gif" alt></p><h2 id="“-gt-gt-gt-”运算符"><a href="#“-gt-gt-gt-”运算符" class="headerlink" title="“&gt;&gt;&gt;”运算符"></a>“&gt;&gt;&gt;”运算符</h2><blockquote><p>无符号右移位运算</p></blockquote><p>它把无符号的 32 位整数所有数位整体右移。对于无符号数或正数右移运算，无符号右移与有符号右移运算的结果是相同的。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值3</span></span><br></pre></td></tr></table></figure><p>对于负数来说，无符号右移将使用 0 来填充所有的空位，同时会把负数作为正数来处理，所得结果会非常大所以，使用无符号右移运算符时要特别小心，避免意外错误。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">-1000</span> &gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值 -4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-1000</span> &gt;&gt;&gt; <span class="number">8</span>);  <span class="comment">//返回值 16777212</span></span><br></pre></td></tr></table></figure><p><img src="/home/boygreen/MyBlog/source/_posts/%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/6-1ZRGHZ0200.gif" alt></p><h1 id="算法应用"><a href="#算法应用" class="headerlink" title="算法应用"></a>算法应用</h1><p>计算2进制中1的个数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumberOf1</span>(<span class="params">n</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n===<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((n &gt;&gt;&gt; i &amp; <span class="number">1</span>) === <span class="number">1</span>)&#123;  <span class="comment">// 右移并与1进行&amp;运算</span></span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里补充一下 &amp; (位与运算)</p><p> &amp;为位与运算，将两边转为二进制<br>  进行比较的时候，如果两边数字的长度不够，就从右到左对齐，前面没有的部分补零就好</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0bxxx表示一个数为二进制</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0b100010</span>&amp;<span class="number">0b000111</span>) <span class="comment">// 000010 - 2</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）&quot;&gt;&lt;a href=&quot;#JS移位运算符（-lt-lt-、-gt-gt-和-gt-gt-gt-）&quot; class=&quot;headerlink&quot; title=&quot;JS移位运算符（&amp;lt;&amp;lt;、&amp;gt;&amp;
       
     
     </summary>

@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="记录我的点滴">
 <meta property="og:description" content="减少请求数量、减小资源大小、优化网络连接、优化资源加载、减少重绘回流、使用性能更好的API和构建优化，作为一片摘录博客，目的是作为学习记录，初识前端性能优化，对其有个相对系统的了解叭。 减少请求数量合并如果不进行文件合并，有如下3个隐患  文件与文件之间有插入的上行请求，增加了N-1个网络延迟 受丢包问题影响更严重 经过代理服务器时可能会被断开  但是，文件合并本身也有自己的问题  首屏渲染问题，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-13T02:14:26.320Z">
+<meta property="og:updated_time" content="2020-03-24T11:52:48.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统了解前端性能优化的手段">
 <meta name="twitter:description" content="减少请求数量、减小资源大小、优化网络连接、优化资源加载、减少重绘回流、使用性能更好的API和构建优化，作为一片摘录博客，目的是作为学习记录，初识前端性能优化，对其有个相对系统的了解叭。 减少请求数量合并如果不进行文件合并，有如下3个隐患  文件与文件之间有插入的上行请求，增加了N-1个网络延迟 受丢包问题影响更严重 经过代理服务器时可能会被断开  但是，文件合并本身也有自己的问题  首屏渲染问题，">
@@ -389,7 +389,7 @@
 </ul>
 <p>但是，文件合并本身也有自己的问题</p>
 <ul>
-<li><p>首屏渲染问题，合并后的文件显然会比合并前大，如果渲染依赖 js 的话，如果js请求慢的话，就会有影响</p>
+<li><p>首屏渲染问题，合并后的文件显然会比合并前大，如果渲染依赖 <code>js</code> 的话，如果<code>js</code>请求慢的话，就会有影响</p>
 </li>
 <li><p>缓存失效问题，<code>a, b, c</code> 中任一一个<code>js文件</code>有变动，都会导致合并文件有变动，会导致合并 <code>js文件</code>失效，前面的可能只会导致<code>a.js</code>失效</p>
 </li>
@@ -568,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共52.8k字</span>
+  <span class="post-count">博客全站共53.8k字</span>
 </div>
 
         

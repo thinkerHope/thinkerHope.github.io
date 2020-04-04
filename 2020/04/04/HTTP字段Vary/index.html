@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="description" content="不同客户端对内容格式的支持程度不同（比如有些支持数据压缩，有些不支持），所以即便请求URL 和请求方法都相同，服务器返回的数据也会不同（称为内容协商）。Vary 字段记录了代理服务器返回特定数据参考了哪些请求字段。 代理服务器拿到源服务器的响应报文，会根据 Vary 里的字段列表，缓存不同版本的数据。当客户端再次访问时，代理服务器会分析请求字段，返回正确的版本。 在叙述 Vary 的工作原理前，我">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端点击返回强制刷新页面方案">
-<meta property="og:url" content="http://yoursite.com/2020/03/25/移动端点击返回强制刷新页面方案/index.html">
+<meta property="og:title" content="HTTP字段Vary">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/HTTP字段Vary/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta property="og:description" content="不同客户端对内容格式的支持程度不同（比如有些支持数据压缩，有些不支持），所以即便请求URL 和请求方法都相同，服务器返回的数据也会不同（称为内容协商）。Vary 字段记录了代理服务器返回特定数据参考了哪些请求字段。 代理服务器拿到源服务器的响应报文，会根据 Vary 里的字段列表，缓存不同版本的数据。当客户端再次访问时，代理服务器会分析请求字段，返回正确的版本。 在叙述 Vary 的工作原理前，我">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-25T15:53:28.137Z">
+<meta property="og:updated_time" content="2020-04-04T11:28:59.143Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端点击返回强制刷新页面方案">
-<meta name="twitter:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
+<meta name="twitter:title" content="HTTP字段Vary">
+<meta name="twitter:description" content="不同客户端对内容格式的支持程度不同（比如有些支持数据压缩，有些不支持），所以即便请求URL 和请求方法都相同，服务器返回的数据也会不同（称为内容协商）。Vary 字段记录了代理服务器返回特定数据参考了哪些请求字段。 代理服务器拿到源服务器的响应报文，会根据 Vary 里的字段列表，缓存不同版本的数据。当客户端再次访问时，代理服务器会分析请求字段，返回正确的版本。 在叙述 Vary 的工作原理前，我">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/25/移动端点击返回强制刷新页面方案/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/04/HTTP字段Vary/">
 
 
 
 
 
-  <title>移动端点击返回强制刷新页面方案 | 记录我的点滴</title>
+  <title>HTTP字段Vary | 记录我的点滴</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/25/移动端点击返回强制刷新页面方案/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/04/HTTP字段Vary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">移动端点击返回强制刷新页面方案</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP字段Vary</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T23:53:28+08:00">
-                2020-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-04T19:20:05+08:00">
+                2020-04-04
               </time>
             
 
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.2k
                 </span>
               
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -380,7 +380,34 @@
       
 
       
-        
+        <p>不同客户端对内容格式的支持程度不同（比如有些支持数据压缩，有些不支持），所以即便请求URL 和请求方法都相同，服务器返回的数据也会不同（称为内容协商）。Vary 字段记录了代理服务器返回特定数据参考了哪些请求字段。</p>
+<p>代理服务器拿到源服务器的响应报文，会根据 Vary 里的字段列表，缓存不同版本的数据。当客户端再次访问时，代理服务器会分析请求字段，返回正确的版本。</p>
+<p>在叙述 Vary 的工作原理前，我们先简单了解一下什么是代理服务器。</p>
+<h3 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h3><p>客户端访问网站会发起请求，请求会被发送到所请求资源所在的服务器，服务器会将对应的资源返回给客户端。如果并发访问量很小，服务器并没有什么压力。但如果并发量很大，我们就得考虑缓存了，缓存分为客户端缓存和服务器缓存。服务器可以将数据缓存到内存中，也可以将数据缓存到代理服务器中。</p>
+<p>我们在客户端到服务器中间添加一些 <strong>代理服务器</strong>，它们的其中一个功能是 <strong>内容缓存</strong>。另外，为了进行区分，我们将真正提供数据的服务器称为 <strong>源服务器</strong>。配合 DNS，我们可以将访问分配到离客户端最近的代理服务器，从里面获取数据。如果没有数据，该代理服务器会再发送和客户端相同的请求给源服务器，并将从源服务器返回的数据缓存起来，并返回数据给客户端。这样，下次客户端再次请求相同的资源时，代理服务器就可以直接返回数据而不需要再转发给源服务器。</p>
+<p>代理服务器除了可以提供 <strong>内存缓存</strong>，还有以下几个作用：</p>
+<ol>
+<li><strong>健康检查</strong></li>
+<li><strong>安全防护</strong></li>
+<li><strong>加密卸载</strong></li>
+<li><strong>数据过滤</strong></li>
+</ol>
+<p>下面我们就通过一个例子，来说明 Vary 在服务端缓存中发挥的作用。</p>
+<h3 id="举例说明-Vary-的工作原理"><a href="#举例说明-Vary-的工作原理" class="headerlink" title="举例说明 Vary 的工作原理"></a>举例说明 Vary 的工作原理</h3><p>假设客户端 A 请求了一个数据，且该客户端支持 gzip 压缩，于是请求头字段中带有 <code>Accept-Encoding: gzip</code>。</p>
+<p>请求来到了代理服务器，但是里面没有缓存，所以代理服务器把请求又发送给了源服务器。源服务器拿到了请求报文，分析了一波，决定返回一个进行了 gzip 压缩的数据。另外，源服务器还希望介于它和客户端之间的代理服务器，也那能够像它一样优秀，可以根据 <code>Accept-Encoding</code> 返回正确的数据，于是在响应头字段中加上了 <code>Vary: Accept-Encoding</code>，并返回了数据A 给代理服务器。</p>
+<p>数据A 来到了代理服务器，代理服务器取出了 Vary 字段，发现里面有个 <code>Accept-Encoding</code>，于是它明白了，它需要将当前响应报文的 <code>Accept-Encoding</code> 作为一个标志，映射到当前这个缓存数据A。即：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URL + 请求方法 + <span class="string">"Accept-Encoding: gzip"</span> -&gt; 数据A</span><br></pre></td></tr></table></figure>
+
+<p>代理服务器缓存好了源服务器的数据后，并保存了映射关系，就把数据返回给了客户端 A。</p>
+<p>很快，客户端 A 又发送相同请求，代理服务器接收了请求且缓存还没过期，且发现请求头依旧有 <code>Accept-Encoding: gzip</code>，于是缓存命中了数据A，数据A被返回给了客户端A。在缓存未过期的期间，只要任何一个客户端的请求头里有 <code>Accept-Encoding: gzip</code>且请求url，代理服务器返回的数据都是数据A。</p>
+<p>不久后，不支持解压功能的客户端B 发送一个没有 <code>Accept-Encoding</code> 字段的请求。代理服务器拿到了数据，缓存没有命中，于是和上面一样，拿到一个新的缓存数据B，得到了一个新的映射关系：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URL + 请求方法 + 无 Accept-Encoding 的头字段 -&gt; 数据B</span><br></pre></td></tr></table></figure>
+
+<p>如果代理服务器不使用 Vary，纯粹只是根据 <strong>请求URL和请求方法</strong> 来判断是否缓存命中，那不支持解压功能的 客户端B 就可能会错误拿到代理服务器中的被压缩过的 数据A。</p>
+<p>通过 Vary 头字段，我们可以避免客户端B拿到一个无法解压的数据A。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这便是 Vary 头字段的作用：让代理服务器的缓存命中更多的决定因子，而不仅仅是依据请求 URL 和请求方法来决定是否命中。</p>
+<p>转发：<a href="https://www.jianshu.com/p/2aff153f3a58" target="_blank" rel="noopener">https://www.jianshu.com/p/2aff153f3a58</a></p>
+
       
     </div>
     
@@ -420,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/25/HTTP缓存相关的精彩文章/" rel="next" title="HTTP缓存相关的精彩文章">
-                <i class="fa fa-chevron-left"></i> HTTP缓存相关的精彩文章
+              <a href="/2020/04/01/Nginx反向代理解决跨域/" rel="next" title="Nginx反向代理解决跨域">
+                <i class="fa fa-chevron-left"></i> Nginx反向代理解决跨域
               </a>
             
           </div>
@@ -429,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/26/异步加载css文件/" rel="prev" title="异步加载css文件">
-                异步加载css文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,8 +507,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,6 +634,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代理服务器"><span class="nav-number">1.</span> <span class="nav-text">代理服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例说明-Vary-的工作原理"><span class="nav-number">2.</span> <span class="nav-text">举例说明 Vary 的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -640,7 +688,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共52.8k字</span>
+  <span class="post-count">博客全站共54.1k字</span>
 </div>
 
         

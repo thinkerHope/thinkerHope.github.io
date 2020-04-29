@@ -83,26 +83,18 @@
 
 
 
-<meta name="description" content="相反，递归实现就很简洁优美，下面就由浅入深，先从反转整个单链表说起。 一、递归反转整个链表这个算法可能很多读者都听说过，这里详细介绍一下，先直接看实现代码： 1234567ListNode reverse(ListNode head) &amp;#123;    if (head.next == null) return head;    ListNode last = reverse(head.next">
+<meta name="description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
 <meta name="keywords" content="FE 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何递归地反转链表">
-<meta property="og:url" content="http://yoursite.com/2020/04/14/如何递归地反转链表/index.html">
+<meta property="og:title" content="DFA算法实现敏感词过滤">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/DFA算法实现敏感词过滤/index.html">
 <meta property="og:site_name" content="记录我的点滴">
-<meta property="og:description" content="相反，递归实现就很简洁优美，下面就由浅入深，先从反转整个单链表说起。 一、递归反转整个链表这个算法可能很多读者都听说过，这里详细介绍一下，先直接看实现代码： 1234567ListNode reverse(ListNode head) &amp;#123;    if (head.next == null) return head;    ListNode last = reverse(head.next">
+<meta property="og:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A801.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian02.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian03.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian04.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian05.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian06.jpeg">
-<meta property="og:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian07.jpeg">
-<meta property="og:updated_time" content="2020-04-14T06:36:42.016Z">
+<meta property="og:updated_time" content="2020-04-19T12:32:28.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何递归地反转链表">
-<meta name="twitter:description" content="相反，递归实现就很简洁优美，下面就由浅入深，先从反转整个单链表说起。 一、递归反转整个链表这个算法可能很多读者都听说过，这里详细介绍一下，先直接看实现代码： 1234567ListNode reverse(ListNode head) &amp;#123;    if (head.next == null) return head;    ListNode last = reverse(head.next">
-<meta name="twitter:image" content="http://yoursite.com/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A801.jpeg">
+<meta name="twitter:title" content="DFA算法实现敏感词过滤">
+<meta name="twitter:description" content="透过指尖目视锦瑟流年 邂逅一场繁华的悸动">
 
 
 
@@ -132,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/14/如何递归地反转链表/">
+  <link rel="canonical" href="http://yoursite.com/2020/04/19/DFA算法实现敏感词过滤/">
 
 
 
 
 
-  <title>如何递归地反转链表 | 记录我的点滴</title>
+  <title>DFA算法实现敏感词过滤 | 记录我的点滴</title>
   
 
 
@@ -288,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/14/如何递归地反转链表/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/DFA算法实现敏感词过滤/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boygreen_Yu">
@@ -305,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何递归地反转链表</h1>
+          <h1 class="post-title" itemprop="name headline">DFA算法实现敏感词过滤</h1>
         
 
         <div class="post-meta">
@@ -319,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-14T10:14:38+08:00">
-                2020-04-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T20:32:28+08:00">
+                2020-04-19
               </time>
             
 
@@ -351,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  0
                 </span>
               
 
@@ -367,7 +359,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  1
                 </span>
               
             </div>
@@ -388,63 +380,7 @@
       
 
       
-        <p>相反，递归实现就很简洁优美，下面就由浅入深，先从反转整个单链表说起。</p>
-<h3 id="一、递归反转整个链表"><a href="#一、递归反转整个链表" class="headerlink" title="一、递归反转整个链表"></a>一、递归反转整个链表</h3><p>这个算法可能很多读者都听说过，这里详细介绍一下，先直接看实现代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListNode reverse(ListNode head) &#123;</span><br><span class="line">    <span class="keyword">if</span> (head.next == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    ListNode last = reverse(head.next);</span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>看起来是不是感觉不知所云，完全不能理解这样为什么能够反转链表？这就对了，这个算法常常拿来显示递归的巧妙和优美，我们下面来详细解释一下这段代码。</p>
-<p>对于递归算法，最重要的就是明确递归函数的定义。具体来说，我们的 reverse 函数定义是这样的：</p>
-<p>输入一个节点 head，将「以 head 为起点」的链表反转，并返回反转之后的头结点。</p>
-<p>明白了函数的定义，在来看这个问题。比如说我们想反转这个链表：</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A801.jpeg" alt></p>
-<p>那么输入 <code>reverse(head)</code> 后，会在这里进行递归：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ListNode last = reverse(head.next);</span><br></pre></td></tr></table></figure>
-
-<p>不要跳进递归（你的脑袋能压几个栈呀？），而是要根据刚才的函数定义，来弄清楚这段代码会产生什么结果：</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian02.jpeg" alt></p>
-<p>这个 <code>reverse(head.next)</code> 执行完成后，整个链表就成了这样：</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian03.jpeg" alt></p>
-<p>并且根据函数定义，<code>reverse</code> 函数会返回反转之后的头结点，我们用变量 <code>last</code> 接收了。</p>
-<p>现在再来看下面的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head.next.next = head;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian04.jpeg" alt></p>
-<p>接下来：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head.next = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">return</span> last;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian05.jpeg" alt></p>
-<p>神不神奇，这样整个链表就反转过来了！递归代码就是这么简洁优雅，不过其中有两个地方需要注意：</p>
-<p>1、递归函数要有 base case，也就是这句：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure>
-
-<p>意思是如果链表只有一个节点的时候反转也是它自己，直接返回即可。</p>
-<p>2、当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后一个节点，别忘了链表的末尾要指向 null：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head.next = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
-
-<p>理解了这两点后，我们就可以进一步深入了，接下来的问题其实都是在这个算法上的扩展。</p>
-<p>二、反转链表前 N 个节点<br>这次我们实现一个这样的函数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将链表的前 n 个节点反转（n &lt;= 链表长度）</span></span><br><span class="line"><span class="function">ListNode <span class="title">reverseN</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>比如说对于下图链表，执行 reverseN(head, 3)：</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian06.jpeg" alt></p>
-<p>解决思路和反转整个链表差不多，只要稍加修改即可：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ListNode successor = <span class="keyword">null</span>; <span class="comment">// 后驱节点</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 反转以 head 为起点的 n 个节点，返回新的头结点</span></span><br><span class="line"><span class="function">ListNode <span class="title">reverseN</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123; </span><br><span class="line">        <span class="comment">// 记录第 n + 1 个节点</span></span><br><span class="line">        successor = head.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 以 head.next 为起点，需要反转前 n - 1 个节点</span></span><br><span class="line">    ListNode last = reverseN(head.next, n - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    head.next.next = head;</span><br><span class="line">    <span class="comment">// 让反转之后的 head 节点和后面的节点连起来</span></span><br><span class="line">    head.next = successor;</span><br><span class="line">    <span class="keyword">return</span> last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>具体的区别：</p>
-<p>1、base case 变为 n == 1，反转一个元素，就是它本身，同时要记录后驱节点。</p>
-<p>2、刚才我们直接把 head.next 设置为 null，因为整个链表反转后原来的 head 变成了整个链表的最后一个节点。但现在 head 节点在递归反转之后不一定是最后一个节点了，所以要记录后驱 successor（第 n + 1 个节点），反转之后将 head 连接上。</p>
-<p><img src="/home/boygreen/MyBlog/source/_posts/%E5%A6%82%E4%BD%95%E9%80%92%E5%BD%92%E5%9C%B0%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/lian07.jpeg" alt></p>
-<h3 id="三、反转链表的一部分"><a href="#三、反转链表的一部分" class="headerlink" title="三、反转链表的一部分"></a>三、反转链表的一部分</h3><p>现在解决我们最开始提出的问题，给一个索引区间 <code>[m,n]</code>（索引从 1 开始），仅仅反转区间中的链表元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>首先，如果 <code>m == 1</code>，就相当于反转链表开头的 <code>n</code> 个元素嘛，也就是我们刚才实现的功能：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 相当于反转前 n 个元素</span></span><br><span class="line">        <span class="keyword">return</span> reverseN(head, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果 m != 1 怎么办？如果我们把 head 的索引视为 1，那么我们是想从第 m 个元素开始反转对吧；如果把 <code>head.next</code> 的索引视为 1 呢？那么相对于 <code>head.next</code>，反转的区间应该是从第 m - 1 个元素开始的；那么对于 <code>head.next.next</code> 呢……</p>
-<p>区别于迭代思想，这就是递归思想，所以我们可以完成代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> reverseN(head, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 前进到反转的起点触发 base case</span></span><br><span class="line">    head.next = reverseBetween(head.next, m - <span class="number">1</span>, n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+        
       
     </div>
     
@@ -493,6 +429,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/29/R语言入门/" rel="prev" title="R语言入门">
+                R语言入门 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -544,17 +484,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -571,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,22 +602,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、递归反转整个链表"><span class="nav-number">1.</span> <span class="nav-text">一、递归反转整个链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、反转链表的一部分"><span class="nav-number">2.</span> <span class="nav-text">三、反转链表的一部分</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -725,7 +640,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.8k字</span>
+  <span class="post-count">博客全站共55.4k字</span>
 </div>
 
         
